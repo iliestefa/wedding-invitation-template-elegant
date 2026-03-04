@@ -43,7 +43,7 @@ FloatingField.defaultProps = { type: 'text', required: false };
 
 const INITIAL_STATE = {
   fullName:   '',
-  email:      '',
+
   attendance: 'yes',
   companions: '0',
   meal:       'standard',
@@ -100,7 +100,6 @@ const RsvpForm = () => {
           ) : (
             <form className="rsvp__form" onSubmit={handleSubmit} noValidate>
               <FloatingField id="fullName" label="Nombre completo" value={form.fullName} onChange={setField('fullName')} required />
-              <FloatingField id="email" label="Correo electrónico" type="email" value={form.email} onChange={setField('email')} required />
 
               <fieldset className="rsvp__radio-group">
                 <legend className="rsvp__radio-legend">Asistencia</legend>
