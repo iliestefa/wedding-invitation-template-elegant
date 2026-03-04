@@ -1,0 +1,43 @@
+// ─── Palette ──────────────────────────────────────────────────────────────────
+$color-sage:        #5a6b4e;
+$color-sage-light:  #8ba587;
+$color-sage-pale:   #e8eee6;
+$color-bg:          #f7f3ed;
+$color-bg-alt:      #f0ede8;
+$color-bg-dark:     #3a3228;
+$color-text:        #3a3228;
+$color-text-muted:  #6b7068;
+$color-border:      #dcdcd8;
+$color-warm:        #a0856e;
+$color-white:       #ffffff;
+$color-error:       #b85c4a;
+
+// ─── Typography ───────────────────────────────────────────────────────────────
+$font-display: 'Cormorant Garamond', Georgia, serif;
+$font-body:    'Jost', system-ui, sans-serif;
+
+// ─── Spacing ──────────────────────────────────────────────────────────────────
+$gutter:    clamp(1.5rem, 5vw, 4rem);
+$max-width: 1160px;
+
+// ─── Transitions ──────────────────────────────────────────────────────────────
+$dur-fast: 0.18s;
+$dur-base: 0.32s;
+$ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+// ─── CSS Custom Properties ────────────────────────────────────────────────────
+:root {
+  --color-sage:        #{$color-sage};
+  --color-sage-light:  #{$color-sage-light};
+  --color-sage-pale:   #{$color-sage-pale};
+  --color-bg:          #{$color-bg};
+  --color-bg-alt:      #{$color-bg-alt};
+  --color-bg-dark:     #{$color-bg-dark};
+  --color-text:        #{$color-text};
+  --color-text-muted:  #{$color-text-muted};
+  --color-border:      #{$color-border};
+  --color-warm:        #{$color-warm};
+  --color-white:       #{$color-white};
+  --font-display:      #{$font-display};
+  --font-body:         #{$font-body};
+}

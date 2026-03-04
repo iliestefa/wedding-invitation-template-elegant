@@ -1,0 +1,35 @@
+{
+  "name": "@iliestefa/wedding-elegant",
+  "version": "1.0.0",
+  "type": "module",
+  "homepage": "https://iliestefa.github.io/wedding-invitation-template-elegant/",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "exports": {
+    "./components/*": "./src/components/*",
+    "./styles/*": "./src/styles/*",
+    "./hooks/*": "./src/hooks/*",
+    "./utils/*": "./src/utils/*",
+    "./context": "./src/context/TemplateContext.jsx"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "prop-types": "^15.8.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "sass": "^1.83.4",
+    "vite": "^6.3.5"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  }
+}

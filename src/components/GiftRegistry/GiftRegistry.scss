@@ -1,0 +1,120 @@
+.gift {
+  background: $color-bg-alt;
+  padding: 6rem 0;
+
+  &__inner {
+    @include container;
+  }
+
+  &__header {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 3.5rem;
+  }
+
+  &__eyebrow {
+    @include eyebrow;
+    margin: 0 0 1rem;
+  }
+
+  &__title {
+    @include heading-display;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 0 0 1.25rem;
+  }
+
+  &__intro {
+    font-family: $font-body;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: $color-text-muted;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  // ─── Account cards grid ───────────────────────────────────────────────────
+  &__accounts {
+    @include reveal-ready;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__card {
+    background: $color-bg;
+    border: 1px solid $color-border;
+    padding: 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__card-owner {
+    font-family: $font-display;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: $color-text;
+    margin: 0;
+  }
+
+  &__card-bank {
+    font-family: $font-body;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $color-sage;
+    margin: 0 0 0.75rem;
+  }
+
+  &__card-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    border-top: 1px solid $color-border;
+    padding-top: 1rem;
+  }
+
+  &__card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__card-key {
+    font-family: $font-body;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $color-text-muted;
+    flex-shrink: 0;
+  }
+
+  &__card-value {
+    font-family: $font-body;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: $color-text;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s;
+    text-align: right;
+
+    &:hover {
+      background: $color-sage-pale;
+      color: $color-sage;
+    }
+
+    &:active {
+      background: $color-sage;
+      color: #fff;
+    }
+  }
+}

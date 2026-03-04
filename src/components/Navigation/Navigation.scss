@@ -1,0 +1,137 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(247, 243, 237, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid $color-border;
+
+  &__inner {
+    @include container;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    text-decoration: none;
+  }
+
+  &__initials {
+    font-family: $font-display;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: $color-sage;
+    line-height: 1;
+    font-style: italic;
+  }
+
+  &__sep {
+    font-family: $font-display;
+    font-size: 0.9rem;
+    color: $color-text-muted;
+    font-weight: 300;
+  }
+
+  &__desktop {
+    @include tablet { display: none; }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  &__item { list-style: none; }
+
+  &__link {
+    font-family: $font-body;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $color-text;
+    transition: color $dur-fast $ease-out;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: $color-sage;
+      transition: width $dur-base $ease-out;
+    }
+
+    &:hover {
+      color: $color-sage;
+      &::after { width: 100%; }
+    }
+
+    @include focus-ring;
+  }
+
+  // ─── Burger ───────────────────────────────────────────────────────────────
+  &__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+
+    @include tablet { display: flex; }
+
+    span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: $color-text;
+      transition: transform $dur-base $ease-out, opacity $dur-fast;
+    }
+
+    &--open {
+      span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+      span:nth-child(2) { opacity: 0; }
+      span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+    }
+  }
+
+  // ─── Mobile menu ──────────────────────────────────────────────────────────
+  &__mobile {
+    display: none;
+    background: rgba(247, 243, 237, 0.98);
+    border-top: 1px solid $color-border;
+
+    @include tablet {
+      display: block;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height $dur-base ease-in-out;
+
+      &--open { max-height: 360px; }
+    }
+  }
+
+  &__mobile-list {
+    list-style: none;
+    margin: 0;
+    padding: 1.5rem $gutter;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

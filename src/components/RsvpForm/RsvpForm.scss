@@ -1,0 +1,218 @@
+.rsvp {
+  background: $color-bg-dark;
+  padding: 6rem 0;
+  color: $color-white;
+
+  &__inner {
+    @include container;
+    max-width: 640px;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  &__eyebrow {
+    @include eyebrow;
+    color: $color-sage-light;
+    margin: 0 0 1rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    font-style: italic;
+    color: $color-white;
+    margin: 0 0 1rem;
+    line-height: 1.15;
+  }
+
+  &__deadline {
+    font-family: $font-body;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0;
+
+    strong {
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 400;
+    }
+  }
+
+  // ─── Form ─────────────────────────────────────────────────────────────────
+  &__form {
+    @include reveal-ready;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  // ─── Floating label field ─────────────────────────────────────────────────
+  &__field {
+    position: relative;
+
+    &--textarea {
+      .rsvp__label { top: 1rem; }
+    }
+  }
+
+  &__input,
+  &__textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0;
+    color: $color-white;
+    font-family: $font-body;
+    font-size: 0.9rem;
+    font-weight: 300;
+    padding: 1.4rem 1rem 0.6rem;
+    outline: none;
+    transition: border-color $dur-fast $ease-out;
+    resize: none;
+    box-sizing: border-box;
+
+    &:focus {
+      border-color: $color-sage-light;
+    }
+
+    &::placeholder { color: transparent; }
+  }
+
+  &__label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    font-family: $font-body;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.45);
+    pointer-events: none;
+    transition: top $dur-fast $ease-out, font-size $dur-fast $ease-out, color $dur-fast $ease-out;
+  }
+
+  &__input:focus + &__label,
+  &__input:not(:placeholder-shown) + &__label,
+  &__textarea:focus + &__label,
+  &__textarea:not(:placeholder-shown) + &__label,
+  &__field--filled &__label {
+    top: 0.35rem;
+    font-size: 0.65rem;
+    color: $color-sage-light;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  // ─── Radio groups ─────────────────────────────────────────────────────────
+  &__radio-group {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__radio-legend {
+    font-family: $font-body;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $color-sage-light;
+    margin-bottom: 0.75rem;
+  }
+
+  &__radio-options {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+
+    &--meal {
+      gap: 0.5rem;
+    }
+  }
+
+  &__radio-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &__radio-label {
+    font-family: $font-body;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: border-color $dur-fast, color $dur-fast, background $dur-fast;
+
+    &--active {
+      border-color: $color-sage-light;
+      color: $color-white;
+      background: rgba(139, 165, 135, 0.15);
+    }
+
+    &:hover:not(&--active) {
+      border-color: rgba(255, 255, 255, 0.4);
+      color: rgba(255, 255, 255, 0.85);
+    }
+  }
+
+  // ─── Submit ───────────────────────────────────────────────────────────────
+  &__submit {
+    @include btn-sage;
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 1rem;
+    font-size: 0.8rem;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  // ─── Error ────────────────────────────────────────────────────────────────
+  &__error {
+    font-family: $font-body;
+    font-size: 0.8rem;
+    color: #d4897a;
+    margin: 0;
+    text-align: center;
+  }
+
+  // ─── Success state ────────────────────────────────────────────────────────
+  &__success {
+    text-align: center;
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  &__success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border: 1px solid $color-sage-light;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: $color-sage-light;
+  }
+
+  &__success-text {
+    font-family: $font-display;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 300;
+    color: $color-white;
+    margin: 0;
+  }
+}

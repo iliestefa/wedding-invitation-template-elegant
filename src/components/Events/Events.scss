@@ -1,0 +1,96 @@
+.events {
+  background: $color-bg;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    min-height: 520px;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1px auto;
+    }
+  }
+
+  &__divider {
+    background: $color-border;
+    align-self: stretch;
+
+    @include tablet {
+      height: 1px;
+      width: 100%;
+    }
+  }
+}
+
+.event-panel {
+  padding: 5rem $gutter;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  @include reveal-ready;
+
+  &--right {
+    padding-left: clamp(2.5rem, 5vw, 5rem);
+  }
+
+  @include tablet {
+    &--right { padding-left: $gutter; }
+  }
+
+  &__eyebrow {
+    @include eyebrow;
+    margin: 0 0 0.5rem;
+  }
+
+  &__time {
+    font-family: $font-body;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: $color-text-muted;
+    margin: 0;
+  }
+
+  &__venue {
+    font-family: $font-display;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 400;
+    color: $color-text;
+    margin: 0.25rem 0 0;
+    line-height: 1.2;
+  }
+
+  &__address {
+    font-family: $font-body;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: $color-text-muted;
+    margin: 0 0 1rem;
+    line-height: 1.6;
+  }
+
+  &__map {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid $color-border;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+  }
+
+  &__cta {
+    @include btn-sage;
+    font-size: 0.62rem;
+    padding: 0.6rem 1.5rem;
+    margin-top: 0.5rem;
+    text-decoration: none;
+  }
+}

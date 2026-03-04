@@ -1,0 +1,118 @@
+.hero {
+  display: grid;
+  grid-template-columns: 58% 42%;
+  min-height: 100svh;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    grid-template-rows: 55svh auto;
+  }
+
+  // ─── Photo panel ────────────────────────────────────────────────────────
+  &__photo {
+    position: relative;
+    overflow: hidden;
+
+    @include tablet { order: 1; }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      transparent 60%,
+      rgba(247, 243, 237, 0.35) 100%
+    );
+
+    @include tablet {
+      background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(247, 243, 237, 0.5) 100%
+      );
+    }
+  }
+
+  // ─── Content panel ──────────────────────────────────────────────────────
+  &__content {
+    background: $color-bg;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 4rem $gutter 4rem clamp(2.5rem, 5vw, 5rem);
+
+    @include tablet {
+      order: 2;
+      align-items: center;
+      text-align: center;
+      padding: 3rem $gutter;
+    }
+  }
+
+  &__eyebrow {
+    @include eyebrow;
+    margin: 0 0 2.5rem;
+    animation: fadeUp 0.8s $ease-out both;
+  }
+
+  &__names {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    animation: fadeUp 0.8s 0.1s $ease-out both;
+  }
+
+  &__name {
+    font-family: $font-display;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: $color-text;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  &__amp {
+    font-family: $font-display;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 300;
+    color: $color-sage;
+    font-style: normal;
+    line-height: 1.4;
+  }
+
+  &__rule {
+    width: 48px;
+    height: 1px;
+    background: $color-sage;
+    margin: 2rem 0;
+    animation: fadeIn 1s 0.3s $ease-out both;
+
+    @include tablet { margin: 2rem auto; }
+  }
+
+  &__date {
+    font-family: $font-body;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    color: $color-text-muted;
+    text-transform: uppercase;
+    margin: 0 0 2.5rem;
+    animation: fadeUp 0.8s 0.2s $ease-out both;
+  }
+
+  &__cta {
+    @include btn-sage;
+    animation: fadeUp 0.8s 0.35s $ease-out both;
+  }
+}
