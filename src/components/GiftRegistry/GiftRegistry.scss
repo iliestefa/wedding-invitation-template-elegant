@@ -1,6 +1,19 @@
 .gift {
   position: relative;
 
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to bottom, #110f0d, #1c1917);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+
 
   background: $color-bg-deep;
   padding: 7rem 0;
@@ -8,18 +21,6 @@
   &__inner {
     @include container;
     @include reveal-ready;
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 200px;
-      background: linear-gradient(to bottom, #110f0d, #1c1917);
-      pointer-events: none;
-    }
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5rem;

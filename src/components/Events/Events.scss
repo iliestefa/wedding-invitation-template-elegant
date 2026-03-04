@@ -10,18 +10,6 @@
   &__inner {
     @include container;
     @include reveal-ready;
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 200px;
-      background: linear-gradient(to top, #262220, #1b1917);
-      pointer-events: none;
-    }
   }
 
   // ─── Header ───────────────────────────────────────────────────────────────
