@@ -6,27 +6,29 @@ const Hero = () => {
 
   return (
     <section id="hero" className="hero">
-      {/* Left — photo */}
-      <div className="hero__photo" aria-hidden="true">
-        <img src={imageHero} alt="" className="hero__img" />
-        <div className="hero__photo-overlay" />
-      </div>
+      <div className="hero__bg" style={{ backgroundImage: `url(${imageHero})` }} />
+      <div className="hero__overlay" />
 
-      {/* Right — content */}
       <div className="hero__content">
-        <p className="hero__eyebrow">Os invitamos a nuestra boda</p>
+        <p className="hero__eyebrow">Os invitamos a celebrar</p>
 
         <div className="hero__names">
-          <span className="hero__name">{brideName}</span>
-          <span className="hero__amp">&amp;</span>
-          <span className="hero__name">{groomName}</span>
+          <span className="hero__name hero__name--bride">{brideName}</span>
+          <span className="hero__amp">&</span>
+          <span className="hero__name hero__name--groom">{groomName}</span>
         </div>
 
-        <div className="hero__rule" aria-hidden="true" />
-
-        <p className="hero__date">{weddingDateDisplay}</p>
+        <div className="hero__divider">
+          <span className="hero__divider-line" />
+          <span className="hero__date">{weddingDateDisplay}</span>
+          <span className="hero__divider-line" />
+        </div>
 
         <a href="#rsvp" className="hero__cta">Confirmar asistencia</a>
+      </div>
+
+      <div className="hero__scroll" aria-hidden="true">
+        <span className="hero__scroll-line" />
       </div>
     </section>
   );

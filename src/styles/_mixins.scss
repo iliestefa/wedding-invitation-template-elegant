@@ -12,68 +12,68 @@
 // ─── Typography ───────────────────────────────────────────────────────────────
 @mixin eyebrow {
   font-family: $font-body;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 500;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: $color-sage;
+  color: $color-gold;
 }
 
 @mixin heading-display {
   font-family: $font-display;
   font-weight: 400;
   line-height: 1.1;
-  color: $color-text;
+  color: $color-champagne;
 }
 
-// ─── Decorative line ──────────────────────────────────────────────────────────
-@mixin sage-rule($w: 40px) {
+// ─── Gold rule ────────────────────────────────────────────────────────────────
+@mixin gold-rule($w: 40px) {
   content: '';
   display: block;
   width: $w;
   height: 1px;
-  background: $color-sage;
+  background: $color-gold;
 }
 
 // ─── Button ───────────────────────────────────────────────────────────────────
-@mixin btn-sage {
+@mixin btn-gold {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 2rem;
-  border: 1px solid $color-sage;
+  padding: 0.9rem 2.5rem;
+  border: 1px solid $color-gold;
   background: transparent;
-  color: $color-sage;
+  color: $color-gold;
   font-family: $font-body;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   transition: background $dur-fast $ease-out, color $dur-fast $ease-out;
 
   &:hover {
-    background: $color-sage;
-    color: $color-white;
+    background: $color-gold;
+    color: $color-bg-deep;
   }
 }
 
-@mixin btn-sage-solid {
-  @include btn-sage;
-  background: $color-sage;
-  color: $color-white;
+@mixin btn-gold-solid {
+  @include btn-gold;
+  background: $color-gold;
+  color: $color-bg-deep;
 
   &:hover {
-    background: darken($color-sage, 8%);
+    background: $color-gold-light;
   }
 }
 
 // ─── Reveal animation ─────────────────────────────────────────────────────────
 @mixin reveal-ready {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s $ease-out, transform 0.6s $ease-out;
+  transform: translateY(24px);
+  transition: opacity 0.7s $ease-out, transform 0.7s $ease-out;
 
   &.is-visible {
     opacity: 1;
@@ -81,10 +81,18 @@
   }
 }
 
+// ─── Gold divider line ────────────────────────────────────────────────────────
+@mixin gold-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, $color-gold, transparent);
+  margin: 0 auto;
+}
+
 // ─── Focus ring ───────────────────────────────────────────────────────────────
 @mixin focus-ring {
   &:focus-visible {
-    outline: 2px solid $color-sage;
+    outline: 1px solid $color-gold;
     outline-offset: 3px;
   }
 }

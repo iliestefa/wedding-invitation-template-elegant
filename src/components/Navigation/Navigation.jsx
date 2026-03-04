@@ -3,57 +3,42 @@ import { useTemplateData } from '../../context/TemplateContext';
 import './Navigation.scss';
 
 const NAV_LINKS = [
-  { id: 'nav-eventos',    href: '#events',    label: 'Eventos' },
-  { id: 'nav-cronograma', href: '#schedule',  label: 'Cronograma' },
-  { id: 'nav-vestimenta', href: '#dresscode', label: 'Vestimenta' },
-  { id: 'nav-regalos',    href: '#gifts',     label: 'Regalos' },
-  { id: 'nav-rsvp',       href: '#rsvp',      label: 'RSVP' },
+  { href: '#countdown', label: 'La Fecha' },
+  { href: '#events',    label: 'Lugares' },
+  { href: '#schedule',  label: 'Programa' },
+  { href: '#dresscode', label: 'Vestimenta' },
+  { href: '#gifts',     label: 'Regalos' },
 ];
 
 const Navigation = () => {
   const { brideName, groomName } = useTemplateData();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
-  }, [menuOpen]);
-
-  const handleLinkClick = () => setMenuOpen(false);
-
-  const navLinks = NAV_LINKS.map(({ id, href, label }) => (
-    <li key={id} className="nav__item">
-      <a href={href} className="nav__link" onClick={handleLinkClick}>{label}</a>
-    </li>
-  ));
+    const update = () => setScrolled(window.scrollY > 60);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    return () => window.removeEventListener('scroll', update);
+  }, []);
 
   return (
-    <header className="nav">
-      <div className="nav__inner">
-        <a href="#hero" className="nav__brand" aria-label="Inicio">
-          <span className="nav__initials">{brideName[0]}</span>
-          <span className="nav__sep">&</span>
-          <span className="nav__initials">{groomName[0]}</span>
-        </a>
+    <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`} aria-label="Navegación principal">
+      <a href="#hero" className="nav__brand">
+        {brideName}
+        <span className="nav__brand-amp">&</span>
+        {groomName}
+      </a>
 
-        <nav className="nav__desktop" aria-label="Navegación principal">
-          <ul className="nav__list">{navLinks}</ul>
-        </nav>
+      <ul className="nav__links">
+        {NAV_LINKS.map(({ href, label }) => (
+          <li key={href}>
+            <a href={href} className="nav__link">{label}</a>
+          </li>
+        ))}
+      </ul>
 
-        <button
-          className={`nav__burger ${menuOpen ? 'nav__burger--open' : ''}`}
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-expanded={menuOpen}
-          aria-label="Menú"
-        >
-          <span /><span /><span />
-        </button>
-      </div>
-
-      <nav className={`nav__mobile ${menuOpen ? 'nav__mobile--open' : ''}`} aria-label="Menú móvil">
-        <ul className="nav__mobile-list">{navLinks}</ul>
-      </nav>
-    </header>
+      <a href="#rsvp" className="nav__cta">Confirmar</a>
+    </nav>
   );
 };
 

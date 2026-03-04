@@ -1,35 +1,71 @@
 .dresscode {
   background: $color-bg;
-  padding: 6rem 0;
-  overflow: hidden;
+
+  // ─── Full-width photo strip ───────────────────────────────────────────────
+  &__photo-strip {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+
+    @include tablet { height: 280px; }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    filter: brightness(0.5) saturate(0.7);
+  }
+
+  &__photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, $color-bg 100%);
+  }
+
+  &__photo-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 0 $gutter;
+  }
+
+  &__photo-eyebrow {
+    @include eyebrow;
+    margin: 0;
+  }
+
+  &__photo-style {
+    font-family: $font-display;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 400;
+    font-style: italic;
+    color: $color-cream;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  // ─── Body ─────────────────────────────────────────────────────────────────
+  &__body {
+    @include reveal-ready;
+    padding: 4rem 0 6rem;
+  }
 
   &__inner {
     @include container;
-    display: grid;
-    grid-template-columns: 1fr 420px;
-    gap: 5rem;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-
-    @include tablet {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-  }
-
-  // ─── Text column ──────────────────────────────────────────────────────────
-  &__text {
-    @include reveal-ready;
-  }
-
-  &__eyebrow {
-    @include eyebrow;
-    margin: 0 0 1rem;
-  }
-
-  &__style {
-    @include heading-display;
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin: 0 0 1.25rem;
+    gap: 3rem;
+    text-align: center;
   }
 
   &__description {
@@ -38,100 +74,73 @@
     font-weight: 300;
     color: $color-text-muted;
     line-height: 1.8;
-    margin: 0 0 2rem;
+    margin: 0;
   }
 
-  &__guide {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    margin-bottom: 2.5rem;
-    padding: 1.5rem;
-    background: $color-bg-alt;
-    border-left: 2px solid $color-sage;
+  // ─── Guides ───────────────────────────────────────────────────────────────
+  &__guides {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    width: 100%;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
   }
 
   &__guide-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
+    background: $color-bg-surface;
+    border: 1px solid $color-border;
+    padding: 1.5rem;
+    text-align: left;
   }
 
   &__guide-label {
-    font-family: $font-body;
-    font-size: 0.6rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: $color-sage;
-    margin: 0;
+    @include eyebrow;
+    margin: 0 0 0.75rem;
   }
 
   &__guide-text {
     font-family: $font-body;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 300;
-    color: $color-text;
+    color: $color-text-muted;
+    line-height: 1.7;
     margin: 0;
-    line-height: 1.6;
   }
 
   // ─── Palette ──────────────────────────────────────────────────────────────
   &__palette {
     display: flex;
+    gap: 1.5rem;
     flex-wrap: wrap;
-    gap: 1rem;
+    justify-content: center;
   }
 
   &__swatch {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.5rem;
   }
 
   &__swatch-color {
     display: block;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    border: 1px solid rgba(58, 50, 40, 0.12);
-    box-shadow: 0 2px 8px rgba(58, 50, 40, 0.08);
+    border: 1px solid $color-border;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
   }
 
   &__swatch-label {
     font-family: $font-body;
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     font-weight: 400;
-    letter-spacing: 0.1em;
-    color: $color-text-muted;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-  }
-
-  // ─── Image column ─────────────────────────────────────────────────────────
-  &__image-wrap {
-    position: relative;
-    height: 560px;
-
-    @include tablet {
-      height: 320px;
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      inset: -16px -16px 16px 16px;
-      border: 1px solid $color-border;
-      z-index: 0;
-    }
-  }
-
-  &__image {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    color: $color-text-muted;
   }
 }

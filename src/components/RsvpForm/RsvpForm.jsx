@@ -5,19 +5,19 @@ import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import './RsvpForm.scss';
 
 const ATTENDANCE_OPTIONS = [
-  { value: 'yes', label: 'Asistiré con alegría' },
+  { value: 'yes', label: 'Asistiré' },
   { value: 'no',  label: 'No podré asistir' },
 ];
 
 const MEAL_OPTIONS = [
-  { value: 'standard',    label: 'Estándar' },
-  { value: 'vegetarian',  label: 'Vegetariano' },
-  { value: 'vegan',       label: 'Vegano' },
-  { value: 'celiac',      label: 'Celíaco' },
+  { value: 'standard',   label: 'Estándar' },
+  { value: 'vegetarian', label: 'Vegetariano' },
+  { value: 'vegan',      label: 'Vegano' },
+  { value: 'celiac',     label: 'Celíaco' },
 ];
 
 const FloatingField = ({ id, label, type = 'text', value, onChange, required }) => (
-  <div className={`rsvp__field ${value ? 'rsvp__field--filled' : ''}`}>
+  <div className="rsvp__field">
     <input
       id={id}
       type={type}
@@ -54,8 +54,8 @@ const RsvpForm = () => {
   const { rsvpDeadline, rsvpEndpoint } = useTemplateData();
   const ref = useIntersectionObserver();
 
-  const [form, setForm]         = useState(INITIAL_STATE);
-  const [status, setStatus]     = useState('idle'); // idle | sending | success | error
+  const [form, setForm]     = useState(INITIAL_STATE);
+  const [status, setStatus] = useState('idle');
 
   const setField = (key) => (value) => setForm((prev) => ({ ...prev, [key]: value }));
 
@@ -81,109 +81,71 @@ const RsvpForm = () => {
   return (
     <section id="rsvp" className="rsvp">
       <div ref={ref} className="rsvp__inner">
-        <header className="rsvp__header">
+        <div className="rsvp__side">
           <p className="rsvp__eyebrow">Confirmación</p>
           <h2 className="rsvp__title">¿Nos acompañas?</h2>
           <p className="rsvp__deadline">
-            Confirma antes del <strong>{rsvpDeadline}</strong>
+            Confirma antes del<br />
+            <strong>{rsvpDeadline}</strong>
           </p>
-        </header>
+          <div className="rsvp__gold-line" aria-hidden="true" />
+        </div>
 
-        {status === 'success' ? (
-          <div className="rsvp__success">
-            <span className="rsvp__success-icon" aria-hidden="true">✓</span>
-            <p className="rsvp__success-text">¡Gracias! Recibimos tu confirmación.</p>
-          </div>
-        ) : (
-          <form className="rsvp__form" onSubmit={handleSubmit} noValidate>
-            <FloatingField
-              id="fullName"
-              label="Nombre completo"
-              value={form.fullName}
-              onChange={setField('fullName')}
-              required
-            />
-            <FloatingField
-              id="email"
-              label="Correo electrónico"
-              type="email"
-              value={form.email}
-              onChange={setField('email')}
-              required
-            />
-
-            {/* Attendance */}
-            <fieldset className="rsvp__radio-group">
-              <legend className="rsvp__radio-legend">Asistencia</legend>
-              <div className="rsvp__radio-options">
-                {ATTENDANCE_OPTIONS.map(({ value, label }) => (
-                  <label key={value} className={`rsvp__radio-label ${form.attendance === value ? 'rsvp__radio-label--active' : ''}`}>
-                    <input
-                      type="radio"
-                      name="attendance"
-                      value={value}
-                      checked={form.attendance === value}
-                      onChange={() => setField('attendance')(value)}
-                      className="rsvp__radio-input"
-                    />
-                    {label}
-                  </label>
-                ))}
-              </div>
-            </fieldset>
-
-            {isAttending && (
-              <>
-                <FloatingField
-                  id="companions"
-                  label="Acompañantes (sin contarte a ti)"
-                  type="number"
-                  value={form.companions}
-                  onChange={setField('companions')}
-                />
-
-                <fieldset className="rsvp__radio-group">
-                  <legend className="rsvp__radio-legend">Menú preferido</legend>
-                  <div className="rsvp__radio-options rsvp__radio-options--meal">
-                    {MEAL_OPTIONS.map(({ value, label }) => (
-                      <label key={value} className={`rsvp__radio-label ${form.meal === value ? 'rsvp__radio-label--active' : ''}`}>
-                        <input
-                          type="radio"
-                          name="meal"
-                          value={value}
-                          checked={form.meal === value}
-                          onChange={() => setField('meal')(value)}
-                          className="rsvp__radio-input"
-                        />
-                        {label}
-                      </label>
-                    ))}
-                  </div>
-                </fieldset>
-              </>
-            )}
-
-            <div className="rsvp__field rsvp__field--textarea">
-              <textarea
-                id="message"
-                className="rsvp__textarea"
-                rows={3}
-                value={form.message}
-                onChange={(e) => setField('message')(e.target.value)}
-                placeholder=" "
-              />
-              <label htmlFor="message" className="rsvp__label">Mensaje (opcional)</label>
+        <div className="rsvp__form-wrap">
+          {status === 'success' ? (
+            <div className="rsvp__success">
+              <span className="rsvp__success-icon" aria-hidden="true">✓</span>
+              <p className="rsvp__success-text">¡Gracias! Recibimos tu confirmación.</p>
             </div>
+          ) : (
+            <form className="rsvp__form" onSubmit={handleSubmit} noValidate>
+              <FloatingField id="fullName" label="Nombre completo" value={form.fullName} onChange={setField('fullName')} required />
+              <FloatingField id="email" label="Correo electrónico" type="email" value={form.email} onChange={setField('email')} required />
 
-            {status === 'error' && (
-              <p className="rsvp__error">Algo salió mal. Por favor intentá de nuevo.</p>
-            )}
+              <fieldset className="rsvp__radio-group">
+                <legend className="rsvp__radio-legend">Asistencia</legend>
+                <div className="rsvp__radio-options">
+                  {ATTENDANCE_OPTIONS.map(({ value, label }) => (
+                    <label key={value} className={`rsvp__radio-label ${form.attendance === value ? 'rsvp__radio-label--active' : ''}`}>
+                      <input type="radio" name="attendance" value={value} checked={form.attendance === value} onChange={() => setField('attendance')(value)} className="rsvp__radio-input" />
+                      {label}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
 
-            <button type="submit" className="rsvp__submit" disabled={status === 'sending'}>
-              {status === 'sending' ? 'Enviando…' : 'Confirmar asistencia'}
-            </button>
-          </form>
-        )}
+              {isAttending && (
+                <>
+                  <FloatingField id="companions" label="Acompañantes (sin contarte a ti)" type="number" value={form.companions} onChange={setField('companions')} />
+                  <fieldset className="rsvp__radio-group">
+                    <legend className="rsvp__radio-legend">Menú preferido</legend>
+                    <div className="rsvp__radio-options rsvp__radio-options--meal">
+                      {MEAL_OPTIONS.map(({ value, label }) => (
+                        <label key={value} className={`rsvp__radio-label ${form.meal === value ? 'rsvp__radio-label--active' : ''}`}>
+                          <input type="radio" name="meal" value={value} checked={form.meal === value} onChange={() => setField('meal')(value)} className="rsvp__radio-input" />
+                          {label}
+                        </label>
+                      ))}
+                    </div>
+                  </fieldset>
+                </>
+              )}
+
+              <div className="rsvp__field rsvp__field--textarea">
+                <textarea id="message" className="rsvp__textarea" rows={3} value={form.message} onChange={(e) => setField('message')(e.target.value)} placeholder=" " />
+                <label htmlFor="message" className="rsvp__label">Mensaje (opcional)</label>
+              </div>
+
+              {status === 'error' && (
+                <p className="rsvp__error">Algo salió mal. Por favor intentá de nuevo.</p>
+              )}
+
+              <button type="submit" className="rsvp__submit" disabled={status === 'sending'}>
+                {status === 'sending' ? 'Enviando…' : 'Confirmar asistencia'}
+              </button>
+            </form>
+          )}
+        </div>
       </div>
     </section>
   );

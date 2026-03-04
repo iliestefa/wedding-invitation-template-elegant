@@ -33,18 +33,18 @@ export const SCHEDULE_ITEMS = [
 ];
 
 // ─── Dress Code ───────────────────────────────────────────────────────────────
-export const DRESS_CODE_STYLE       = "Cocktail Elegante";
-export const DRESS_CODE_DESCRIPTION = "Les pedimos acompañar la celebración con tonos naturales y neutros. Por favor evitar el blanco puro.";
-export const DRESS_CODE_WOMEN       = "Vestido de cóctel o largo en tonos tierra, sage, champagne o nude.";
-export const DRESS_CODE_MEN         = "Traje con corbata. Tonos crema, camel, gris claro o azul marino.";
+export const DRESS_CODE_STYLE       = "Black Tie Optional";
+export const DRESS_CODE_DESCRIPTION = "Les pedimos acompañar la noche con elegancia. Tonos oscuros y neutros profundos. Por favor evitar el blanco.";
+export const DRESS_CODE_WOMEN       = "Vestido largo o de cóctel en negro, champagne, burdeos o azul noche.";
+export const DRESS_CODE_MEN         = "Traje oscuro o smoking. Negro, grafito, azul marino o burdeos.";
 
 export const DRESS_CODE_PALETTE = [
-  { id: "sage",      label: "Sage",      hex: "#8ba587" },
-  { id: "linen",     label: "Lino",      hex: "#f0ede8" },
-  { id: "champagne", label: "Champagne", hex: "#f5e6c8" },
-  { id: "sand",      label: "Arena",     hex: "#d4b896" },
-  { id: "warm",      label: "Cálido",    hex: "#a0856e" },
-  { id: "ivory",     label: "Marfil",    hex: "#f8f4ec" },
+  { id: "black",     label: "Negro",     hex: "#1c1917" },
+  { id: "champagne", label: "Champagne", hex: "#e8d5b0" },
+  { id: "burgundy",  label: "Burdeos",   hex: "#6b2737" },
+  { id: "navy",      label: "Navy",      hex: "#1a2744" },
+  { id: "graphite",  label: "Grafito",   hex: "#3d3d3d" },
+  { id: "gold",      label: "Dorado",    hex: "#c9a96e" },
 ];
 
 // ─── Regalos ──────────────────────────────────────────────────────────────────

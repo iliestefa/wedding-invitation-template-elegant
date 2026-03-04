@@ -1,118 +1,137 @@
 .hero {
-  display: grid;
-  grid-template-columns: 58% 42%;
-  min-height: 100svh;
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 
-  @include tablet {
-    grid-template-columns: 1fr;
-    grid-template-rows: 55svh auto;
-  }
-
-  // ─── Photo panel ────────────────────────────────────────────────────────
-  &__photo {
-    position: relative;
-    overflow: hidden;
-
-    @include tablet { order: 1; }
-  }
-
-  &__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  &__photo-overlay {
+  // ─── Background photo ────────────────────────────────────────────────────
+  &__bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to right,
-      transparent 60%,
-      rgba(247, 243, 237, 0.35) 100%
-    );
-
-    @include tablet {
-      background: linear-gradient(
-        to bottom,
-        transparent 50%,
-        rgba(247, 243, 237, 0.5) 100%
-      );
-    }
+    background-size: cover;
+    background-position: center 30%;
+    transform: scale(1.05);
+    animation: heroZoom 8s $ease-out forwards;
   }
 
-  // ─── Content panel ──────────────────────────────────────────────────────
+  // ─── Overlay layers ──────────────────────────────────────────────────────
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(17,15,13,0.5) 0%, rgba(17,15,13,0.2) 40%, rgba(17,15,13,0.7) 100%);
+  }
+
+  // ─── Content ─────────────────────────────────────────────────────────────
   &__content {
-    background: $color-bg;
+    position: relative;
+    z-index: 2;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 4rem $gutter 4rem clamp(2.5rem, 5vw, 5rem);
-
-    @include tablet {
-      order: 2;
-      align-items: center;
-      text-align: center;
-      padding: 3rem $gutter;
-    }
+    align-items: center;
+    gap: 2rem;
+    padding: 0 $gutter;
+    animation: fadeUp 1.2s $ease-out 0.3s both;
   }
 
   &__eyebrow {
     @include eyebrow;
-    margin: 0 0 2.5rem;
-    animation: fadeUp 0.8s $ease-out both;
+    color: $color-gold;
+    letter-spacing: 0.4em;
   }
 
+  // ─── Names ───────────────────────────────────────────────────────────────
   &__names {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    animation: fadeUp 0.8s 0.1s $ease-out both;
+    align-items: center;
+    gap: 0;
+    line-height: 1;
   }
 
   &__name {
     font-family: $font-display;
-    font-size: clamp(3rem, 6vw, 5rem);
-    font-weight: 300;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-weight: 400;
     font-style: italic;
-    color: $color-text;
-    line-height: 1;
-    letter-spacing: 0.02em;
+    color: $color-cream;
+    letter-spacing: -0.02em;
+    display: block;
   }
 
   &__amp {
     font-family: $font-display;
     font-size: clamp(1.5rem, 3vw, 2.5rem);
-    font-weight: 300;
-    color: $color-sage;
-    font-style: normal;
-    line-height: 1.4;
+    font-weight: 400;
+    color: $color-gold;
+    display: block;
+    margin: 0.25rem 0;
+    letter-spacing: 0.1em;
   }
 
-  &__rule {
-    width: 48px;
-    height: 1px;
-    background: $color-sage;
-    margin: 2rem 0;
-    animation: fadeIn 1s 0.3s $ease-out both;
+  // ─── Date divider ─────────────────────────────────────────────────────────
+  &__divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
 
-    @include tablet { margin: 2rem auto; }
+  &__divider-line {
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $color-gold);
+
+    &:last-child {
+      background: linear-gradient(90deg, $color-gold, transparent);
+    }
+
+    @include mobile { width: 32px; }
   }
 
   &__date {
     font-family: $font-body;
-    font-size: 0.8rem;
-    font-weight: 400;
-    letter-spacing: 0.25em;
-    color: $color-text-muted;
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 0.4em;
     text-transform: uppercase;
-    margin: 0 0 2.5rem;
-    animation: fadeUp 0.8s 0.2s $ease-out both;
+    color: $color-champagne;
   }
 
+  // ─── CTA ─────────────────────────────────────────────────────────────────
   &__cta {
-    @include btn-sage;
-    animation: fadeUp 0.8s 0.35s $ease-out both;
+    @include btn-gold;
+    margin-top: 0.5rem;
   }
+
+  // ─── Scroll indicator ────────────────────────────────────────────────────
+  &__scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+  &__scroll-line {
+    display: block;
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, $color-gold, transparent);
+    margin: 0 auto;
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes heroZoom {
+  to { transform: scale(1); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.1); }
 }

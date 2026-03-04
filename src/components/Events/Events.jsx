@@ -1,77 +1,78 @@
+import PropTypes from 'prop-types';
 import { useTemplateData } from '../../context/TemplateContext';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import './Events.scss';
 
-const EventPanel = ({ eyebrow, time, venue, address, mapsLink, embedSrc, side }) => {
-  const ref = useIntersectionObserver();
-  return (
-    <div ref={ref} className={`event-panel event-panel--${side}`}>
-      <p className="event-panel__eyebrow">{eyebrow}</p>
-      <p className="event-panel__time">{time}</p>
-      <h3 className="event-panel__venue">{venue}</h3>
-      <p className="event-panel__address">{address}</p>
-      {embedSrc && (
-        <div className="event-panel__map">
-          <iframe
-            src={embedSrc}
-            title={`Mapa ${venue}`}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-      )}
-      {mapsLink && (
-        <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="event-panel__cta">
-          Ver en Google Maps
-        </a>
-      )}
-    </div>
-  );
-};
+const EventPanel = ({ eyebrow, time, venueName, venueAddress, mapsLink, mapsSrc }) => (
+  <div className="events__panel">
+    <p className="events__panel-eyebrow">{eyebrow}</p>
+    <p className="events__panel-time">{time}</p>
+    <h3 className="events__panel-venue">{venueName}</h3>
+    <p className="events__panel-address">{venueAddress}</p>
+    {mapsSrc && (
+      <div className="events__map-wrap">
+        <iframe
+          className="events__map"
+          src={mapsSrc}
+          title={`Mapa de ${venueName}`}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </div>
+    )}
+    {mapsLink && (
+      <a className="events__map-link" href={mapsLink} target="_blank" rel="noopener noreferrer">
+        Ver en Google Maps ↗
+      </a>
+    )}
+  </div>
+);
 
-import PropTypes from 'prop-types';
 EventPanel.propTypes = {
-  eyebrow:  PropTypes.string.isRequired,
-  time:     PropTypes.string.isRequired,
-  venue:    PropTypes.string.isRequired,
-  address:  PropTypes.string.isRequired,
-  mapsLink: PropTypes.string,
-  embedSrc: PropTypes.string,
-  side:     PropTypes.oneOf(['left', 'right']),
+  eyebrow:      PropTypes.string.isRequired,
+  time:         PropTypes.string.isRequired,
+  venueName:    PropTypes.string.isRequired,
+  venueAddress: PropTypes.string.isRequired,
+  mapsLink:     PropTypes.string,
+  mapsSrc:      PropTypes.string,
 };
-EventPanel.defaultProps = { mapsLink: null, embedSrc: null, side: 'left' };
+EventPanel.defaultProps = { mapsLink: null, mapsSrc: null };
 
 const Events = () => {
   const {
-    ceremonyTime, ceremonyVenueName, ceremonyVenueAddress,
-    ceremonyMapsLink, ceremonyMapsEmbedSrc,
-    receptionTime, receptionVenueName, receptionVenueAddress,
-    receptionMapsLink, receptionMapsEmbedSrc,
+    ceremonyTime, ceremonyVenueName, ceremonyVenueAddress, ceremonyMapsLink, ceremonyMapsEmbedSrc,
+    receptionTime, receptionVenueName, receptionVenueAddress, receptionMapsLink, receptionMapsEmbedSrc,
   } = useTemplateData();
+  const ref = useIntersectionObserver();
 
   return (
     <section id="events" className="events">
-      <div className="events__grid">
-        <EventPanel
-          eyebrow="Ceremonia"
-          time={ceremonyTime}
-          venue={ceremonyVenueName}
-          address={ceremonyVenueAddress}
-          mapsLink={ceremonyMapsLink}
-          embedSrc={ceremonyMapsEmbedSrc}
-          side="left"
-        />
-        <div className="events__divider" aria-hidden="true" />
-        <EventPanel
-          eyebrow="Recepción"
-          time={receptionTime}
-          venue={receptionVenueName}
-          address={receptionVenueAddress}
-          mapsLink={receptionMapsLink}
-          embedSrc={receptionMapsEmbedSrc}
-          side="right"
-        />
+      <div ref={ref} className="events__inner">
+        <header className="events__header">
+          <p className="events__eyebrow">El gran día</p>
+          <h2 className="events__title">Dónde & Cuándo</h2>
+          <div className="events__gold-line" aria-hidden="true" />
+        </header>
+
+        <div className="events__grid">
+          <EventPanel
+            eyebrow="Ceremonia"
+            time={ceremonyTime}
+            venueName={ceremonyVenueName}
+            venueAddress={ceremonyVenueAddress}
+            mapsLink={ceremonyMapsLink}
+            mapsSrc={ceremonyMapsEmbedSrc}
+          />
+          <div className="events__divider" aria-hidden="true" />
+          <EventPanel
+            eyebrow="Recepción"
+            time={receptionTime}
+            venueName={receptionVenueName}
+            venueAddress={receptionVenueAddress}
+            mapsLink={receptionMapsLink}
+            mapsSrc={receptionMapsEmbedSrc}
+          />
+        </div>
       </div>
     </section>
   );

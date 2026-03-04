@@ -8,8 +8,10 @@ const AccountCard = ({ ownerName, bankName, accountType, accountAlias, cbu, acco
 
   return (
     <div className="gift__card">
-      <p className="gift__card-owner">{ownerName}</p>
-      <p className="gift__card-bank">{bankName} · {accountType}</p>
+      <div className="gift__card-header">
+        <p className="gift__card-owner">{ownerName}</p>
+        <p className="gift__card-bank">{bankName} · {accountType}</p>
+      </div>
       <div className="gift__card-rows">
         {accountAlias && (
           <div className="gift__card-row">
@@ -49,11 +51,11 @@ const GiftRegistry = () => {
   return (
     <section id="gifts" className="gift">
       <div ref={ref} className="gift__inner">
-        <header className="gift__header">
-          <p className="gift__eyebrow">Regalos</p>
-          <h2 className="gift__title">Lista de bodas</h2>
+        <div className="gift__text">
+          <p className="gift__eyebrow">Lista de bodas</p>
+          <h2 className="gift__title">Un regalo de corazón</h2>
           <p className="gift__intro">{giftRegistryIntro}</p>
-        </header>
+        </div>
 
         <div className="gift__accounts">
           {bankAccounts.map((account) => (

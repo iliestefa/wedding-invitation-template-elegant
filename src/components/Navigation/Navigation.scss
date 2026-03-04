@@ -4,134 +4,68 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(247, 243, 237, 0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid $color-border;
+  padding: 0 $gutter;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  transition: background $dur-base $ease-out, border-color $dur-base $ease-out;
+  border-bottom: 1px solid transparent;
 
-  &__inner {
-    @include container;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  &--scrolled {
+    background: rgba(17, 15, 13, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom-color: $color-border;
   }
 
   &__brand {
-    display: flex;
-    align-items: baseline;
-    gap: 0.4rem;
-    text-decoration: none;
-  }
-
-  &__initials {
     font-family: $font-display;
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: $color-sage;
-    line-height: 1;
+    font-size: 1rem;
     font-style: italic;
+    font-weight: 400;
+    color: $color-champagne;
+    text-decoration: none;
+    letter-spacing: 0.04em;
   }
 
-  &__sep {
-    font-family: $font-display;
-    font-size: 0.9rem;
-    color: $color-text-muted;
-    font-weight: 300;
+  &__brand-amp {
+    color: $color-gold;
+    margin: 0 0.2em;
   }
 
-  &__desktop {
-    @include tablet { display: none; }
-  }
-
-  &__list {
+  &__links {
+    display: flex;
+    gap: 2rem;
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    gap: 2.5rem;
-  }
 
-  &__item { list-style: none; }
+    @include tablet {
+      display: none;
+    }
+  }
 
   &__link {
     font-family: $font-body;
     font-size: 0.65rem;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.2em;
     text-transform: uppercase;
+    color: rgba(232, 213, 176, 0.65);
     text-decoration: none;
-    color: $color-text;
-    transition: color $dur-fast $ease-out;
-    position: relative;
+    transition: color $dur-fast;
 
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -3px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: $color-sage;
-      transition: width $dur-base $ease-out;
-    }
-
-    &:hover {
-      color: $color-sage;
-      &::after { width: 100%; }
-    }
-
-    @include focus-ring;
+    &:hover { color: $color-gold; }
   }
 
-  // ─── Burger ───────────────────────────────────────────────────────────────
-  &__burger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 6px;
-
-    @include tablet { display: flex; }
-
-    span {
-      display: block;
-      width: 22px;
-      height: 1px;
-      background: $color-text;
-      transition: transform $dur-base $ease-out, opacity $dur-fast;
-    }
-
-    &--open {
-      span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
-      span:nth-child(2) { opacity: 0; }
-      span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
-    }
-  }
-
-  // ─── Mobile menu ──────────────────────────────────────────────────────────
-  &__mobile {
-    display: none;
-    background: rgba(247, 243, 237, 0.98);
-    border-top: 1px solid $color-border;
+  &__cta {
+    @include btn-gold;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.6rem;
 
     @include tablet {
-      display: block;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height $dur-base ease-in-out;
-
-      &--open { max-height: 360px; }
+      display: none;
     }
-  }
-
-  &__mobile-list {
-    list-style: none;
-    margin: 0;
-    padding: 1.5rem $gutter;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
   }
 }
