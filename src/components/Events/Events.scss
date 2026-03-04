@@ -1,4 +1,16 @@
 .events {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, $color-bg-deep, transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
+
   background: $color-bg;
   padding: 7rem 0;
 

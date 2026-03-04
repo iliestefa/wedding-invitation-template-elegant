@@ -1,4 +1,25 @@
 .schedule {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, $color-bg, transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 100px;
+    background: linear-gradient(to top, $color-bg-deep, transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
+
   background: $color-bg-surface;
   padding: 7rem 0;
 
