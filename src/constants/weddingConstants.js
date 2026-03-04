@@ -80,4 +80,4 @@ export const FOOTER_MESSAGE = "Con amor, los esperamos.";
 // ─── Imágenes ─────────────────────────────────────────────────────────────────
 export const IMAGE_HERO     = "https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80&auto=format&fit=crop";
 export const IMAGE_CEREMONY = "https://images.unsplash.com/photo-1606216840721-aeb5c80ad67e?w=900&q=80&auto=format&fit=crop";
-export const IMAGE_DRESSCODE = "https://images.unsplash.com/photo-1765615191957-eaa2feb8c00d?q=80&w=2070&auto=format&fit=crop";
+export const IMAGE_DRESSCODE = "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2070&auto=format&fit=crop";

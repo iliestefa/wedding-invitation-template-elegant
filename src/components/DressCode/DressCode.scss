@@ -4,18 +4,18 @@
   // ─── Full-width photo strip ───────────────────────────────────────────────
   &__photo-strip {
     position: relative;
-    height: 420px;
+    height: 520px;
     overflow: hidden;
 
-    @include tablet { height: 280px; }
+    @include tablet { height: 340px; }
   }
 
   &__photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 25%;
-    filter: brightness(0.5) saturate(0.7);
+    object-position: center 60%;
+    filter: brightness(0.45) saturate(0.6);
   }
 
   &__photo-overlay {
