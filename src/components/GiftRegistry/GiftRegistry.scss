@@ -1,15 +1,6 @@
 .gift {
   position: relative;
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 160px;
-    background: linear-gradient(to top, $color-bg, $color-bg-deep);
-    pointer-events: none;
-    z-index: 2;
-  }
 
   background: $color-bg-deep;
   padding: 7rem 0;
