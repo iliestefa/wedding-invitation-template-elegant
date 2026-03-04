@@ -14,6 +14,8 @@
 
   // ─── Header ───────────────────────────────────────────────────────────────
   &__header {
+    position: relative;
+    z-index: 2;
     text-align: center;
     margin-bottom: 5rem;
   }
@@ -36,6 +38,8 @@
 
   // ─── Grid ─────────────────────────────────────────────────────────────────
   &__grid {
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: 1fr 1px 1fr;
     gap: 0 3rem;
