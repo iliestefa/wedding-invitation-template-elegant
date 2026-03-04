@@ -1,14 +1,27 @@
 .footer {
   position: relative;
+
   &::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 100px;
+    height: 80px;
     background: linear-gradient(to bottom, $color-bg, transparent);
     pointer-events: none;
-    z-index: 1;
+    z-index: 2;
   }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(to top, $color-bg-deep, transparent);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  position: relative;
 
   background: $color-bg-deep;
   padding: 5rem 0 3rem;

@@ -1,4 +1,26 @@
 .dresscode {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, $color-bg-surface, transparent);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 120px;
+    background: linear-gradient(to top, $color-bg-deep, transparent);
+    pointer-events: none;
+    z-index: 2;
+  }
+
   background: $color-bg;
 
   // ─── Full-width photo strip ───────────────────────────────────────────────
