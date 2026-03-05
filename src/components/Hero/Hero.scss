@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   height: 100vh;
-  min-height: 640px;
+  min-height: 750px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,6 +51,10 @@
     align-items: center;
     gap: 0;
     line-height: 1;
+
+    .hero__name {
+      line-height: 1;
+    }
   }
 
   &__name {
@@ -67,10 +71,13 @@
     font-family: $font-display;
     font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 400;
+    font-style: normal;
     color: $color-gold;
     display: block;
-    margin: 0.25rem 0;
+    line-height: 1;
+    margin: 0.4rem 0;
     letter-spacing: 0.1em;
+    align-self: center;
   }
 
   // ─── Date divider ─────────────────────────────────────────────────────────
