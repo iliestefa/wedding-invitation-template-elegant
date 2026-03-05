@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useTemplateData } from '../../context/TemplateContext';
 import './Navigation.scss';
 
@@ -10,16 +11,19 @@ const NAV_LINKS = [
   { href: '#gifts',     label: 'Regalos' },
 ];
 
-const Navigation = () => {
+const Navigation = ({ forceScrolled }) => {
   const { brideName, groomName } = useTemplateData();
-  const [scrolled, setScrolled] = useState(false);
+  const [windowScrolled, setWindowScrolled] = useState(false);
 
   useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 60);
+    if (forceScrolled !== undefined) return;
+    const update = () => setWindowScrolled(window.scrollY > 60);
     update();
     window.addEventListener('scroll', update, { passive: true });
     return () => window.removeEventListener('scroll', update);
-  }, []);
+  }, [forceScrolled]);
+
+  const scrolled = forceScrolled !== undefined ? forceScrolled : windowScrolled;
 
   return (
     <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`} aria-label="Navegación principal">
@@ -41,5 +45,8 @@ const Navigation = () => {
     </nav>
   );
 };
+
+Navigation.propTypes = { forceScrolled: PropTypes.bool };
+Navigation.defaultProps = { forceScrolled: undefined };
 
 export default Navigation;
