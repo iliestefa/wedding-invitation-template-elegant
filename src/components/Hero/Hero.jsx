@@ -10,7 +10,7 @@ const Hero = () => {
       <div className="hero__overlay" />
 
       <div className="hero__content">
-        <p className="hero__eyebrow">Os invitamos a celebrar</p>
+        <p className="hero__eyebrow">Los invitamos a celebrar</p>
 
         <div className="hero__names">
           <span className="hero__name hero__name--bride">{brideName}</span>
