@@ -12,7 +12,7 @@ import {
   GIFT_REGISTRY_INTRO, BANK_ACCOUNTS,
   RSVP_DEADLINE,
   FOOTER_MESSAGE,
-  IMAGE_HERO, IMAGE_CEREMONY, IMAGE_DRESSCODE,
+  IMAGE_HERO, IMAGE_CEREMONY, IMAGE_DRESSCODE_WOMEN, IMAGE_DRESSCODE_MEN,
 } from '../constants';
 
 const defaultData = {
@@ -44,7 +44,8 @@ const defaultData = {
   footerMessage: FOOTER_MESSAGE,
   imageHero: IMAGE_HERO,
   imageCeremony: IMAGE_CEREMONY,
-  imageDressCode: IMAGE_DRESSCODE,
+  imageDressCodeWomen: IMAGE_DRESSCODE_WOMEN,
+  imageDressCodeMen: IMAGE_DRESSCODE_MEN,
 };
 
 const TemplateContext = createContext(defaultData);
