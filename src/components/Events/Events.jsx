@@ -50,7 +50,7 @@ const Events = () => {
       <div ref={ref} className="events__inner">
         <header className="events__header">
           <p className="events__eyebrow">El gran día</p>
-          <h2 className="events__title">Dónde & Cuándo</h2>
+          <h2 className="events__title">Lugar & Hora</h2>
           <div className="events__gold-line" aria-hidden="true" />
         </header>
 

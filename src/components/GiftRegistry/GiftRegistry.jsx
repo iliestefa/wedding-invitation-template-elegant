@@ -52,7 +52,7 @@ const GiftRegistry = () => {
     <section id="gifts" className="gift">
       <div ref={ref} className="gift__inner">
         <div className="gift__text">
-          <p className="gift__eyebrow">Lista de bodas</p>
+          <p className="gift__eyebrow">Cuentas para Regalo</p>
           <h2 className="gift__title">Un regalo de corazón</h2>
           <p className="gift__intro">{giftRegistryIntro}</p>
         </div>

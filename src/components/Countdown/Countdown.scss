@@ -1,11 +1,12 @@
 .countdown {
-
-
   position: relative;
   background: $color-bg-deep;
   padding: 7rem 0;
   overflow: hidden;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   // ─── Giant background year ────────────────────────────────────────────────
   &__bg-text {

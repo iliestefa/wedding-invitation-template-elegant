@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useTemplateData } from '../../context/TemplateContext';
 import useCountdown from '../../hooks/useCountdown';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
@@ -10,20 +11,19 @@ const CountdownUnit = ({ value, label }) => (
   </div>
 );
 
-import PropTypes from 'prop-types';
 CountdownUnit.propTypes = {
   value: PropTypes.number.isRequired,
   label: PropTypes.string.isRequired,
 };
 
 const Countdown = () => {
-  const { weddingDateIso, weddingDateDisplay } = useTemplateData();
+  const { weddingDateIso, weddingDateDisplay, weddingYear } = useTemplateData();
   const { days, hours, minutes, seconds } = useCountdown(weddingDateIso);
   const ref = useIntersectionObserver();
 
   return (
     <section id="countdown" className="countdown">
-      <div className="countdown__bg-text" aria-hidden="true">2026</div>
+      <div className="countdown__bg-text" aria-hidden="true">{weddingYear}</div>
       <div ref={ref} className="countdown__inner">
         <p className="countdown__eyebrow">La cuenta regresiva</p>
         <h2 className="countdown__title">{weddingDateDisplay}</h2>
