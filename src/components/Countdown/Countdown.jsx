@@ -17,8 +17,8 @@ CountdownUnit.propTypes = {
 };
 
 const Countdown = () => {
-  const { weddingDateIso, weddingDateDisplay, weddingYear } = useTemplateData();
-  const { days, hours, minutes, seconds } = useCountdown(weddingDateIso);
+  const { weddingDateIso, weddingDateDisplay, weddingYear, weddingTime } = useTemplateData();
+  const { days, hours, minutes, seconds } = useCountdown(weddingDateIso, weddingTime);
   const ref = useIntersectionObserver();
 
   return (

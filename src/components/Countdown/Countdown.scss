@@ -29,6 +29,7 @@
     position: relative;
     z-index: 1;
     @include reveal-ready;
+    width: 100%;
   }
 
   &__eyebrow {

@@ -58,6 +58,11 @@
     @include reveal-ready;
     padding: 4rem 0 7rem;
     position: relative;
+    overflow: hidden;
+
+    @include mobile {
+      padding: 3rem 0 4rem;
+    }
 
     &::after {
       content: '';
@@ -66,6 +71,8 @@
       height: 200px;
       background: linear-gradient(to top, $color-bg-deep, $color-bg);
       pointer-events: none;
+
+      @include mobile { height: 80px; }
     }
   }
 
