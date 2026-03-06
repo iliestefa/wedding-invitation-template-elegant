@@ -43,7 +43,7 @@
     font-weight: 400;
     font-style: italic;
     color: $color-champagne;
-    margin: 0 0 4rem;
+    margin: 0 0 1rem;
     letter-spacing: 0.05em;
   }
 
@@ -74,7 +74,9 @@
     gap: 0.5rem;
     min-width: 80px;
 
-    @include mobile { min-width: 60px; }
+    @include mobile {
+      min-width: 60px;
+    }
   }
 
   &__number {
@@ -88,7 +90,7 @@
     // Gold border bottom
     position: relative;
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: -8px;
       left: 50%;
