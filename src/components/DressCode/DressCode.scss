@@ -130,7 +130,9 @@
     flex-wrap: wrap;
     justify-content: center;
 
-    @include mobile { display: none; }
+    @include mobile {
+      gap: 1rem;
+    }
   }
 
   &__swatch {

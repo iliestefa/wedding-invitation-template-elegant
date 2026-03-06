@@ -44,11 +44,6 @@ const DressCode = () => {
           <p className="dresscode__description">{dressCodeDescription}</p>
         </header>
 
-        <div className="dresscode__cards">
-          <GuideCard label="Ellas" text={dressCodeWomen} imageSrc={imageDressCodeWomen} />
-          <GuideCard label="Ellos" text={dressCodeMen}   imageSrc={imageDressCodeMen}  />
-        </div>
-
         {dressCodePalette?.length > 0 && (
           <div className="dresscode__palette">
             {dressCodePalette.map(({ id, label, hex }) => (
@@ -59,6 +54,11 @@ const DressCode = () => {
             ))}
           </div>
         )}
+
+        <div className="dresscode__cards">
+          <GuideCard label="Ellas" text={dressCodeWomen} imageSrc={imageDressCodeWomen} />
+          <GuideCard label="Ellos" text={dressCodeMen}   imageSrc={imageDressCodeMen}  />
+        </div>
       </div>
     </section>
   );
