@@ -102,6 +102,8 @@
     font-style: italic;
     color: $color-champagne;
     margin: 0.5rem 0 0;
+    text-decoration: none;
+    -webkit-touch-callout: none;
   }
 
   &__panel-address {
@@ -111,6 +113,8 @@
     color: $color-text-muted;
     line-height: 1.6;
     margin: 0 0 1rem;
+    text-decoration: none;
+    -webkit-touch-callout: none;
   }
 
   &__map-wrap {

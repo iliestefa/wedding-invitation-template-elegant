@@ -4,6 +4,8 @@ import { useTemplateData } from '../../context/TemplateContext';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import './RsvpForm.scss';
 
+const getOrdenParam = () => new URLSearchParams(window.location.search).get('orden') ?? '';
+
 const ATTENDANCE_OPTIONS = [
   { value: 'yes', label: 'Asistiré' },
   { value: 'no',  label: 'No podré asistir' },
@@ -67,7 +69,7 @@ const RsvpForm = () => {
       const res = await fetch(rsvpEndpoint, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify(form),
+        body:    JSON.stringify({ ...form, orden: getOrdenParam() }),
       });
       if (!res.ok) throw new Error(`${res.status}`);
       setStatus('success');
