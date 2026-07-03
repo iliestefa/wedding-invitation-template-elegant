@@ -1,25 +1,26 @@
-// ─── Dark Luxury Palette ──────────────────────────────────────────────────────
-$color-bg:          #1c1917;   // charcoal base
-$color-bg-deep:     #110f0d;   // deeper layer
-$color-bg-surface:  #252220;   // card surfaces
-$color-bg-elevated: #2e2b28;   // elevated elements
+// ─── Pastel Garden Palette ────────────────────────────────────────────────────
+$color-bg:          #faf8f5;   // ivory base
+$color-bg-deep:     #f1edf3;   // lavender mist (secciones alternas)
+$color-bg-surface:  #ffffff;   // card surfaces
+$color-bg-elevated: #ffffff;   // elevated elements
 
-$color-gold:        #c9a96e;   // champagne gold
-$color-gold-light:  #dfc28e;   // lighter gold
-$color-gold-pale:   rgba(201, 169, 110, 0.12); // subtle gold tint
+$color-gold:        #7c5fa0;   // lavanda profundo (acento principal)
+$color-gold-light:  #c9adeb;   // lila luminoso
+$color-gold-pale:   rgba(124, 95, 160, 0.12); // subtle lavender tint
+$color-purple-deep: #5a4680;   // morado profundo apagado (acentos de la portada)
 
-$color-champagne:   #e8d5b0;   // main text color
-$color-cream:       #f5ede0;   // near-white accents
+$color-champagne:   #52485e;   // main text color (ciruela)
+$color-cream:       #fdfcfa;   // near-white (texto sobre foto)
 $color-white:       #ffffff;
 
-$color-text:        #e8d5b0;   // main text (champagne)
-$color-text-muted:  rgba(232, 213, 176, 0.5); // muted champagne
-$color-text-dim:    rgba(232, 213, 176, 0.25); // very dim
+$color-text:        #52485e;   // main text (ciruela grisácea)
+$color-text-muted:  rgba(82, 72, 94, 0.6);  // muted plum
+$color-text-dim:    rgba(82, 72, 94, 0.32); // very dim
 
-$color-border:      rgba(201, 169, 110, 0.2);  // gold border subtle
-$color-border-dim:  rgba(255, 255, 255, 0.06); // barely visible
+$color-border:      rgba(139, 113, 169, 0.25); // lavender border subtle
+$color-border-dim:  rgba(82, 72, 94, 0.08);    // barely visible
 
-$color-error:       #c4614a;
+$color-error:       #b8543f;
 
 // ─── Typography ───────────────────────────────────────────────────────────────
 $font-display: 'Playfair Display', Georgia, serif;

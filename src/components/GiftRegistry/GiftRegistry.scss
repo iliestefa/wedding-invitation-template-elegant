@@ -8,7 +8,7 @@
     left: 0;
     right: 0;
     height: 200px;
-    background: linear-gradient(to bottom, #110f0d, #1c1917);
+    background: linear-gradient(to bottom, $color-bg-deep, $color-bg);
     pointer-events: none;
     z-index: 1;
   }
@@ -21,6 +21,10 @@
   &__inner {
     @include container;
     @include reveal-ready;
+    // por encima del gradiente ::after incluso durante la animación de reveal
+    // (el transform crea un stacking context que dejaba las tarjetas debajo)
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5rem;

@@ -14,24 +14,33 @@
   border-bottom: 1px solid transparent;
 
   &--scrolled {
-    background: rgba(17, 15, 13, 0.92);
+    background: rgba(250, 248, 245, 0.92);
     backdrop-filter: blur(16px);
     border-bottom-color: $color-border;
   }
 
+  // sobre la foto del hero el texto va claro; al hacer scroll, oscuro
   &__brand {
     font-family: $font-display;
     font-size: 1rem;
     font-style: italic;
     font-weight: 400;
-    color: $color-champagne;
+    color: $color-cream;
     text-decoration: none;
     letter-spacing: 0.04em;
+    transition: color $dur-base;
+  }
+
+  &--scrolled &__brand {
+    color: $color-champagne;
   }
 
   &__brand-amp {
+    color: $color-gold-light;
+  }
+
+  &--scrolled &__brand-amp {
     color: $color-gold;
-    margin: 0 0.2em;
   }
 
   &__links {
@@ -52,9 +61,15 @@
     font-weight: 400;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(232, 213, 176, 0.65);
+    color: rgba(253, 252, 250, 0.7);
     text-decoration: none;
     transition: color $dur-fast;
+
+    &:hover { color: $color-cream; }
+  }
+
+  &--scrolled &__link {
+    color: $color-text-muted;
 
     &:hover { color: $color-gold; }
   }
@@ -63,9 +78,26 @@
     @include btn-gold;
     padding: 0.5rem 1.25rem;
     font-size: 0.6rem;
+    border-color: rgba(253, 252, 250, 0.55);
+    color: $color-cream;
+
+    &:hover {
+      background: $color-cream;
+      color: $color-champagne;
+    }
 
     @include tablet {
       display: none;
+    }
+  }
+
+  &--scrolled &__cta {
+    border-color: $color-gold;
+    color: $color-gold;
+
+    &:hover {
+      background: $color-gold;
+      color: $color-white;
     }
   }
 }

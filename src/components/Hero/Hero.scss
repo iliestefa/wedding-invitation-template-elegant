@@ -22,7 +22,7 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(to bottom, rgba(17,15,13,0.65) 0%, rgba(17,15,13,0.45) 40%, rgba(17,15,13,0.82) 100%);
+      linear-gradient(to bottom, rgba(45,36,56,0.55) 0%, rgba(45,36,56,0.35) 40%, rgba(45,36,56,0.72) 100%);
   }
 
   // ─── Content ─────────────────────────────────────────────────────────────
@@ -40,7 +40,7 @@
 
   &__eyebrow {
     @include eyebrow;
-    color: $color-gold;
+    color: #e9e0f7; // mismo lila casi blanco que el &
     letter-spacing: 0.4em;
   }
 
@@ -72,7 +72,7 @@
     font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 400;
     font-style: normal;
-    color: $color-gold;
+    color: #e9e0f7; // moradito casi blanco
     display: block;
     line-height: 1;
     margin: 0.4rem 0;
@@ -91,10 +91,10 @@
     display: block;
     width: 60px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, $color-gold);
+    background: linear-gradient(90deg, transparent, $color-purple-deep);
 
     &:last-child {
-      background: linear-gradient(90deg, $color-gold, transparent);
+      background: linear-gradient(90deg, $color-purple-deep, transparent);
     }
 
     @include mobile { width: 32px; }
@@ -106,13 +106,20 @@
     font-weight: 300;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: $color-champagne;
+    color: rgba(253, 252, 250, 0.85);
   }
 
   // ─── CTA ─────────────────────────────────────────────────────────────────
   &__cta {
     @include btn-gold;
     margin-top: 0.5rem;
+    border-color: rgba(253, 252, 250, 0.6);
+    color: $color-cream;
+
+    &:hover {
+      background: $color-cream;
+      color: $color-champagne;
+    }
   }
 
   // ─── Scroll indicator ────────────────────────────────────────────────────
@@ -128,7 +135,7 @@
     display: block;
     width: 1px;
     height: 48px;
-    background: linear-gradient(to bottom, $color-gold, transparent);
+    background: linear-gradient(to bottom, $color-gold-light, transparent);
     margin: 0 auto;
     animation: scrollPulse 2s ease-in-out infinite;
   }

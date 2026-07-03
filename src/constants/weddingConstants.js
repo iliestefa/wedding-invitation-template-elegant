@@ -104,7 +104,7 @@ export const BANK_ACCOUNTS = [
     bankName: "Banco Bolivariano",
     accountType: "Ahorros",
     accountAlias: "Kristel",
-    cbu: "",
+    cbu: "99999999999", // TODO: reemplazar con el número real cuando lo envíe el cliente
     accountNumberLabel: "N° de Cuenta",
   },
 ];
@@ -116,9 +116,8 @@ export const RSVP_DEADLINE = "15 de Agosto 2026";
 export const FOOTER_MESSAGE = "Con amor, los esperamos.";
 
 // ─── Imágenes ─────────────────────────────────────────────────────────────────
-export const IMAGE_HERO =
-  "https://i.postimg.cc/gJyns8nL/pexels-jasminecarter-888899.jpg";
+export const IMAGE_HERO = `${import.meta.env.BASE_URL}hero.webp`;
 export const IMAGE_CEREMONY =
   "https://images.unsplash.com/photo-1606216840721-aeb5c80ad67e?w=900&q=80&auto=format&fit=crop";
-export const IMAGE_DRESSCODE_WOMEN = `${import.meta.env.BASE_URL}mujer.jpg`;
-export const IMAGE_DRESSCODE_MEN = `${import.meta.env.BASE_URL}hombre.jpg`;
+export const IMAGE_DRESSCODE_WOMEN = `${import.meta.env.BASE_URL}mujer.webp`;
+export const IMAGE_DRESSCODE_MEN = `${import.meta.env.BASE_URL}hombre.webp`;

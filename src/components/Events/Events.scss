@@ -10,7 +10,7 @@
     left: 0;
     right: 0;
     height: 200px;
-    background: linear-gradient(to top, #262220, #1b1917);
+    background: linear-gradient(to top, $color-bg-deep, $color-bg);
     z-index: 1;
     pointer-events: none;
   }
@@ -18,6 +18,9 @@
   &__inner {
     @include container;
     @include reveal-ready;
+    // por encima del gradiente ::after incluso durante la animación de reveal
+    position: relative;
+    z-index: 2;
   }
 
   // ─── Header ───────────────────────────────────────────────────────────────
@@ -25,7 +28,7 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
   }
 
   &__eyebrow {
@@ -148,23 +151,26 @@
   }
 
   &__map-wrap {
+    position: relative;
     width: 100%;
     height: 200px;
     overflow: hidden;
     border: 1px solid $color-border;
+
+    // velo lavanda leve sobre el mapa (no bloquea la interacción)
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(124, 95, 160, 0.1);
+      pointer-events: none;
+    }
   }
 
   &__map {
     width: 100%;
     height: 100%;
     border: none;
-    filter: grayscale(1) invert(0.9) contrast(0.9);
-    opacity: 0.7;
-    transition: opacity $dur-fast;
-
-    &:hover {
-      opacity: 1;
-    }
   }
 
   &__map-link {

@@ -17,6 +17,9 @@
   &__inner {
     @include container;
     @include reveal-ready;
+    // por encima del gradiente ::after incluso durante la animación de reveal
+    position: relative;
+    z-index: 3;
     display: grid;
     grid-template-columns: 1fr 520px;
     gap: 5rem;
