@@ -4,7 +4,9 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/wedding-invitation-template-elegant/',
+  // './' = rutas relativas: funciona en la raíz del dominio (Cloudflare Pages)
+  // y también si algún día se sirve bajo una subcarpeta
+  base: './',
   css: {
     preprocessorOptions: {
       scss: {
