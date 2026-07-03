@@ -15,6 +15,15 @@
     background-position: center 30%;
     transform: scale(1.05);
     animation: heroZoom 8s $ease-out forwards;
+
+    // Imagen distinta para escritorio y móvil.
+    &--desktop { display: block; }
+    &--mobile  { display: none; }
+
+    @include mobile {
+      &--desktop { display: none; }
+      &--mobile  { display: block; }
+    }
   }
 
   // ─── Overlay layers ──────────────────────────────────────────────────────

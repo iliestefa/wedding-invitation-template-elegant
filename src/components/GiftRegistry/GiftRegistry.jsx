@@ -15,8 +15,8 @@ const AccountCard = ({ ownerName, bankName, accountType, accountAlias, cbu, acco
       <div className="gift__card-rows">
         {accountAlias && (
           <div className="gift__card-row">
-            <span className="gift__card-key">Alias</span>
-            <button className="gift__card-value" onClick={() => handleCopy(accountAlias)} title="Copiar alias">
+            <span className="gift__card-key">Cédula</span>
+            <button className="gift__card-value" onClick={() => handleCopy(accountAlias)} title="Copiar cédula">
               {accountAlias}
             </button>
           </div>

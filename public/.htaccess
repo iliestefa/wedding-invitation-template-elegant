@@ -1,0 +1,23 @@
+# SPA de React (Vite) en Apache / Hostinger.
+# Redirige todas las rutas inexistentes a index.html para que el ruteo y los
+# parámetros (?orden=38&companion=true) funcionen al recargar o entrar directo.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  # Si el archivo o carpeta existe, sírvelo tal cual (assets, favicon, etc.)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  # Cualquier otra ruta → index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Cache largo para los assets con hash (no cambian); HTML siempre fresco.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|svg|woff2?|jpg|jpeg|png|webp)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

@@ -6,16 +6,17 @@ import './RsvpForm.scss';
 
 const getOrdenParam = () => new URLSearchParams(window.location.search).get('orden') ?? '';
 
+// ?companion=true habilita la pregunta del acompañante; false o ausente la oculta.
+const allowsCompanion = () => new URLSearchParams(window.location.search).get('companion') === 'true';
+
 const ATTENDANCE_OPTIONS = [
-  { value: 'yes', label: 'Asistiré' },
+  { value: 'yes', label: 'Sí, asistiré' },
   { value: 'no',  label: 'No podré asistir' },
 ];
 
-const MEAL_OPTIONS = [
-  { value: 'standard',   label: 'Estándar' },
-  { value: 'vegetarian', label: 'Vegetariano' },
-  { value: 'vegan',      label: 'Vegano' },
-  { value: 'celiac',     label: 'Celíaco' },
+const COMPANION_OPTIONS = [
+  { value: 'yes', label: 'Sí, vendrá conmigo' },
+  { value: 'no',  label: 'Asistiré sin acompañante' },
 ];
 
 const FloatingField = ({ id, label, type = 'text', value, onChange, required }) => (
@@ -44,18 +45,18 @@ FloatingField.propTypes = {
 FloatingField.defaultProps = { type: 'text', required: false };
 
 const INITIAL_STATE = {
-  fullName:   '',
+  fullName:           '',
 
-  attendance: 'yes',
-  companions: '0',
-  meal:       'standard',
-  message:    '',
+  attendance:         'yes',
+  companionAttending: 'yes',
+  message:            '',
 };
 
 const RsvpForm = () => {
-  const { rsvpDeadline, rsvpEndpoint } = useTemplateData();
+  const { rsvpEndpoint, extraNotes } = useTemplateData();
   const ref = useIntersectionObserver();
 
+  const [hasCompanion] = useState(allowsCompanion);
   const [form, setForm]     = useState(INITIAL_STATE);
   const [status, setStatus] = useState('idle');
 
@@ -63,15 +64,27 @@ const RsvpForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // El nombre es obligatorio: no permitir enviar vacío o solo con espacios.
+    if (!form.fullName.trim()) { setStatus('missing-name'); return; }
     if (!rsvpEndpoint) { setStatus('error'); return; }
     setStatus('sending');
     try {
-      const res = await fetch(rsvpEndpoint, {
+      // text/plain evita el preflight CORS (OPTIONS) que Google Apps Script no maneja.
+      // Apps Script lee el cuerpo igual desde e.postData.contents y lo parsea como JSON.
+      await fetch(rsvpEndpoint, {
         method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ ...form, orden: getOrdenParam() }),
+        mode:    'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body:    JSON.stringify({
+          ...form,
+          orden: getOrdenParam(),
+          hasCompanion,
+          // Solo aplica si el invitado tiene acompañante asignado y confirma su asistencia.
+          companions: hasCompanion && isAttending && form.companionAttending === 'yes' ? 1 : 0,
+        }),
       });
-      if (!res.ok) throw new Error(`${res.status}`);
+      // Con mode:'no-cors' la respuesta es opaca (no se puede leer res.ok); si el fetch
+      // no lanzó, asumimos éxito. Apps Script registra la fila igualmente.
       setStatus('success');
     } catch {
       setStatus('error');
@@ -86,11 +99,9 @@ const RsvpForm = () => {
         <div className="rsvp__side">
           <p className="rsvp__eyebrow">Confirmación</p>
           <h2 className="rsvp__title">¿Nos acompañas?</h2>
-          <p className="rsvp__deadline">
-            Confirma antes del<br />
-            <strong>{rsvpDeadline}</strong>
-          </p>
-          <div className="rsvp__gold-line" aria-hidden="true" />
+          {extraNotes && (
+            <p className="rsvp__note">{extraNotes}</p>
+          )}
         </div>
 
         <div className="rsvp__form-wrap">
@@ -101,7 +112,16 @@ const RsvpForm = () => {
             </div>
           ) : (
             <form className="rsvp__form" onSubmit={handleSubmit} noValidate>
-              <FloatingField id="fullName" label="Nombre completo" value={form.fullName} onChange={setField('fullName')} required />
+              <FloatingField
+                id="fullName"
+                label="Nombre completo"
+                value={form.fullName}
+                onChange={(value) => { setField('fullName')(value); if (status === 'missing-name') setStatus('idle'); }}
+                required
+              />
+              {status === 'missing-name' && (
+                <p className="rsvp__error">Por favor escribe tu nombre para confirmar.</p>
+              )}
 
               <fieldset className="rsvp__radio-group">
                 <legend className="rsvp__radio-legend">Asistencia</legend>
@@ -115,21 +135,18 @@ const RsvpForm = () => {
                 </div>
               </fieldset>
 
-              {isAttending && (
-                <>
-                  <FloatingField id="companions" label="Acompañantes (sin contarte a ti)" type="number" value={form.companions} onChange={setField('companions')} />
-                  <fieldset className="rsvp__radio-group">
-                    <legend className="rsvp__radio-legend">Menú preferido</legend>
-                    <div className="rsvp__radio-options rsvp__radio-options--meal">
-                      {MEAL_OPTIONS.map(({ value, label }) => (
-                        <label key={value} className={`rsvp__radio-label ${form.meal === value ? 'rsvp__radio-label--active' : ''}`}>
-                          <input type="radio" name="meal" value={value} checked={form.meal === value} onChange={() => setField('meal')(value)} className="rsvp__radio-input" />
-                          {label}
-                        </label>
-                      ))}
-                    </div>
-                  </fieldset>
-                </>
+              {isAttending && hasCompanion && (
+                <fieldset className="rsvp__radio-group">
+                  <legend className="rsvp__radio-legend">Tu acompañante</legend>
+                  <div className="rsvp__radio-options">
+                    {COMPANION_OPTIONS.map(({ value, label }) => (
+                      <label key={value} className={`rsvp__radio-label ${form.companionAttending === value ? 'rsvp__radio-label--active' : ''}`}>
+                        <input type="radio" name="companionAttending" value={value} checked={form.companionAttending === value} onChange={() => setField('companionAttending')(value)} className="rsvp__radio-input" />
+                        {label}
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
               )}
 
               <div className="rsvp__field rsvp__field--textarea">

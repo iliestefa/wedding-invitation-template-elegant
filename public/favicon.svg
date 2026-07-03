@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#1c1917"/>
+  <!-- Anillo izquierdo -->
+  <circle cx="26" cy="38" r="13" fill="none" stroke="#c9a96e" stroke-width="3.5"/>
+  <!-- Anillo derecho -->
+  <circle cx="40" cy="38" r="13" fill="none" stroke="#e8d5b0" stroke-width="3.5"/>
+  <!-- Pequeño diamante sobre el anillo derecho -->
+  <path d="M40 16 l4 5 -4 5 -4 -5 z" fill="#e8d5b0"/>
+</svg>

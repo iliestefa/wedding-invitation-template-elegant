@@ -1,84 +1,83 @@
 // ─── Pareja ───────────────────────────────────────────────────────────────────
-export const BRIDE_NAME = "Sofía";
-export const GROOM_NAME = "Alejandro";
+export const BRIDE_NAME = "Valeria";
+export const GROOM_NAME = "Miguel";
 export const COUPLE_NAMES = `${BRIDE_NAME} & ${GROOM_NAME}`;
 
 // ─── Fecha ────────────────────────────────────────────────────────────────────
-export const WEDDING_DATE_ISO     = "2026-09-05";
-export const WEDDING_DATE_DISPLAY = "05 · 09 · 2026";
+export const WEDDING_DATE_ISO     = "2026-07-04";
+export const WEDDING_DATE_DISPLAY = "04 · 07 · 2026";
 export const WEDDING_YEAR         = "2026";
 
 // ─── Ceremonia ────────────────────────────────────────────────────────────────
-export const CEREMONY_TIME           = "17:00 hrs";
-export const CEREMONY_VENUE_NAME     = "Iglesia del Pilar";
-export const CEREMONY_VENUE_ADDRESS  = "Junín 1904, Recoleta, Buenos Aires";
-export const CEREMONY_MAPS_LINK      = "https://maps.google.com/?q=Iglesia+Nuestra+Señora+del+Pilar+Buenos+Aires";
-export const CEREMONY_MAPS_EMBED_SRC = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.168839143649!2d-58.39340898477058!3d-34.58760218046614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca7e9bc3c1a5%3A0x8b1c17b4f5c2c4a0!2sIglesia%20de%20Nuestra%20Se%C3%B1ora%20del%20Pilar!5e0!3m2!1ses!2sar!4v1700000000000";
+export const CEREMONY_TIME           = "19:00 hrs";
+export const CEREMONY_VENUE_NAME     = "Aeroclub del Ecuador";
+export const CEREMONY_VENUE_ADDRESS  = "Av. de las Américas, diagonal a la gasolinera Terpel";
+export const CEREMONY_MAPS_LINK      = "https://maps.google.com/?q=-2.164256,-79.891281";
+export const CEREMONY_MAPS_EMBED_SRC = "https://maps.google.com/maps?q=-2.164256%2C-79.891281&output=embed&hl=es";
 
 // ─── Recepción ────────────────────────────────────────────────────────────────
-export const RECEPTION_TIME           = "20:00 hrs";
-export const RECEPTION_VENUE_NAME     = "Palacio Duhau";
-export const RECEPTION_VENUE_ADDRESS  = "Av. Alvear 1661, Recoleta, Buenos Aires";
-export const RECEPTION_MAPS_LINK      = "https://maps.google.com/?q=Park+Hyatt+Buenos+Aires+Palacio+Duhau";
-export const RECEPTION_MAPS_EMBED_SRC = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.3290060978736!2d-58.38766678477066!3d-34.58393378046617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca7bb0fc14ab%3A0x49b9fbb3caaf99c2!2sPark%20Hyatt%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1700000000001";
+// Boda en un solo lugar: la recepción se realiza en el mismo Aeroclub.
+// El panel de Recepción se oculta automáticamente cuando estos datos son "-".
+export const RECEPTION_TIME           = "-";
+export const RECEPTION_VENUE_NAME     = "-";
+export const RECEPTION_VENUE_ADDRESS  = "-";
+export const RECEPTION_MAPS_LINK      = "-";
+export const RECEPTION_MAPS_EMBED_SRC = "-";
 
 // ─── Cronograma ───────────────────────────────────────────────────────────────
 export const SCHEDULE_ITEMS = [
-  { id: "llegada",   time: "16:30", label: "Llegada",              detail: "Les esperamos en la puerta de la iglesia." },
-  { id: "ceremonia", time: "17:00", label: "Ceremonia",            detail: "Iglesia del Pilar, Recoleta." },
-  { id: "fotos",     time: "18:30", label: "Sesión de fotos",      detail: "Jardines del Pilar." },
-  { id: "recepcion", time: "20:00", label: "Recepción & Cóctel",   detail: "Palacio Duhau." },
-  { id: "cena",      time: "21:30", label: "Cena de gala",         detail: "Salón principal." },
-  { id: "baile",     time: "23:30", label: "Celebración & Baile",  detail: "¡A disfrutar!" },
+  { id: "llegada",   time: "19:00", label: "Llegada",                                  detail: "La Bienvenida y Coctel de Apertura." },
+  { id: "ceremonia", time: "19:30", label: "Ceremonia",                                detail: "Entrada de los novios, se llevará a cabo la emotiva ceremonia civil, donde los novios celebrarán su unión con la lectura de actas por parte del juez." },
+  { id: "fotos",     time: "20:20", label: "Sesión de Fotos",                          detail: "Disfrutarán de una breve sesión de fotos junto a familiares y amigos." },
+  { id: "recepcion", time: "20:50", label: "Baile de los Novios",                      detail: "Entrada oficial de los recién casados. Seguidamente, pasan a la pista para su primer baile como esposos." },
+  { id: "cena",      time: "21:05", label: "Brindis y Palabras de Agradecimiento",     detail: "Se compartirán unas emotivas palabras de agradecimiento, seguidas del brindis oficial." },
+  { id: "baile",     time: "21:20", label: "Apertura del Buffet y Cena",               detail: "Se dará inicio al buffet para que los invitados disfruten de una agradable cena." },
+  { id: "fiesta",    time: "22:35", label: "La Fiesta",                  icon: "✨",    detail: "Apertura de la Pista de Baile. ¡A disfrutar!" },
 ];
 
 // ─── Dress Code ───────────────────────────────────────────────────────────────
 export const DRESS_CODE_STYLE       = "Black Tie Optional";
-export const DRESS_CODE_DESCRIPTION = "Les pedimos acompañar la noche con elegancia. Tonos oscuros y neutros profundos. Por favor evitar el blanco.";
-export const DRESS_CODE_WOMEN       = "Vestido largo o de cóctel en negro, champagne, burdeos o azul noche.";
-export const DRESS_CODE_MEN         = "Traje oscuro o smoking. Negro, grafito, azul marino o burdeos.";
+export const DRESS_CODE_DESCRIPTION = "Les pedimos acompañar la noche con elegancia. ¡Lo más importante es que se sientan cómodos y especiales para acompañarnos en este gran día!";
+export const DRESS_CODE_WOMEN       = "";
+export const DRESS_CODE_MEN         = "";
 
 export const DRESS_CODE_PALETTE = [
-  { id: "black",     label: "Negro",     hex: "#1c1917" },
-  { id: "champagne", label: "Champagne", hex: "#e8d5b0" },
-  { id: "burgundy",  label: "Burdeos",   hex: "#6b2737" },
-  { id: "navy",      label: "Navy",      hex: "#1a2744" },
   { id: "graphite",  label: "Grafito",   hex: "#3d3d3d" },
-  { id: "gold",      label: "Dorado",    hex: "#c9a96e" },
 ];
 
 // ─── Regalos ──────────────────────────────────────────────────────────────────
-export const GIFT_REGISTRY_INTRO = "Su presencia es nuestro mayor regalo. Si desean obsequiarnos algo, aquí encontrarán nuestras cuentas.";
+export const GIFT_REGISTRY_INTRO = "¿El mejor regalo? ¡Nuestra luna de miel!\nAgradecemos de todo corazón su amable aportación económica.";
 
 export const BANK_ACCOUNTS = [
   {
-    id: "sofia",
-    ownerName: "Sofía Morales",
+    id: "valeria",
+    ownerName: "Valeria Silva Gallardo",
     bankName: "Banco Pichincha",
     accountType: "Cuenta de Ahorros",
-    accountAlias: "sofia.morales",
-    cbu: "2200123456789012",
+    accountAlias: "0943782391",
+    cbu: "2211300460",
     accountNumberLabel: "N° de Cuenta",
   },
   {
-    id: "alejandro",
-    ownerName: "Alejandro Gómez",
-    bankName: "Banco Guayaquil",
-    accountType: "Cuenta Corriente",
-    accountAlias: "alejandro.gomez",
-    cbu: "0200987654321098",
+    id: "miguel",
+    ownerName: "Miguel Gómez Castro",
+    bankName: "Banco Pichincha",
+    accountType: "Cuenta de Ahorros",
+    accountAlias: "0931078133",
+    cbu: "2201631113",
     accountNumberLabel: "N° de Cuenta",
   },
 ];
 
-// ─── RSVP ─────────────────────────────────────────────────────────────────────
-export const RSVP_DEADLINE = "01 de Julio 2026";
+// ─── Nota adicional ───────────────────────────────────────────────────────────
+export const EXTRA_NOTES = "Agradecemos su comprensión, nuestra celebración ha sido pensada exclusivamente para adultos.";
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
-export const FOOTER_MESSAGE = "Con amor, los esperamos.";
+export const FOOTER_MESSAGE = "Nos llena de alegría contar contigo en este día tan importante para nosotros. ¡Gracias por acompañarnos!";
 
 // ─── Imágenes ─────────────────────────────────────────────────────────────────
-export const IMAGE_HERO              = "https://i.postimg.cc/gJyns8nL/pexels-jasminecarter-888899.jpg";
+export const IMAGE_HERO              = "https://i.postimg.cc/1zRyZhXL/SDIM0773.jpg";
+export const IMAGE_HERO_MOBILE       = "https://i.postimg.cc/BQDSTBdX/SDIM0804.jpg";
 export const IMAGE_CEREMONY          = "https://images.unsplash.com/photo-1606216840721-aeb5c80ad67e?w=900&q=80&auto=format&fit=crop";
 export const IMAGE_DRESSCODE_WOMEN   = "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=1200&q=90&auto=format&fit=crop";
 export const IMAGE_DRESSCODE_MEN     = "https://i.postimg.cc/zXvGb9Sb/pexels-drewrae-883362.jpg";

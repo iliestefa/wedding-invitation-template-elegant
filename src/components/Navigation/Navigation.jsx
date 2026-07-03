@@ -5,7 +5,7 @@ import './Navigation.scss';
 
 const NAV_LINKS = [
   { href: '#countdown', label: 'Fecha' },
-  { href: '#events',    label: 'Lugares' },
+  { href: '#events',    label: 'Lugar' },
   { href: '#schedule',  label: 'Programa' },
   { href: '#dresscode', label: 'Vestimenta' },
   { href: '#gifts',     label: 'Regalos' },

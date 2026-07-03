@@ -93,5 +93,14 @@
 
   &__credit-brand {
     color: $color-gold;
+    text-decoration: none;
+    transition: opacity 0.25s ease;
+
+    &:hover,
+    &:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      opacity: 0.85;
+    }
   }
 }

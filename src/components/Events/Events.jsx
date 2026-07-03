@@ -45,6 +45,9 @@ const Events = () => {
   } = useTemplateData();
   const ref = useIntersectionObserver();
 
+  // La recepción puede no aplicar (boda en un solo lugar): se marca con "-".
+  const hasReception = receptionVenueName && receptionVenueName.trim() !== '-';
+
   return (
     <section id="events" className="events">
       <div ref={ref} className="events__inner">
@@ -54,7 +57,7 @@ const Events = () => {
           <div className="events__gold-line" aria-hidden="true" />
         </header>
 
-        <div className="events__grid">
+        <div className={`events__grid${hasReception ? '' : ' events__grid--single'}`}>
           <EventPanel
             eyebrow="Ceremonia"
             time={ceremonyTime}
@@ -63,15 +66,19 @@ const Events = () => {
             mapsLink={ceremonyMapsLink}
             mapsSrc={ceremonyMapsEmbedSrc}
           />
-          <div className="events__divider" aria-hidden="true" />
-          <EventPanel
-            eyebrow="Recepción"
-            time={receptionTime}
-            venueName={receptionVenueName}
-            venueAddress={receptionVenueAddress}
-            mapsLink={receptionMapsLink}
-            mapsSrc={receptionMapsEmbedSrc}
-          />
+          {hasReception && (
+            <>
+              <div className="events__divider" aria-hidden="true" />
+              <EventPanel
+                eyebrow="Recepción"
+                time={receptionTime}
+                venueName={receptionVenueName}
+                venueAddress={receptionVenueAddress}
+                mapsLink={receptionMapsLink}
+                mapsSrc={receptionMapsEmbedSrc}
+              />
+            </>
+          )}
         </div>
       </div>
     </section>

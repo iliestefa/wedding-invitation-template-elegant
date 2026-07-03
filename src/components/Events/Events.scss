@@ -56,6 +56,13 @@
       grid-template-columns: 1fr;
       gap: 4rem;
     }
+
+    // Boda en un solo lugar: un único panel centrado.
+    &--single {
+      grid-template-columns: minmax(0, 32rem);
+      justify-content: center;
+      text-align: center;
+    }
   }
 
   &__divider {
