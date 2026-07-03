@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import { useTemplateData } from '../../context/TemplateContext';
-import useIntersectionObserver from '../../hooks/useIntersectionObserver';
-import './Schedule.scss';
+import PropTypes from "prop-types";
+import { useTemplateData } from "../../context/TemplateContext";
+import useIntersectionObserver from "../../hooks/useIntersectionObserver";
+import "./Schedule.scss";
 
 const ScheduleRow = ({ time, label, detail, isLast }) => (
-  <div className={`schedule__row${isLast ? ' schedule__row--last' : ''}`}>
+  <div className={`schedule__row${isLast ? " schedule__row--last" : ""}`}>
     <span className="schedule__time">{time}</span>
     <div className="schedule__track">
       <span className="schedule__dot" />
@@ -18,8 +18,8 @@ const ScheduleRow = ({ time, label, detail, isLast }) => (
 );
 
 ScheduleRow.propTypes = {
-  time:   PropTypes.string.isRequired,
-  label:  PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   detail: PropTypes.string,
   isLast: PropTypes.bool,
 };
@@ -34,7 +34,7 @@ const Schedule = () => {
       <div ref={ref} className="schedule__inner">
         <header className="schedule__header">
           <p className="schedule__eyebrow">Programa</p>
-          <h2 className="schedule__title">La noche, momento a momento</h2>
+          <h2 className="schedule__title">Nuestro día, momento a momento</h2>
         </header>
 
         <div className="schedule__list">

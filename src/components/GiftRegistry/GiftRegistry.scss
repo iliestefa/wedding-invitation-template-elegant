@@ -141,5 +141,14 @@
       background: $color-gold-pale;
       color: $color-gold-light;
     }
+
+    &--static {
+      cursor: default;
+
+      &:hover {
+        background: none;
+        color: $color-champagne;
+      }
+    }
   }
 }

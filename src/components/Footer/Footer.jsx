@@ -13,7 +13,15 @@ const Footer = () => {
         <p className="footer__message">{footerMessage}</p>
 
         <p className="footer__credit">
-          Diseñado con amor · <span className="footer__credit-brand">iliestefa</span>
+          Diseñado con 🤍 by{' '}
+          <a
+            href="https://www.instagram.com/wedya.digital"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer__credit-brand"
+          >
+            Wedya
+          </a>
         </p>
       </div>
     </footer>

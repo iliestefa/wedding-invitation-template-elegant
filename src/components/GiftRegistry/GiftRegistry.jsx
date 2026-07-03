@@ -3,22 +3,20 @@ import { useTemplateData } from '../../context/TemplateContext';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import './GiftRegistry.scss';
 
-const AccountCard = ({ ownerName, bankName, accountType, accountAlias, cbu, accountNumberLabel }) => {
+const AccountCard = ({ ownerName, bankName, accountType, cbu, accountNumberLabel }) => {
   const handleCopy = (text) => navigator.clipboard?.writeText(text);
 
   return (
     <div className="gift__card">
       <div className="gift__card-header">
         <p className="gift__card-owner">{ownerName}</p>
-        <p className="gift__card-bank">{bankName} · {accountType}</p>
+        <p className="gift__card-bank">{bankName}</p>
       </div>
       <div className="gift__card-rows">
-        {accountAlias && (
+        {accountType && (
           <div className="gift__card-row">
-            <span className="gift__card-key">Alias</span>
-            <button className="gift__card-value" onClick={() => handleCopy(accountAlias)} title="Copiar alias">
-              {accountAlias}
-            </button>
+            <span className="gift__card-key">Tipo de cuenta</span>
+            <span className="gift__card-value gift__card-value--static">{accountType}</span>
           </div>
         )}
         {cbu && (
@@ -37,12 +35,11 @@ const AccountCard = ({ ownerName, bankName, accountType, accountAlias, cbu, acco
 AccountCard.propTypes = {
   ownerName:          PropTypes.string.isRequired,
   bankName:           PropTypes.string.isRequired,
-  accountType:        PropTypes.string.isRequired,
-  accountAlias:       PropTypes.string,
+  accountType:        PropTypes.string,
   cbu:                PropTypes.string,
   accountNumberLabel: PropTypes.string,
 };
-AccountCard.defaultProps = { accountAlias: null, cbu: null, accountNumberLabel: 'N° de Cuenta' };
+AccountCard.defaultProps = { accountType: null, cbu: null, accountNumberLabel: 'N° de Cuenta' };
 
 const GiftRegistry = () => {
   const { giftRegistryIntro, bankAccounts } = useTemplateData();
