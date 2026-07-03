@@ -21,8 +21,12 @@
   &__overlay {
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(to bottom, rgba(45,36,56,0.55) 0%, rgba(45,36,56,0.35) 40%, rgba(45,36,56,0.72) 100%);
+    background: linear-gradient(
+      to bottom,
+      rgba(45, 36, 56, 0.55) 0%,
+      rgba(45, 36, 56, 0.35) 40%,
+      rgba(45, 36, 56, 0.72) 100%
+    );
   }
 
   // ─── Content ─────────────────────────────────────────────────────────────
@@ -67,6 +71,13 @@
     display: block;
   }
 
+  &__name-j {
+    font-family: "Cormorant Garamond", $font-display;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.02em;
+  }
+
   &__amp {
     font-family: $font-display;
     font-size: clamp(1.5rem, 3vw, 2.5rem);
@@ -97,7 +108,9 @@
       background: linear-gradient(90deg, $color-purple-deep, transparent);
     }
 
-    @include mobile { width: 32px; }
+    @include mobile {
+      width: 32px;
+    }
   }
 
   &__date {
@@ -142,10 +155,19 @@
 }
 
 @keyframes heroZoom {
-  to { transform: scale(1); }
+  to {
+    transform: scale(1);
+  }
 }
 
 @keyframes scrollPulse {
-  0%, 100% { opacity: 0.4; transform: scaleY(1); }
-  50%       { opacity: 1;   transform: scaleY(1.1); }
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.1);
+  }
 }

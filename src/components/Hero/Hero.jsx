@@ -1,6 +1,13 @@
 import { useTemplateData } from '../../context/TemplateContext';
 import './Hero.scss';
 
+// la J itálica de Playfair parece otra letra; se reemplaza solo ese glifo
+// por la J de Cormorant Garamond, que sí se lee como J
+const renderName = (name) =>
+  name.split('').map((ch, i) =>
+    ch === 'J' ? <span key={i} className="hero__name-j">{ch}</span> : ch
+  );
+
 const Hero = () => {
   const { brideName, groomName, weddingDateDisplay, imageHero } = useTemplateData();
 
@@ -13,9 +20,9 @@ const Hero = () => {
         <p className="hero__eyebrow">Los invitamos a celebrar</p>
 
         <div className="hero__names">
-          <span className="hero__name hero__name--bride">{brideName}</span>
+          <span className="hero__name hero__name--bride">{renderName(brideName)}</span>
           <span className="hero__amp">&</span>
-          <span className="hero__name hero__name--groom">{groomName}</span>
+          <span className="hero__name hero__name--groom">{renderName(groomName)}</span>
         </div>
 
         <div className="hero__divider">
