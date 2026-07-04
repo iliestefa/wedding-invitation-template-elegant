@@ -1,0 +1,82 @@
+// colores registrados para poder animarlos dentro del degradado del pétalo
+@property --petal-light {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f6ccd7;
+}
+
+@property --petal-dark {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #d98aa2;
+}
+
+.petals {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  // sobre el contenido de las secciones, debajo del header (200),
+  // del botón de música (300) y del lightbox (400)
+  z-index: 150;
+
+  // tema por sección (transición suave entre colores)
+  --petal-light: #f6ccd7;
+  --petal-dark: #d98aa2;
+  transition: --petal-light 0.9s ease, --petal-dark 0.9s ease;
+
+  &--salvia   { --petal-light: #d8e4cc; --petal-dark: #93a881; }
+  &--celeste  { --petal-light: #cfdcf1; --petal-dark: #8399c6; }
+  &--lila     { --petal-light: #e0d0ec; --petal-dark: #a98cc0; }
+  &--menta    { --petal-light: #cbe4d9; --petal-dark: #7fae9c; }
+  &--durazno  { --petal-light: #f5d9c0; --petal-dark: #c9946f; }
+
+  &__drop {
+    position: absolute;
+    top: -6vh;
+    animation: petalFall var(--dur, 16s) linear infinite;
+    animation-delay: var(--delay, 0s);
+  }
+
+  &__petal {
+    display: block;
+    width: var(--size, 18px);
+    aspect-ratio: 24 / 28;
+    opacity: var(--op, 0.7);
+    background: linear-gradient(135deg, var(--petal-light), var(--petal-dark));
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 28'%3E%3Cpath d='M12 1 C19.5 7.5 21.5 15 12 27 C2.5 15 4.5 7.5 12 1 Z'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 28'%3E%3Cpath d='M12 1 C19.5 7.5 21.5 15 12 27 C2.5 15 4.5 7.5 12 1 Z'%3E%3C/path%3E%3C/svg%3E") center / contain no-repeat;
+    animation: petalSway var(--sway-dur, 4s) ease-in-out infinite alternate;
+    animation-delay: var(--delay, 0s);
+  }
+
+  // pocos: casi todos en los bordes, apenas uno tenue por el centro
+  &__drop:nth-child(1) { left: 2%;  --dur: 17s; --delay: -3s;  --size: 18px; --sway: 30px; --sway-dur: 4.2s; --op: 0.75; }
+  &__drop:nth-child(2) { left: 7%;  --dur: 23s; --delay: -14s; --size: 13px; --sway: 22px; --sway-dur: 3.4s; --op: 0.5; }
+  &__drop:nth-child(3) { left: 46%; --dur: 27s; --delay: -19s; --size: 11px; --sway: 24px; --sway-dur: 4.8s; --op: 0.35; }
+  &__drop:nth-child(4) { left: 90%; --dur: 20s; --delay: -9s;  --size: 15px; --sway: 26px; --sway-dur: 3.8s; --op: 0.55; }
+  &__drop:nth-child(5) { left: 96%; --dur: 18s; --delay: -6s;  --size: 19px; --sway: 34px; --sway-dur: 4.5s; --op: 0.7; }
+  &__drop:nth-child(6) { left: 93%; --dur: 25s; --delay: -16s; --size: 12px; --sway: 20px; --sway-dur: 4s;   --op: 0.45; }
+}
+
+@keyframes petalFall {
+  to {
+    transform: translateY(112vh);
+  }
+}
+
+@keyframes petalSway {
+  from {
+    transform: translateX(calc(var(--sway, 30px) * -0.5)) rotate(-24deg);
+  }
+  to {
+    transform: translateX(calc(var(--sway, 30px) * 0.5)) rotate(38deg);
+  }
+}
+
+// respeto por usuarios con animaciones reducidas
+@media (prefers-reduced-motion: reduce) {
+  .petals {
+    display: none;
+  }
+}

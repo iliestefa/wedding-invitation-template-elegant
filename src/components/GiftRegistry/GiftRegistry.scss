@@ -7,15 +7,15 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 200px;
-    background: linear-gradient(to bottom, $color-bg-deep, $color-bg);
+    height: 192px;
+    background-image: $floral-pattern, linear-gradient($pastel-durazno-bg, $pastel-durazno-bg);
+    -webkit-mask-image: linear-gradient(to top, #000, transparent);
+    mask-image: linear-gradient(to top, #000, transparent);
     pointer-events: none;
     z-index: 1;
   }
 
-
-
-  background: $color-bg-deep;
+  background: $pastel-menta-bg;
   padding: 7rem 0;
 
   &__inner {
@@ -44,6 +44,7 @@
 
   &__eyebrow {
     @include eyebrow;
+    color: $pastel-menta;
     margin: 0 0 1rem;
   }
 
@@ -98,7 +99,7 @@
     font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: $color-gold;
+    color: $pastel-menta;
     margin: 0;
   }
 

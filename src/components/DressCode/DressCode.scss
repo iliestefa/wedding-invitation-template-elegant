@@ -1,11 +1,30 @@
 .dresscode {
-  background: $color-bg-deep;
+  position: relative;
+  background: $pastel-lila-bg;
   padding: 6rem 0 7rem;
+
+  // difumina hacia la menta de la siguiente sección
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 144px;
+    background-image: $floral-pattern, linear-gradient($pastel-menta-bg, $pastel-menta-bg);
+    -webkit-mask-image: linear-gradient(to top, #000, transparent);
+    mask-image: linear-gradient(to top, #000, transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
 
   // ─── Inner container ──────────────────────────────────────────────────────
   &__inner {
     @include container;
     @include reveal-ready;
+    // por encima del gradiente ::after incluso durante la animación de reveal
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,6 +43,7 @@
 
   &__eyebrow {
     @include eyebrow;
+    color: $pastel-lila;
     margin: 0;
   }
 
@@ -41,7 +61,7 @@
   &__gold-line {
     width: 48px;
     height: 1px;
-    background: $color-gold;
+    background: $pastel-lila;
     opacity: 0.6;
   }
 
@@ -82,12 +102,12 @@
     overflow: hidden;
     flex-shrink: 0;
 
-    // velo lavanda leve, igual que el mapa
+    // velo lila leve
     &::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(124, 95, 160, 0.1);
+      background: rgba(149, 125, 173, 0.1);
       pointer-events: none;
     }
 
@@ -119,6 +139,7 @@
 
   &__card-label {
     @include eyebrow;
+    color: $pastel-lila;
     margin: 0 0 0.75rem;
   }
 
@@ -156,7 +177,7 @@
     height: 40px;
     border-radius: 50%;
     border: 1px solid $color-border;
-    box-shadow: 0 2px 12px rgba(82, 72, 94, 0.18);
+    box-shadow: 0 2px 12px rgba(93, 74, 80, 0.18);
   }
 
   &__swatch-label {

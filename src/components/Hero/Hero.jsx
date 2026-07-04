@@ -9,11 +9,17 @@ const renderName = (name) =>
   );
 
 const Hero = () => {
-  const { brideName, groomName, weddingDateDisplay, imageHero } = useTemplateData();
+  const { brideName, groomName, weddingDateDisplay, imageHero, imageHeroMobile } = useTemplateData();
 
   return (
     <section id="hero" className="hero">
-      <div className="hero__bg" style={{ backgroundImage: `url(${imageHero})` }} />
+      <div
+        className="hero__bg"
+        style={{
+          '--hero-bg-desktop': `url(${imageHero})`,
+          '--hero-bg-mobile': `url(${imageHeroMobile ?? imageHero})`,
+        }}
+      />
       <div className="hero__overlay" />
 
       <div className="hero__content">

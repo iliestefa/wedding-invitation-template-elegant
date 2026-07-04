@@ -1,12 +1,15 @@
 .footer {
   position: relative;
 
+  // funde desde el durazno de la sección de confirmación
   &::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 80px;
-    background: linear-gradient(to bottom, $color-bg, transparent);
+    background-image: $floral-pattern, linear-gradient($pastel-durazno-bg, $pastel-durazno-bg);
+    -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+    mask-image: linear-gradient(to bottom, #000, transparent);
     pointer-events: none;
     z-index: 2;
   }

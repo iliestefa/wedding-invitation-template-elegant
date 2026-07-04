@@ -1,6 +1,6 @@
 .events {
   position: relative;
-  background: $color-bg;
+  background: $pastel-salvia-bg;
   padding: 7rem 0;
 
   &::after {
@@ -9,8 +9,10 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 200px;
-    background: linear-gradient(to top, $color-bg-deep, $color-bg);
+    height: 192px;
+    background-image: $floral-pattern, linear-gradient($pastel-celeste-bg, $pastel-celeste-bg);
+    -webkit-mask-image: linear-gradient(to top, #000, transparent);
+    mask-image: linear-gradient(to top, #000, transparent);
     z-index: 1;
     pointer-events: none;
   }
@@ -33,6 +35,7 @@
 
   &__eyebrow {
     @include eyebrow;
+    color: $pastel-salvia;
     margin: 0 0 1rem;
   }
 
@@ -45,6 +48,7 @@
 
   &__gold-line {
     @include gold-divider;
+    background: linear-gradient(90deg, transparent, $pastel-salvia, transparent);
   }
 
   // ─── Grid ─────────────────────────────────────────────────────────────────
@@ -84,6 +88,7 @@
 
   &__panel-eyebrow {
     @include eyebrow;
+    color: $pastel-salvia;
     margin: 0;
   }
 
@@ -157,12 +162,12 @@
     overflow: hidden;
     border: 1px solid $color-border;
 
-    // velo lavanda leve sobre el mapa (no bloquea la interacción)
+    // velo salvia leve sobre el mapa (no bloquea la interacción)
     &::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(124, 95, 160, 0.1);
+      background: rgba(127, 148, 113, 0.1);
       pointer-events: none;
     }
   }
@@ -179,12 +184,12 @@
     font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: $color-gold;
+    color: $pastel-salvia;
     text-decoration: none;
-    transition: color $dur-fast;
+    transition: opacity $dur-fast;
 
     &:hover {
-      color: $color-gold-light;
+      opacity: 0.7;
     }
   }
 }

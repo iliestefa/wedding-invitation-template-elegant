@@ -1,15 +1,17 @@
 .schedule {
   position: relative;
 
-  background: $color-bg-surface;
+  background: $pastel-celeste-bg;
   padding: 7rem 0;
 
   &::after {
     content: '';
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: 120px;
-    background: linear-gradient(to top, $color-bg-deep, transparent);
+    height: 128px;
+    background-image: $floral-pattern, linear-gradient($pastel-lila-bg, $pastel-lila-bg);
+    -webkit-mask-image: linear-gradient(to top, #000, transparent);
+    mask-image: linear-gradient(to top, #000, transparent);
     pointer-events: none;
     z-index: 2;
   }
@@ -43,6 +45,7 @@
 
   &__eyebrow {
     @include eyebrow;
+    color: $pastel-celeste;
     margin: 0 0 1rem;
   }
 
@@ -73,7 +76,7 @@
     font-size: 0.7rem;
     font-weight: 400;
     letter-spacing: 0.1em;
-    color: $color-gold;
+    color: $pastel-celeste;
     padding-top: 0.1rem;
     text-align: right;
   }
@@ -89,9 +92,9 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: $color-gold;
-    border: 2px solid $color-bg-surface;
-    box-shadow: 0 0 0 1px $color-gold;
+    background: $pastel-celeste;
+    border: 2px solid $pastel-celeste-bg;
+    box-shadow: 0 0 0 1px $pastel-celeste;
     flex-shrink: 0;
     margin-top: 0.2rem;
   }

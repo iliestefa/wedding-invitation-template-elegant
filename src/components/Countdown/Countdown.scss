@@ -1,12 +1,26 @@
 .countdown {
   position: relative;
-  background: $color-bg-deep;
+  background: $pastel-rosa-bg;
   padding: 7rem 0;
   overflow: hidden;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  // difumina hacia el marfil de la galería
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background-image: $floral-pattern, linear-gradient($color-bg, $color-bg);
+    -webkit-mask-image: linear-gradient(to top, #000, transparent);
+    mask-image: linear-gradient(to top, #000, transparent);
+    pointer-events: none;
+  }
 
   // ─── Giant background year ────────────────────────────────────────────────
   &__bg-text {
@@ -18,7 +32,7 @@
     font-family: $font-display;
     font-size: clamp(10rem, 28vw, 22rem);
     font-weight: 600;
-    color: rgba(139, 113, 169, 0.06);
+    color: rgba(178, 110, 128, 0.07);
     pointer-events: none;
     letter-spacing: -0.05em;
     user-select: none;

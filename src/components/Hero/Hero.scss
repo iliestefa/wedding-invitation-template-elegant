@@ -11,10 +11,17 @@
   &__bg {
     position: absolute;
     inset: 0;
+    background-image: var(--hero-bg-desktop);
     background-size: cover;
     background-position: center 30%;
     transform: scale(1.05);
     animation: heroZoom 8s $ease-out forwards;
+
+    // en móvil se usa el recorte vertical (panel 1 del collage)
+    @include mobile {
+      background-image: var(--hero-bg-mobile);
+      background-position: center 40%;
+    }
   }
 
   // ─── Overlay layers ──────────────────────────────────────────────────────
@@ -23,10 +30,24 @@
     inset: 0;
     background: linear-gradient(
       to bottom,
-      rgba(45, 36, 56, 0.55) 0%,
-      rgba(45, 36, 56, 0.35) 40%,
-      rgba(45, 36, 56, 0.72) 100%
+      rgba(56, 38, 44, 0.55) 0%,
+      rgba(56, 38, 44, 0.35) 40%,
+      rgba(56, 38, 44, 0.72) 100%
     );
+
+    // en móvil: oscurece arriba (nombres) y abajo (fecha/botón),
+    // dejando el centro casi limpio para ver a la pareja
+    @include mobile {
+      background: linear-gradient(
+        to bottom,
+        rgba(56, 38, 44, 0.6) 0%,
+        rgba(56, 38, 44, 0.52) 30%,
+        rgba(56, 38, 44, 0.15) 44%,
+        rgba(56, 38, 44, 0.15) 50%,
+        rgba(56, 38, 44, 0.52) 82%,
+        rgba(56, 38, 44, 0.72) 100%
+      );
+    }
   }
 
   // ─── Content ─────────────────────────────────────────────────────────────
@@ -40,11 +61,28 @@
     gap: 2rem;
     padding: 0 $gutter;
     animation: fadeUp 1.2s $ease-out 0.3s both;
+
+    // en móvil se despeja el centro (ahí está la pareja en la foto):
+    // eyebrow + nombres arriba; fecha + botón abajo
+    @include mobile {
+      height: 100%;
+      justify-content: flex-start;
+      gap: 1.25rem;
+      padding-top: calc(env(safe-area-inset-top, 0px) + 92px);
+      padding-bottom: 6.5rem;
+    }
+  }
+
+  // empuja fecha y botón al fondo en móvil
+  @include mobile {
+    &__divider {
+      margin-top: auto;
+    }
   }
 
   &__eyebrow {
     @include eyebrow;
-    color: #e9e0f7; // mismo lila casi blanco que el &
+    color: #f9e7ec; // mismo rosa casi blanco que el &
     letter-spacing: 0.4em;
   }
 
@@ -83,7 +121,7 @@
     font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 400;
     font-style: normal;
-    color: #e9e0f7; // moradito casi blanco
+    color: #f9e7ec; // rosita casi blanco
     display: block;
     line-height: 1;
     margin: 0.4rem 0;

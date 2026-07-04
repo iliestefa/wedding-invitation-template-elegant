@@ -5,7 +5,10 @@
   right: 0;
   z-index: 200;
   padding: 0 $gutter;
-  height: 64px;
+  // en iOS (viewport-fit=cover) el viewport llega hasta el borde de la
+  // pantalla: el header crece para cubrir la zona de la barra de estado
+  padding-top: env(safe-area-inset-top, 0px);
+  height: calc(64px + env(safe-area-inset-top, 0px));
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -14,9 +17,27 @@
   border-bottom: 1px solid transparent;
 
   &--scrolled {
-    background: rgba(250, 248, 245, 0.92);
+    background: rgba(250, 248, 245, 0.97);
     backdrop-filter: blur(16px);
     border-bottom-color: $color-border;
+  }
+
+  // placa que tapa la franja de la barra de estado en iOS: el contenido pasa
+  // por detrás del notch y el header anclado queda más abajo, dejando un hueco
+  &::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: transparent;
+    transition: background $dur-base $ease-out;
+    pointer-events: none;
+  }
+
+  &--scrolled::before {
+    background: rgba(250, 248, 245, 0.97);
   }
 
   // sobre la foto del hero el texto va claro; al hacer scroll, oscuro

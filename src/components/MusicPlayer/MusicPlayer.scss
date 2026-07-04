@@ -1,0 +1,84 @@
+.music {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 300;
+
+  &__btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: $color-gold;
+    color: $color-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(93, 74, 80, 0.3);
+    transition: transform $dur-fast $ease-out, background $dur-fast;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      background: $color-gold-light;
+      transform: scale(1.08);
+    }
+  }
+
+  // pulso suave mientras suena
+  &--playing .music__btn {
+    animation: musicPulse 2.4s ease-in-out infinite;
+  }
+
+  // ─── Notas flotantes ───────────────────────────────────────────────────────
+  &__notes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  &__note {
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+    font-size: 1rem;
+    color: $color-gold;
+    opacity: 0;
+    animation: noteFloat 3s ease-out infinite;
+
+    &:nth-child(2) {
+      left: 34px;
+      font-size: 1.15rem;
+      animation-delay: 1s;
+    }
+
+    &:nth-child(3) {
+      left: 8px;
+      font-size: 0.85rem;
+      animation-delay: 2s;
+    }
+  }
+}
+
+@keyframes musicPulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(93, 74, 80, 0.3), 0 0 0 0 rgba(178, 110, 128, 0.35); }
+  50%      { box-shadow: 0 4px 16px rgba(93, 74, 80, 0.3), 0 0 0 10px rgba(178, 110, 128, 0); }
+}
+
+@keyframes noteFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-64px) rotate(14deg);
+    opacity: 0;
+  }
+}

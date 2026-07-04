@@ -1,26 +1,37 @@
-// ─── Pastel Garden Palette ────────────────────────────────────────────────────
-$color-bg:          #faf8f5;   // ivory base
-$color-bg-deep:     #f1edf3;   // lavender mist (secciones alternas)
+// ─── Romantic Garden Palette (rosa pastel) ────────────────────────────────────
+$color-bg:          #fbf7f5;   // marfil rosado
+$color-bg-deep:     #f7ecee;   // bruma rosa (secciones alternas)
 $color-bg-surface:  #ffffff;   // card surfaces
 $color-bg-elevated: #ffffff;   // elevated elements
 
-$color-gold:        #7c5fa0;   // lavanda profundo (acento principal)
-$color-gold-light:  #c9adeb;   // lila luminoso
-$color-gold-pale:   rgba(124, 95, 160, 0.12); // subtle lavender tint
-$color-purple-deep: #5a4680;   // morado profundo apagado (acentos de la portada)
+$color-gold:        #b26e80;   // rosa viejo (acento principal)
+$color-gold-light:  #e3b7c2;   // rosa pastel claro
+$color-gold-pale:   rgba(178, 110, 128, 0.12); // subtle rose tint
+$color-purple-deep: #9d6273;   // rosa viejo profundo (acentos de la portada)
 
-$color-champagne:   #52485e;   // main text color (ciruela)
+$color-champagne:   #5d4a50;   // main text color (malva cálido)
 $color-cream:       #fdfcfa;   // near-white (texto sobre foto)
 $color-white:       #ffffff;
 
-$color-text:        #52485e;   // main text (ciruela grisácea)
-$color-text-muted:  rgba(82, 72, 94, 0.6);  // muted plum
-$color-text-dim:    rgba(82, 72, 94, 0.32); // very dim
+$color-text:        #5d4a50;   // main text (malva grisáceo)
+$color-text-muted:  rgba(93, 74, 80, 0.6);  // muted mauve
+$color-text-dim:    rgba(93, 74, 80, 0.32); // very dim
 
-$color-border:      rgba(139, 113, 169, 0.25); // lavender border subtle
-$color-border-dim:  rgba(82, 72, 94, 0.08);    // barely visible
+$color-border:      rgba(178, 110, 128, 0.25); // rose border subtle
+$color-border-dim:  rgba(93, 74, 80, 0.08);    // barely visible
 
 $color-error:       #b8543f;
+
+// ─── Acentos pastel por sección (jardín de flores) ────────────────────────────
+$pastel-rosa-bg:     #f7ecee;  $pastel-rosa:     #b26e80;  // countdown / rsvp
+$pastel-salvia-bg:   #eef2e8;  $pastel-salvia:   #7f9471;  // lugar & hora
+$pastel-celeste-bg:  #ecf1f8;  $pastel-celeste:  #7186b3;  // programa
+$pastel-lila-bg:     #f2ecf6;  $pastel-lila:     #957dad;  // vestimenta
+$pastel-durazno-bg:  #faf1e7;  $pastel-durazno:  #bb8360;  // confirmación
+$pastel-menta-bg:    #e8f2ef;  $pastel-menta:    #6fa08f;  // regalos
+
+// ─── Relieve floral (textura de fondo) ────────────────────────────────────────
+$floral-pattern: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='a' patternUnits='userSpaceOnUse' width='30' height='40' patternTransform='scale(0.4) rotate(0)'%3E%3Cpath fill-opacity='0.05' d='M1.624 19.09l6.597-1.595a.503.503 0 11.238.98L2.145 20l6.314 1.526a.504.504 0 01-.238.98l-6.597-1.595 3.426 3.426a3.813 3.813 0 005.386 0l1.1-1.1a4.584 4.584 0 000-6.475l-1.1-1.099a3.814 3.814 0 00-5.386 0zM-.911 18.377l-1.595-6.597a.504.504 0 11.98-.237L0 17.856l1.526-6.313a.503.503 0 11.98.237L.911 18.377l3.426-3.426a3.813 3.813 0 000-5.386l-1.1-1.099A4.548 4.548 0 000 7.125a4.547 4.547 0 00-3.238 1.341l-1.099 1.099a3.813 3.813 0 000 5.386zM-11.535 16.763a4.584 4.584 0 000 6.476l1.1 1.099a3.813 3.813 0 005.385 0l3.426-3.426-6.597 1.595a.501.501 0 01-.609-.371.504.504 0 01.372-.609l6.313-1.526-6.313-1.526a.504.504 0 11.237-.98l6.597 1.595-3.426-3.426a3.796 3.796 0 00-2.693-1.113c-.975 0-1.95.37-2.693 1.113zM.911 21.625l1.595 6.597a.504.504 0 11-.98.237L0 22.146l-1.526 6.313a.505.505 0 01-.98-.237l1.595-6.597-3.426 3.426a3.813 3.813 0 000 5.386l1.1 1.099a4.584 4.584 0 006.475 0l1.099-1.099a3.813 3.813 0 000-5.386zM31.624 19.09l6.597-1.595a.503.503 0 11.238.98L32.145 20l6.314 1.526a.504.504 0 01-.238.98l-6.597-1.595 3.426 3.426a3.813 3.813 0 005.386 0l1.1-1.1a4.584 4.584 0 000-6.475l-1.1-1.099a3.814 3.814 0 00-5.386 0zM29.089 18.377l-1.595-6.597a.504.504 0 11.98-.237L30 17.856l1.526-6.313a.503.503 0 11.98.237l-1.595 6.597 3.426-3.426a3.813 3.813 0 000-5.386l-1.1-1.099A4.548 4.548 0 0030 7.125a4.547 4.547 0 00-3.238 1.341l-1.099 1.099a3.813 3.813 0 000 5.386zM18.465 16.763a4.584 4.584 0 000 6.476l1.1 1.099a3.813 3.813 0 005.385 0l3.426-3.426-6.597 1.595a.501.501 0 01-.609-.371.504.504 0 01.372-.609l6.313-1.526-6.313-1.526a.504.504 0 11.237-.98l6.597 1.595-3.426-3.426a3.796 3.796 0 00-2.693-1.113c-.975 0-1.95.37-2.693 1.113zM30.911 21.625l1.595 6.597a.504.504 0 11-.98.237L30 22.146l-1.526 6.313a.505.505 0 01-.98-.237l1.595-6.597-3.426 3.426a3.813 3.813 0 000 5.386l1.1 1.099a4.584 4.584 0 006.475 0l1.099-1.099a3.813 3.813 0 000-5.386zM16.624 39.09l6.597-1.595a.503.503 0 11.238.98L17.145 40l6.314 1.526a.504.504 0 01-.238.98l-6.597-1.595 3.426 3.426a3.813 3.813 0 005.386 0l1.1-1.1a4.584 4.584 0 000-6.475l-1.1-1.099a3.814 3.814 0 00-5.386 0zM14.089 38.377l-1.595-6.597a.504.504 0 11.98-.237L15 37.856l1.526-6.313a.503.503 0 11.98.237l-1.595 6.597 3.426-3.426a3.813 3.813 0 000-5.386l-1.1-1.099A4.548 4.548 0 0015 27.125a4.547 4.547 0 00-3.238 1.341l-1.099 1.099a3.813 3.813 0 000 5.386zM3.465 36.763a4.584 4.584 0 000 6.476l1.1 1.099a3.813 3.813 0 005.385 0l3.426-3.426-6.597 1.595a.501.501 0 01-.609-.371.504.504 0 01.372-.609l6.313-1.526-6.313-1.526a.504.504 0 11.237-.98l6.597 1.595-3.426-3.426a3.796 3.796 0 00-2.693-1.113c-.975 0-1.95.37-2.693 1.113zM15.911 41.625l1.595 6.597a.504.504 0 11-.98.237L15 42.146l-1.526 6.313a.505.505 0 01-.98-.237l1.595-6.597-3.426 3.426a3.813 3.813 0 000 5.386l1.1 1.1a4.584 4.584 0 006.475 0l1.099-1.1a3.813 3.813 0 000-5.386zM16.624-.91l6.597-1.595a.503.503 0 11.238.98L17.145 0l6.314 1.526a.504.504 0 01-.238.98L16.624.912l3.426 3.426a3.813 3.813 0 005.386 0l1.1-1.1a4.584 4.584 0 000-6.475l-1.1-1.099a3.814 3.814 0 00-5.386 0zM14.089-1.623L12.494-8.22a.504.504 0 11.98-.237L15-2.144l1.526-6.313a.503.503 0 11.98.237l-1.595 6.597 3.426-3.426a3.813 3.813 0 000-5.386l-1.1-1.099A4.548 4.548 0 0015-12.875a4.547 4.547 0 00-3.238 1.341l-1.099 1.099a3.813 3.813 0 000 5.386zM3.465-3.237a4.584 4.584 0 000 6.476l1.1 1.099a3.813 3.813 0 005.385 0L13.376.912 6.779 2.507a.501.501 0 01-.609-.371.504.504 0 01.372-.609L12.855.001 6.542-1.525a.504.504 0 11.237-.98L13.376-.91 9.95-4.336a3.796 3.796 0 00-2.693-1.113c-.975 0-1.95.37-2.693 1.113zM15.911 1.625l1.595 6.597a.504.504 0 11-.98.237L15 2.146 13.474 8.46a.505.505 0 01-.98-.237l1.595-6.597-3.426 3.426a3.813 3.813 0 000 5.386l1.1 1.099a4.584 4.584 0 006.475 0l1.099-1.099a3.813 3.813 0 000-5.386z' stroke='none' fill='%23b26e80'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='800%25' height='800%25' transform='translate(0,0)' fill='url(%23a)'/%3E%3C/svg%3E");
 
 // ─── Typography ───────────────────────────────────────────────────────────────
 $font-display: 'Playfair Display', Georgia, serif;

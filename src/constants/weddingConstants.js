@@ -117,7 +117,14 @@ export const FOOTER_MESSAGE = "Con amor, los esperamos.";
 
 // ─── Imágenes ─────────────────────────────────────────────────────────────────
 export const IMAGE_HERO = `${import.meta.env.BASE_URL}hero.webp`;
+export const IMAGE_HERO_MOBILE = `${import.meta.env.BASE_URL}4.webp`;
 export const IMAGE_CEREMONY =
   "https://images.unsplash.com/photo-1606216840721-aeb5c80ad67e?w=900&q=80&auto=format&fit=crop";
 export const IMAGE_DRESSCODE_WOMEN = `${import.meta.env.BASE_URL}mujer.webp`;
 export const IMAGE_DRESSCODE_MEN = `${import.meta.env.BASE_URL}hombre.webp`;
+
+// ─── Galería ──────────────────────────────────────────────────────────────────
+// orden del collage: la columna derecha baja 5, 7, 6
+export const GALLERY_IMAGES = [1, 2, 3, 4, 5, 7, 6].map(
+  (n) => `${import.meta.env.BASE_URL}${n}.webp`
+);

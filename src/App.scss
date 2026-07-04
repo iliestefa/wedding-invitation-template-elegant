@@ -22,6 +22,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+// relieve floral: pintado como fondo de las secciones, debajo del contenido
+// (no es una capa encima: las fotos y tarjetas quedan limpias)
+.countdown,
+.gallery,
+.events,
+.schedule,
+.dresscode,
+.gift,
+.rsvp,
+.footer {
+  background-image: $floral-pattern;
+  background-blend-mode: multiply;
+}
+
 img {
   display: block;
   max-width: 100%;

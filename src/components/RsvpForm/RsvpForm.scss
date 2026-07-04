@@ -1,12 +1,14 @@
 .rsvp {
-
-
-  background: $color-bg;
+  position: relative;
+  background: $pastel-durazno-bg;
   padding: 7rem 0;
 
   &__inner {
     @include container;
     @include reveal-ready;
+    // por encima del gradiente ::after incluso durante la animación de reveal
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6rem;
@@ -87,6 +89,12 @@
     color: $color-champagne;
     font-family: $font-body;
     font-size: 0.9rem;
+
+    // iOS hace zoom automático al enfocar campos con letra < 16px
+    // (y deja la página descuadrada): en móvil se fuerza el mínimo
+    @include mobile {
+      font-size: 16px;
+    }
     font-weight: 300;
     padding: 1.4rem 1rem 0.6rem;
     outline: none;
@@ -114,12 +122,25 @@
   &__input:focus + &__label,
   &__input:not(:placeholder-shown) + &__label,
   &__textarea:focus + &__label,
-  &__textarea:not(:placeholder-shown) + &__label {
+  &__textarea:not(:placeholder-shown) + &__label,
+  &__label--select {
     top: 0.35rem;
     font-size: 0.6rem;
     color: $color-gold;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+  }
+
+  // ─── Select de acompañantes ───────────────────────────────────────────────
+  &__select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    // flechita propia (la nativa desaparece con appearance: none)
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23b26e80' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.4rem;
   }
 
   // ─── Radio groups ─────────────────────────────────────────────────────────
