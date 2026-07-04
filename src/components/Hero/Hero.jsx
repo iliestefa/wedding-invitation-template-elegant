@@ -16,8 +16,11 @@ const Hero = () => {
       <div
         className="hero__bg"
         style={{
-          '--hero-bg-desktop': `url(${imageHero})`,
-          '--hero-bg-mobile': `url(${imageHeroMobile ?? imageHero})`,
+          // URL absoluta: las rutas relativas dentro de variables CSS se
+          // resuelven contra la carpeta del CSS compilado (/assets/) en
+          // producción y la imagen daba 404 — solo en el build, no en dev
+          '--hero-bg-desktop': `url(${new URL(imageHero, document.baseURI).href})`,
+          '--hero-bg-mobile': `url(${new URL(imageHeroMobile ?? imageHero, document.baseURI).href})`,
         }}
       />
       <div className="hero__overlay" />
