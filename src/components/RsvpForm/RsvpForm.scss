@@ -97,6 +97,9 @@
 
     &:focus { border-color: $color-gold; }
     &::placeholder { color: transparent; }
+
+    // iOS hace zoom al enfocar inputs con letra menor a 16px
+    @include tablet { font-size: 16px; }
   }
 
   &__label {
