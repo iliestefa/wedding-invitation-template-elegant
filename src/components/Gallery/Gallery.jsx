@@ -4,7 +4,7 @@ import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 import "./Gallery.scss";
 
 const Gallery = () => {
-  const { galleryImages } = useTemplateData();
+  const { galleryImages, coupleNames } = useTemplateData();
   const ref = useIntersectionObserver();
   const [lightbox, setLightbox] = useState(null); // índice de la foto abierta o null
 
@@ -58,7 +58,7 @@ const Gallery = () => {
               >
                 <img
                   src={src}
-                  alt={`Kristel y Jose Luis — foto ${i + 1}`}
+                  alt={`${coupleNames} — foto ${i + 1}`}
                   loading="lazy"
                 />
               </button>
@@ -96,7 +96,7 @@ const Gallery = () => {
           <img
             className="gallery__lb-img"
             src={galleryImages[lightbox]}
-            alt={`Kristel y Jose Luis — foto ${lightbox + 1}`}
+            alt={`${coupleNames} — foto ${lightbox + 1}`}
             onClick={(e) => e.stopPropagation()}
           />
           <button
