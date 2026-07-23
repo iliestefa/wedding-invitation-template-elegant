@@ -93,5 +93,11 @@
 
   &__credit-brand {
     color: $color-gold;
+    text-decoration: none;
+    transition: color $dur-fast;
+
+    &:hover {
+      color: $color-gold-light;
+    }
   }
 }

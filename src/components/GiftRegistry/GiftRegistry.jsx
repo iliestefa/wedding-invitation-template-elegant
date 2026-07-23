@@ -57,11 +57,13 @@ const GiftRegistry = () => {
           <p className="gift__intro">{giftRegistryIntro}</p>
         </div>
 
-        <div className="gift__accounts">
-          {bankAccounts.map((account) => (
-            <AccountCard key={account.id} {...account} />
-          ))}
-        </div>
+        {bankAccounts.length > 0 && (
+          <div className="gift__accounts">
+            {bankAccounts.map((account) => (
+              <AccountCard key={account.id} {...account} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

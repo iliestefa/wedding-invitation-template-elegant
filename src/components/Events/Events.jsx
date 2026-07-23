@@ -40,10 +40,13 @@ EventPanel.defaultProps = { mapsLink: null, mapsSrc: null };
 
 const Events = () => {
   const {
+    eventsMode,
     ceremonyTime, ceremonyVenueName, ceremonyVenueAddress, ceremonyMapsLink, ceremonyMapsEmbedSrc,
     receptionTime, receptionVenueName, receptionVenueAddress, receptionMapsLink, receptionMapsEmbedSrc,
   } = useTemplateData();
   const ref = useIntersectionObserver();
+
+  const mode = eventsMode ?? 'separate';
 
   return (
     <section id="events" className="events">
@@ -54,25 +57,89 @@ const Events = () => {
           <div className="events__gold-line" aria-hidden="true" />
         </header>
 
-        <div className="events__grid">
-          <EventPanel
-            eyebrow="Ceremonia"
-            time={ceremonyTime}
-            venueName={ceremonyVenueName}
-            venueAddress={ceremonyVenueAddress}
-            mapsLink={ceremonyMapsLink}
-            mapsSrc={ceremonyMapsEmbedSrc}
-          />
-          <div className="events__divider" aria-hidden="true" />
-          <EventPanel
-            eyebrow="Recepción"
-            time={receptionTime}
-            venueName={receptionVenueName}
-            venueAddress={receptionVenueAddress}
-            mapsLink={receptionMapsLink}
-            mapsSrc={receptionMapsEmbedSrc}
-          />
-        </div>
+        {mode === 'separate' && (
+          <div className="events__grid">
+            <EventPanel
+              eyebrow="Ceremonia"
+              time={ceremonyTime}
+              venueName={ceremonyVenueName}
+              venueAddress={ceremonyVenueAddress}
+              mapsLink={ceremonyMapsLink}
+              mapsSrc={ceremonyMapsEmbedSrc}
+            />
+            <div className="events__divider" aria-hidden="true" />
+            <EventPanel
+              eyebrow="Recepción"
+              time={receptionTime}
+              venueName={receptionVenueName}
+              venueAddress={receptionVenueAddress}
+              mapsLink={receptionMapsLink}
+              mapsSrc={receptionMapsEmbedSrc}
+            />
+          </div>
+        )}
+
+        {mode === 'same' && (
+          <>
+            <div className="events__grid events__grid--times">
+              <div className="events__panel">
+                <p className="events__panel-time">{ceremonyTime}</p>
+                <p className="events__panel-eyebrow">Ceremonia</p>
+              </div>
+              <div className="events__divider" aria-hidden="true" />
+              <div className="events__panel">
+                <p className="events__panel-time">{receptionTime}</p>
+                <p className="events__panel-eyebrow">Recepción</p>
+              </div>
+            </div>
+
+            <div className="events__venue">
+              <h3 className="events__panel-venue">{receptionVenueName}</h3>
+              <p className="events__panel-address">{receptionVenueAddress}</p>
+              {receptionMapsEmbedSrc && (
+                <div className="events__map-wrap">
+                  <iframe
+                    className="events__map"
+                    src={receptionMapsEmbedSrc}
+                    title={`Mapa de ${receptionVenueName}`}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+              )}
+              {receptionMapsLink && (
+                <a className="events__map-link" href={receptionMapsLink} target="_blank" rel="noopener noreferrer">
+                  Ver en Google Maps ↗
+                </a>
+              )}
+            </div>
+          </>
+        )}
+
+        {mode === 'reception-only' && (
+          <div className="events__venue">
+            <p className="events__panel-eyebrow">Recepción</p>
+            <p className="events__panel-time">{receptionTime}</p>
+            <h3 className="events__panel-venue">{receptionVenueName}</h3>
+            <p className="events__panel-address">{receptionVenueAddress}</p>
+            {receptionMapsEmbedSrc && (
+              <div className="events__map-wrap">
+                <iframe
+                  className="events__map"
+                  src={receptionMapsEmbedSrc}
+                  title={`Mapa de ${receptionVenueName}`}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            )}
+            {receptionMapsLink && (
+              <a className="events__map-link" href={receptionMapsLink} target="_blank" rel="noopener noreferrer">
+                Ver en Google Maps ↗
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );
