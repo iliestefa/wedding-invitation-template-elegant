@@ -41,7 +41,9 @@ const DressCode = () => {
           <p className="dresscode__eyebrow">Vestimenta</p>
           <h2 className="dresscode__style">{dressCodeStyle}</h2>
           <div className="dresscode__gold-line" aria-hidden="true" />
-          <p className="dresscode__description">{dressCodeDescription}</p>
+          {(Array.isArray(dressCodeDescription) ? dressCodeDescription : [dressCodeDescription]).map((text) => (
+            <p key={text} className="dresscode__description">{text}</p>
+          ))}
         </header>
 
         {dressCodePalette?.length > 0 && (

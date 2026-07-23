@@ -72,6 +72,10 @@
     color: $color-text-muted;
     line-height: 1.8;
     margin: 0;
+
+    // el gap de 1rem del header se suma entre párrafos: se compensa
+    // para dejar 0.45rem netos entre ellos
+    & + & { margin-top: -0.55rem; }
   }
 
   // ─── Cards grid ───────────────────────────────────────────────────────────

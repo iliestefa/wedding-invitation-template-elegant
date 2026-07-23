@@ -13,8 +13,8 @@ const INVITATION_LIMITS = {
   single: 0,
   double: 1,
   triple: 2,
-  quadruple: 3,
-  quintuple: 4,
+  quadruple4: 3,
+  quintuple5: 4,
 };
 
 const getInvitationParam = () =>
@@ -76,6 +76,7 @@ const RsvpForm = () => {
   const [status, setStatus] = useState('idle');
 
   const maxCompanions = getMaxCompanions();
+  const totalGuests = maxCompanions + 1;
 
   const setField = (key) => (value) => setForm((prev) => ({ ...prev, [key]: value }));
 
@@ -127,6 +128,14 @@ const RsvpForm = () => {
         </div>
 
         <div className="rsvp__form-wrap">
+          <p className="rsvp__admission">
+            <span className="rsvp__admission-label">Admisión</span>
+            <span className="rsvp__admission-count">{totalGuests}</span>
+            <span className="rsvp__admission-label">
+              {totalGuests === 1 ? 'persona' : 'personas'}
+            </span>
+          </p>
+
           {status === 'success' ? (
             <div className="rsvp__success">
               <span className="rsvp__success-icon" aria-hidden="true">✓</span>

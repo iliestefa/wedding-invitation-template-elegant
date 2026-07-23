@@ -62,6 +62,8 @@
     color: $color-text-muted;
     line-height: 1.8;
     margin: 0;
+
+    & + & { margin-top: 0.45rem; }
   }
 
   // ─── Cards ────────────────────────────────────────────────────────────────
@@ -140,6 +142,8 @@
     padding: 0.2rem 0.6rem;
     border-radius: 2px;
     text-align: right;
+    min-width: 0;
+    overflow-wrap: anywhere;
     transition: background $dur-fast, color $dur-fast;
 
     &:hover {

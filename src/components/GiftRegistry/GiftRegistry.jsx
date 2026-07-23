@@ -1,10 +1,38 @@
+import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTemplateData } from '../../context/TemplateContext';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import './GiftRegistry.scss';
 
-const AccountCard = ({ ownerName, bankName, accountType, cbu, accountNumberLabel }) => {
-  const handleCopy = (text) => navigator.clipboard?.writeText(text);
+// navigator.clipboard solo existe en contextos seguros (HTTPS / localhost);
+// al acceder por IP local se usa el fallback con execCommand.
+const copyToClipboard = async (text) => {
+  if (navigator.clipboard?.writeText) return navigator.clipboard.writeText(text);
+  const el = document.createElement('textarea');
+  el.value = text;
+  el.setAttribute('readonly', '');
+  el.style.position = 'fixed';
+  el.style.opacity = '0';
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+};
+
+const AccountCard = ({ ownerName, bankName, accountType, cbu, accountNumberLabel, ci, email }) => {
+  const [copiedField, setCopiedField] = useState(null);
+  const timeoutRef = useRef(null);
+
+  const handleCopy = async (field, text) => {
+    try {
+      await copyToClipboard(text);
+      setCopiedField(field);
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => setCopiedField(null), 1800);
+    } catch {
+      setCopiedField(null);
+    }
+  };
 
   return (
     <div className="gift__card">
@@ -22,8 +50,24 @@ const AccountCard = ({ ownerName, bankName, accountType, cbu, accountNumberLabel
         {cbu && (
           <div className="gift__card-row">
             <span className="gift__card-key">{accountNumberLabel ?? 'CBU'}</span>
-            <button className="gift__card-value" onClick={() => handleCopy(cbu)} title="Copiar número">
-              {cbu}
+            <button className="gift__card-value" onClick={() => handleCopy('cbu', cbu)} title="Copiar número">
+              {copiedField === 'cbu' ? 'Copiado ✓' : cbu}
+            </button>
+          </div>
+        )}
+        {ci && (
+          <div className="gift__card-row">
+            <span className="gift__card-key">CI</span>
+            <button className="gift__card-value" onClick={() => handleCopy('ci', ci)} title="Copiar CI">
+              {copiedField === 'ci' ? 'Copiado ✓' : ci}
+            </button>
+          </div>
+        )}
+        {email && (
+          <div className="gift__card-row">
+            <span className="gift__card-key">Correo</span>
+            <button className="gift__card-value" onClick={() => handleCopy('email', email)} title="Copiar correo">
+              {copiedField === 'email' ? 'Copiado ✓' : email}
             </button>
           </div>
         )}
@@ -38,8 +82,16 @@ AccountCard.propTypes = {
   accountType:        PropTypes.string,
   cbu:                PropTypes.string,
   accountNumberLabel: PropTypes.string,
+  ci:                 PropTypes.string,
+  email:              PropTypes.string,
 };
-AccountCard.defaultProps = { accountType: null, cbu: null, accountNumberLabel: 'N° de Cuenta' };
+AccountCard.defaultProps = {
+  accountType: null,
+  cbu: null,
+  accountNumberLabel: 'N° de Cuenta',
+  ci: null,
+  email: null,
+};
 
 const GiftRegistry = () => {
   const { giftRegistryIntro, bankAccounts } = useTemplateData();
@@ -51,7 +103,9 @@ const GiftRegistry = () => {
         <div className="gift__text">
           <p className="gift__eyebrow">Cuentas para Regalo</p>
           <h2 className="gift__title">Un regalo de corazón</h2>
-          <p className="gift__intro">{giftRegistryIntro}</p>
+          {(Array.isArray(giftRegistryIntro) ? giftRegistryIntro : [giftRegistryIntro]).map((text) => (
+            <p key={text} className="gift__intro">{text}</p>
+          ))}
         </div>
 
         <div className="gift__accounts">
