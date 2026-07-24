@@ -2,7 +2,7 @@ import { useTemplateData } from '../../context/TemplateContext';
 import './Footer.scss';
 
 const Footer = () => {
-  const { coupleNames, weddingYear, footerMessage } = useTemplateData();
+  const { coupleNames, weddingYear, footerMessage, imageFloralDivider } = useTemplateData();
 
   return (
     <footer className="footer">
@@ -24,6 +24,17 @@ const Footer = () => {
           </a>
         </p>
       </div>
+
+      {imageFloralDivider && (
+        <div className="footer__flowers" aria-hidden="true">
+          <img
+            className="footer__flowers-img"
+            src={imageFloralDivider}
+            alt=""
+            loading="lazy"
+          />
+        </div>
+      )}
     </footer>
   );
 };

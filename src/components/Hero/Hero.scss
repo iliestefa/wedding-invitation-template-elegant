@@ -34,20 +34,6 @@
       rgba(56, 38, 44, 0.35) 40%,
       rgba(56, 38, 44, 0.72) 100%
     );
-
-    // en móvil: oscurece arriba (nombres) y abajo (fecha/botón),
-    // dejando el centro casi limpio para ver a la pareja
-    @include mobile {
-      background: linear-gradient(
-        to bottom,
-        rgba(56, 38, 44, 0.6) 0%,
-        rgba(56, 38, 44, 0.52) 30%,
-        rgba(56, 38, 44, 0.15) 44%,
-        rgba(56, 38, 44, 0.15) 50%,
-        rgba(56, 38, 44, 0.52) 82%,
-        rgba(56, 38, 44, 0.72) 100%
-      );
-    }
   }
 
   // ─── Content ─────────────────────────────────────────────────────────────
@@ -62,21 +48,9 @@
     padding: 0 $gutter;
     animation: fadeUp 1.2s $ease-out 0.3s both;
 
-    // en móvil se despeja el centro (ahí está la pareja en la foto):
-    // eyebrow + nombres arriba; fecha + botón abajo
+    // en móvil todo el contenido va centrado en un bloque compacto
     @include mobile {
-      height: 100%;
-      justify-content: flex-start;
       gap: 1.25rem;
-      padding-top: calc(env(safe-area-inset-top, 0px) + 92px);
-      padding-bottom: 6.5rem;
-    }
-  }
-
-  // empuja fecha y botón al fondo en móvil
-  @include mobile {
-    &__divider {
-      margin-top: auto;
     }
   }
 

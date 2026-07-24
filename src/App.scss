@@ -46,5 +46,7 @@ button {
 }
 
 main {
-  overflow: hidden;
+  // clip solo horizontal: evita scroll lateral por decoraciones anchas,
+  // pero deja que la guirnalda del final de main sobresalga hacia el footer
+  overflow-x: clip;
 }

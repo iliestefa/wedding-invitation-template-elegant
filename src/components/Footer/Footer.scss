@@ -28,6 +28,11 @@
     flex-direction: column;
     align-items: center;
     gap: 1.25rem;
+
+
+    @include mobile {
+      margin-top: calc(21.85vw - 1.25rem);
+    }
   }
 
   &__gold-line {
@@ -92,6 +97,26 @@
     letter-spacing: 0.1em;
     color: $color-text-dim;
     margin: 0.5rem 0 0;
+  }
+
+  &__flowers {
+    display: none;
+
+    @include mobile {
+      display: block;
+      width: 100%;
+      aspect-ratio: 804 / 351;
+      overflow: hidden;
+      margin-top: calc(3.75rem - 21.85vw);
+      margin-bottom: -3rem;
+      pointer-events: none;
+    }
+  }
+
+  &__flowers-img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   &__credit-brand {

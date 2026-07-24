@@ -121,7 +121,8 @@ export const FOOTER_MESSAGE = "Con amor, los esperamos.";
 
 // ─── Imágenes ─────────────────────────────────────────────────────────────────
 export const IMAGE_HERO = `${import.meta.env.BASE_URL}hero.webp`;
-export const IMAGE_HERO_MOBILE = `${import.meta.env.BASE_URL}4.webp`;
+export const IMAGE_HERO_MOBILE = `${import.meta.env.BASE_URL}8.webp`;
+export const IMAGE_FLORAL_DIVIDER = `${import.meta.env.BASE_URL}flores-hero.webp`;
 export const IMAGE_CEREMONY =
   "https://images.unsplash.com/photo-1606216840721-aeb5c80ad67e?w=900&q=80&auto=format&fit=crop";
 export const IMAGE_DRESSCODE_WOMEN = `${import.meta.env.BASE_URL}mujer.webp`;

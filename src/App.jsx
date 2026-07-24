@@ -1,6 +1,7 @@
 import { TemplateProvider } from './context/TemplateContext';
 import Navigation from './components/Navigation/Navigation';
 import Hero from './components/Hero/Hero';
+import FlowerDivider from './components/FlowerDivider/FlowerDivider';
 import Countdown from './components/Countdown/Countdown';
 import Gallery from './components/Gallery/Gallery';
 import Events from './components/Events/Events';
@@ -18,6 +19,7 @@ const App = () => (
     <Navigation />
     <main>
       <Hero />
+      <FlowerDivider />
       <Countdown />
       <Gallery />
       <Events />
@@ -25,6 +27,7 @@ const App = () => (
       <DressCode />
       <GiftRegistry />
       <RsvpForm />
+      <FlowerDivider />
     </main>
     <Footer />
     <MusicPlayer />
