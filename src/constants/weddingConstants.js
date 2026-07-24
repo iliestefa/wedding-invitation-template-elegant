@@ -1,7 +1,7 @@
 // ─── Pareja ───────────────────────────────────────────────────────────────────
 export const BRIDE_NAME = "Kristel";
 export const GROOM_NAME = "Jose Luis";
-export const COUPLE_NAMES = `${BRIDE_NAME} & ${GROOM_NAME}`;
+export const COUPLE_NAMES = `${GROOM_NAME} & ${BRIDE_NAME}`;
 
 // ─── Fecha ────────────────────────────────────────────────────────────────────
 export const WEDDING_DATE_ISO = "2026-09-26";
