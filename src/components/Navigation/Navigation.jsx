@@ -29,9 +29,9 @@ const Navigation = ({ forceScrolled }) => {
   return (
     <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`} aria-label="Navegación principal">
       <a href="#hero" className="nav__brand">
-        {brideName}
-        <span className="nav__brand-amp">&</span>
         {groomName}
+        <span className="nav__brand-amp"> & </span>
+        {brideName}
       </a>
 
       <ul className="nav__links">
