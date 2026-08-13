@@ -14,8 +14,8 @@ html {
 }
 
 body {
-  background: $color-bg;
-  color: $color-text;
+  background: var(--color-bg, $color-bg);
+  color: var(--color-text, $color-text);
   font-family: $font-body;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;

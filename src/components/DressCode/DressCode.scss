@@ -1,5 +1,6 @@
 .dresscode {
-  background: $color-bg-deep;
+  background: var(--color-bg-deep);
+  background-image: $texture-floral;
   padding: 6rem 0 7rem;
 
   // ─── Inner container ──────────────────────────────────────────────────────
@@ -32,7 +33,7 @@
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 400;
     font-style: italic;
-    color: $color-champagne;
+    color: var(--color-champagne);
     margin: 0;
     line-height: 1.1;
     letter-spacing: 0.02em;
@@ -41,7 +42,7 @@
   &__gold-line {
     width: 48px;
     height: 1px;
-    background: $color-gold;
+    background: var(--color-gold);
     opacity: 0.6;
   }
 
@@ -49,7 +50,7 @@
     font-family: $font-body;
     font-size: 0.88rem;
     font-weight: 300;
-    color: $color-text-muted;
+    color: var(--color-text-muted);
     line-height: 1.8;
     margin: 0;
   }
@@ -69,8 +70,8 @@
   }
 
   &__card {
-    background: $color-bg-surface;
-    border: 1px solid $color-border;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -101,7 +102,7 @@
   &__card-img-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, $color-bg-surface 0%, transparent 50%);
+    background: linear-gradient(to top, var(--color-bg-surface) 0%, transparent 50%);
   }
 
   &__card-body {
@@ -118,7 +119,7 @@
     font-family: $font-body;
     font-size: 0.82rem;
     font-weight: 300;
-    color: $color-text-muted;
+    color: var(--color-text-muted);
     line-height: 1.7;
     margin: 0;
   }
@@ -147,7 +148,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 1px solid $color-border;
+    border: 1px solid var(--color-border);
     box-shadow: 0 2px 12px rgba(0,0,0,0.4);
   }
 
@@ -157,6 +158,6 @@
     font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: $color-text-muted;
+    color: var(--color-text-muted);
   }
 }

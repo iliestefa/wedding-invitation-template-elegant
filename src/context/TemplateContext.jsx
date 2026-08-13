@@ -1,6 +1,8 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { applyPaletteToDocument, removePaletteFromDocument } from '../utils/palettes';
 import {
+  COLOR_PALETTE,
   BRIDE_NAME, GROOM_NAME, COUPLE_NAMES,
   WEDDING_DATE_ISO, WEDDING_DATE_DISPLAY, WEDDING_YEAR,
   EVENTS_MODE,
@@ -57,15 +59,36 @@ const defaultData = {
   imageCeremony: IMAGE_CEREMONY,
   imageDressCodeWomen: IMAGE_DRESSCODE_WOMEN,
   imageDressCodeMen: IMAGE_DRESSCODE_MEN,
+  colorPalette: COLOR_PALETTE,
 };
 
 const TemplateContext = createContext(defaultData);
 
-export const TemplateProvider = ({ data, children }) => (
-  <TemplateContext.Provider value={{ ...defaultData, ...data }}>
-    {children}
-  </TemplateContext.Provider>
-);
+export const TemplateProvider = ({ data, children }) => {
+  const value = { ...defaultData, ...data };
+  const { colorPalette } = value;
+
+  // La paleta se aplica como variables CSS inline en <html>, pisando las del
+  // :root compilado. Con paleta null quedan los colores originales del SCSS.
+  // La key evita re-aplicar en cada render del editor (el objeto cambia de
+  // referencia aunque los colores sean los mismos).
+  const paletteKey = colorPalette
+    ? `${colorPalette.bg}|${colorPalette.accent}|${colorPalette.text}`
+    : '';
+
+  useEffect(() => {
+    if (!colorPalette) return undefined;
+    applyPaletteToDocument(colorPalette);
+    return () => removePaletteFromDocument();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [paletteKey]);
+
+  return (
+    <TemplateContext.Provider value={value}>
+      {children}
+    </TemplateContext.Provider>
+  );
+};
 
 TemplateProvider.propTypes = {
   data: PropTypes.object,

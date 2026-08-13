@@ -6,7 +6,10 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 80px;
-    background: linear-gradient(to bottom, $color-bg, transparent);
+    // Color + textura fundiéndose juntos con un mask — ver Schedule.scss.
+    background: $texture-floral, linear-gradient(var(--color-bg), var(--color-bg));
+    -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+    mask-image: linear-gradient(to bottom, #000, transparent);
     pointer-events: none;
     z-index: 2;
   }
@@ -14,7 +17,8 @@
 
   position: relative;
 
-  background: $color-bg-deep;
+  background: var(--color-bg-deep);
+  background-image: $texture-floral;
   padding: 5rem 0 3rem;
 
 
@@ -37,7 +41,7 @@
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 400;
     font-style: italic;
-    color: $color-champagne;
+    color: var(--color-champagne);
     margin: 0;
     letter-spacing: 0.02em;
   }
@@ -48,7 +52,7 @@
     font-weight: 300;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: $color-gold;
+    color: var(--color-gold);
     margin: 0;
   }
 
@@ -57,7 +61,7 @@
     font-size: 1rem;
     font-style: italic;
     font-weight: 300;
-    color: $color-text-muted;
+    color: var(--color-text-muted);
     margin: 0.5rem 0 1rem;
   }
 
@@ -75,11 +79,11 @@
     font-weight: 300;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: $color-text-dim;
+    color: var(--color-text-dim);
     text-decoration: none;
     transition: color $dur-fast;
 
-    &:hover { color: $color-gold; }
+    &:hover { color: var(--color-gold); }
   }
 
   &__credit {
@@ -87,17 +91,17 @@
     font-size: 0.6rem;
     font-weight: 300;
     letter-spacing: 0.1em;
-    color: $color-text-dim;
+    color: var(--color-text-dim);
     margin: 0.5rem 0 0;
   }
 
   &__credit-brand {
-    color: $color-gold;
+    color: var(--color-gold);
     text-decoration: none;
     transition: color $dur-fast;
 
     &:hover {
-      color: $color-gold-light;
+      color: var(--color-gold-light);
     }
   }
 }

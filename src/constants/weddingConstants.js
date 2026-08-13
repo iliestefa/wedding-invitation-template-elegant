@@ -97,6 +97,12 @@ export const RSVP_GUESTS = [];
 // ─── Footer ───────────────────────────────────────────────────────────────────
 export const FOOTER_MESSAGE = "Con amor, los esperamos.";
 
+// ─── Paleta de colores ────────────────────────────────────────────────────────
+// null → paleta original de la plantilla. Para personalizarla:
+// { id: 'custom', bg: '#1c1917', accent: '#c9a96e', text: '#e8d5b0' }
+// (ver src/utils/palettes.js — el resto de tonos se derivan solos)
+export const COLOR_PALETTE = null;
+
 // ─── Imágenes ─────────────────────────────────────────────────────────────────
 export const IMAGE_HERO              = "https://i.postimg.cc/gJyns8nL/pexels-jasminecarter-888899.jpg";
 export const IMAGE_CEREMONY          = "https://images.unsplash.com/photo-1606216840721-aeb5c80ad67e?w=900&q=80&auto=format&fit=crop";

@@ -23,6 +23,13 @@
     inset: 0;
     background:
       linear-gradient(to bottom, rgba(17,15,13,0.65) 0%, rgba(17,15,13,0.45) 40%, rgba(17,15,13,0.82) 100%);
+    background:
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--color-bg-deep) 65%, transparent) 0%,
+        color-mix(in srgb, var(--color-bg-deep) 45%, transparent) 40%,
+        color-mix(in srgb, var(--color-bg-deep) 82%, transparent) 100%
+      );
   }
 
   // ─── Content ─────────────────────────────────────────────────────────────
@@ -40,7 +47,7 @@
 
   &__eyebrow {
     @include eyebrow;
-    color: $color-gold;
+    color: var(--color-gold);
     letter-spacing: 0.4em;
   }
 
@@ -62,7 +69,7 @@
     font-size: clamp(3.5rem, 9vw, 8rem);
     font-weight: 400;
     font-style: italic;
-    color: $color-cream;
+    color: var(--color-cream);
     letter-spacing: -0.02em;
     display: block;
   }
@@ -72,7 +79,7 @@
     font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 400;
     font-style: normal;
-    color: $color-gold;
+    color: var(--color-gold);
     display: block;
     line-height: 1;
     margin: 0.4rem 0;
@@ -91,10 +98,10 @@
     display: block;
     width: 60px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, $color-gold);
+    background: linear-gradient(90deg, transparent, var(--color-gold));
 
     &:last-child {
-      background: linear-gradient(90deg, $color-gold, transparent);
+      background: linear-gradient(90deg, var(--color-gold), transparent);
     }
 
     @include mobile { width: 32px; }
@@ -106,7 +113,7 @@
     font-weight: 300;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: $color-champagne;
+    color: var(--color-champagne);
   }
 
   // ─── CTA ─────────────────────────────────────────────────────────────────
@@ -128,7 +135,7 @@
     display: block;
     width: 1px;
     height: 48px;
-    background: linear-gradient(to bottom, $color-gold, transparent);
+    background: linear-gradient(to bottom, var(--color-gold), transparent);
     margin: 0 auto;
     animation: scrollPulse 2s ease-in-out infinite;
   }

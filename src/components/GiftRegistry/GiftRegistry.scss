@@ -8,14 +8,15 @@
     left: 0;
     right: 0;
     height: 200px;
-    background: linear-gradient(to bottom, #110f0d, #1c1917);
+    background: $texture-floral, linear-gradient(to bottom, var(--color-bg-deep), var(--color-bg));
     pointer-events: none;
     z-index: 1;
   }
 
 
 
-  background: $color-bg-deep;
+  background: var(--color-bg-deep);
+  background-image: $texture-floral;
   padding: 7rem 0;
 
   &__inner {
@@ -54,7 +55,7 @@
     font-family: $font-body;
     font-size: 0.88rem;
     font-weight: 300;
-    color: $color-text-muted;
+    color: var(--color-text-muted);
     line-height: 1.8;
     margin: 0;
   }
@@ -69,14 +70,14 @@
   }
 
   &__card {
-    background: $color-bg-surface;
-    border: 1px solid $color-border;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
     overflow: hidden;
   }
 
   &__card-header {
     padding: 1.25rem 1.5rem 1rem;
-    border-bottom: 1px solid $color-border-dim;
+    border-bottom: 1px solid var(--color-border-dim);
   }
 
   &__card-owner {
@@ -84,7 +85,7 @@
     font-size: 1.1rem;
     font-weight: 400;
     font-style: italic;
-    color: $color-champagne;
+    color: var(--color-champagne);
     margin: 0 0 0.2rem;
   }
 
@@ -94,7 +95,7 @@
     font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: $color-gold;
+    color: var(--color-gold);
     margin: 0;
   }
 
@@ -110,7 +111,7 @@
     gap: 1rem;
 
     &:not(:last-child) {
-      border-bottom: 1px solid $color-border-dim;
+      border-bottom: 1px solid var(--color-border-dim);
     }
   }
 
@@ -120,7 +121,7 @@
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: $color-text-dim;
+    color: var(--color-text-dim);
     flex-shrink: 0;
   }
 
@@ -128,7 +129,7 @@
     font-family: $font-body;
     font-size: 0.8rem;
     font-weight: 300;
-    color: $color-champagne;
+    color: var(--color-champagne);
     background: none;
     border: none;
     cursor: pointer;
@@ -138,8 +139,8 @@
     transition: background $dur-fast, color $dur-fast;
 
     &:hover {
-      background: $color-gold-pale;
-      color: $color-gold-light;
+      background: var(--color-gold-pale);
+      color: var(--color-gold-light);
     }
   }
 }

@@ -12,17 +12,19 @@ import './App.scss';
 
 const App = () => (
   <TemplateProvider>
-    <Navigation />
-    <main>
-      <Hero />
-      <Countdown />
-      <Events />
-      <Schedule />
-      <DressCode />
-      <GiftRegistry />
-      <RsvpForm />
-    </main>
-    <Footer />
+    <div className="template-shell">
+      <Navigation />
+      <main>
+        <Hero />
+        <Countdown />
+        <Events />
+        <Schedule />
+        <DressCode />
+        <GiftRegistry />
+        <RsvpForm />
+      </main>
+      <Footer />
+    </div>
   </TemplateProvider>
 );
 

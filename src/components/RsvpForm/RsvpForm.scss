@@ -1,7 +1,8 @@
 .rsvp {
 
 
-  background: $color-bg;
+  background: var(--color-bg);
+  background-image: $texture-floral;
   padding: 7rem 0;
 
   &__inner {
@@ -45,12 +46,12 @@
     font-family: $font-body;
     font-size: 0.85rem;
     font-weight: 300;
-    color: $color-text-muted;
+    color: var(--color-text-muted);
     line-height: 1.8;
     margin: 0;
 
     strong {
-      color: $color-champagne;
+      color: var(--color-champagne);
       font-weight: 400;
       text-decoration: none;
       -webkit-touch-callout: none;
@@ -81,10 +82,10 @@
   &__input,
   &__textarea {
     width: 100%;
-    background: $color-bg-surface;
-    border: 1px solid $color-border-dim;
-    border-bottom-color: $color-border;
-    color: $color-champagne;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-dim);
+    border-bottom-color: var(--color-border);
+    color: var(--color-champagne);
     font-family: $font-body;
     font-size: 0.9rem;
     font-weight: 300;
@@ -95,7 +96,7 @@
     box-sizing: border-box;
     border-radius: 0;
 
-    &:focus { border-color: $color-gold; }
+    &:focus { border-color: var(--color-gold); }
     &::placeholder { color: transparent; }
 
     // iOS hace zoom al enfocar inputs con letra menor a 16px
@@ -106,10 +107,17 @@
     position: absolute;
     left: 1rem;
     top: 1rem;
+    // Siempre en una sola línea con elipsis: los labels largos (ej. las
+    // preguntas personalizadas) se envolvían a dos líneas en móvil y se
+    // desbordaban de la caja del input.
+    right: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-family: $font-body;
     font-size: 0.85rem;
     font-weight: 300;
-    color: $color-text-muted;
+    color: var(--color-text-muted);
     pointer-events: none;
     transition: top $dur-fast $ease-out, font-size $dur-fast $ease-out, color $dur-fast $ease-out;
   }
@@ -120,7 +128,7 @@
   &__textarea:not(:placeholder-shown) + &__label {
     top: 0.35rem;
     font-size: 0.6rem;
-    color: $color-gold;
+    color: var(--color-gold);
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
@@ -138,7 +146,7 @@
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: $color-gold;
+    color: var(--color-gold);
     margin-bottom: 0.75rem;
   }
 
@@ -161,21 +169,21 @@
     font-family: $font-body;
     font-size: 0.75rem;
     font-weight: 300;
-    color: $color-text-muted;
-    border: 1px solid $color-border-dim;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border-dim);
     padding: 0.5rem 1rem;
     cursor: pointer;
     transition: border-color $dur-fast, color $dur-fast, background $dur-fast;
 
     &--active {
-      border-color: $color-gold;
-      color: $color-gold;
-      background: $color-gold-pale;
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+      background: var(--color-gold-pale);
     }
 
     &:hover:not(&--active) {
-      border-color: $color-border;
-      color: $color-champagne;
+      border-color: var(--color-border);
+      color: var(--color-champagne);
     }
   }
 
@@ -215,10 +223,10 @@
     justify-content: center;
     width: 52px;
     height: 52px;
-    border: 1px solid $color-gold;
+    border: 1px solid var(--color-gold);
     border-radius: 50%;
     font-size: 1.3rem;
-    color: $color-gold;
+    color: var(--color-gold);
   }
 
   &__success-text {
@@ -226,7 +234,7 @@
     font-size: 1.4rem;
     font-style: italic;
     font-weight: 400;
-    color: $color-champagne;
+    color: var(--color-champagne);
     margin: 0;
   }
 }

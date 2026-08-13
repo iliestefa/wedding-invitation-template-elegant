@@ -1,6 +1,7 @@
 .countdown {
   position: relative;
-  background: $color-bg-deep;
+  background: var(--color-bg-deep);
+  background-image: $texture-floral;
   padding: 7rem 0;
   overflow: hidden;
   text-align: center;
@@ -19,6 +20,7 @@
     font-size: clamp(10rem, 28vw, 22rem);
     font-weight: 600;
     color: rgba(201, 169, 110, 0.04);
+    color: color-mix(in srgb, var(--color-gold) 4%, transparent);
     pointer-events: none;
     letter-spacing: -0.05em;
     user-select: none;
@@ -42,7 +44,7 @@
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 400;
     font-style: italic;
-    color: $color-champagne;
+    color: var(--color-champagne);
     margin: 0 0 1rem;
     letter-spacing: 0.05em;
   }
@@ -52,19 +54,27 @@
     align-items: flex-end;
     justify-content: center;
     gap: 1rem;
+    // Nunca a dos filas: en móvil los 4 números se comprimen en vez de saltar
+    // de línea (ver __unit / __number / __sep para los tamaños reducidos).
+    flex-wrap: nowrap;
 
     @include mobile {
-      gap: 0.5rem;
+      gap: 0.35rem;
     }
   }
 
   &__sep {
     font-family: $font-display;
     font-size: 2rem;
-    color: $color-gold;
+    color: var(--color-gold);
     line-height: 1;
     padding-bottom: 1.25rem;
     opacity: 0.5;
+
+    @include mobile {
+      font-size: 1.1rem;
+      padding-bottom: 0.75rem;
+    }
   }
 
   &__unit {
@@ -75,7 +85,9 @@
     min-width: 80px;
 
     @include mobile {
-      min-width: 60px;
+      min-width: 0;
+      flex: 1;
+      gap: 0.3rem;
     }
   }
 
@@ -83,7 +95,7 @@
     font-family: $font-display;
     font-size: clamp(3rem, 7vw, 6rem);
     font-weight: 400;
-    color: $color-champagne;
+    color: var(--color-champagne);
     line-height: 1;
     letter-spacing: -0.02em;
 
@@ -97,7 +109,16 @@
       transform: translateX(-50%);
       width: 24px;
       height: 1px;
-      background: $color-gold;
+      background: var(--color-gold);
+    }
+
+    @include mobile {
+      font-size: clamp(1.9rem, 9vw, 2.6rem);
+
+      &::after {
+        width: 16px;
+        bottom: -6px;
+      }
     }
   }
 
@@ -107,7 +128,16 @@
     font-weight: 400;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: $color-text-muted;
+    color: var(--color-text-muted);
     margin-top: 0.75rem;
+    white-space: nowrap;
+
+    // "SEGUNDOS" es la palabra más larga — sin achicar spacing/tamaño acá
+    // se desborda de su columna y fuerza el wrap a dos filas en __units.
+    @include mobile {
+      font-size: 0.42rem;
+      letter-spacing: 0.1em;
+      margin-top: 0.4rem;
+    }
   }
 }

@@ -15,8 +15,9 @@
 
   &--scrolled {
     background: rgba(17, 15, 13, 0.92);
+    background: color-mix(in srgb, var(--color-bg-deep) 92%, transparent);
     backdrop-filter: blur(16px);
-    border-bottom-color: $color-border;
+    border-bottom-color: var(--color-border);
   }
 
   &__brand {
@@ -24,13 +25,13 @@
     font-size: 1rem;
     font-style: italic;
     font-weight: 400;
-    color: $color-champagne;
+    color: var(--color-champagne);
     text-decoration: none;
     letter-spacing: 0.04em;
   }
 
   &__brand-amp {
-    color: $color-gold;
+    color: var(--color-gold);
     margin: 0 0.2em;
   }
 
@@ -53,10 +54,11 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: rgba(232, 213, 176, 0.65);
+    color: color-mix(in srgb, var(--color-text) 65%, transparent);
     text-decoration: none;
     transition: color $dur-fast;
 
-    &:hover { color: $color-gold; }
+    &:hover { color: var(--color-gold); }
   }
 
   &__cta {

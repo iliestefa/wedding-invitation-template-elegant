@@ -16,14 +16,14 @@
   font-weight: 500;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: $color-gold;
+  color: var(--color-gold);
 }
 
 @mixin heading-display {
   font-family: $font-display;
   font-weight: 400;
   line-height: 1.1;
-  color: $color-champagne;
+  color: var(--color-champagne);
 }
 
 // ─── Gold rule ────────────────────────────────────────────────────────────────
@@ -32,7 +32,7 @@
   display: block;
   width: $w;
   height: 1px;
-  background: $color-gold;
+  background: var(--color-gold);
 }
 
 // ─── Button ───────────────────────────────────────────────────────────────────
@@ -41,9 +41,9 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.9rem 2.5rem;
-  border: 1px solid $color-gold;
+  border: 1px solid var(--color-gold);
   background: transparent;
-  color: $color-gold;
+  color: var(--color-gold);
   font-family: $font-body;
   font-size: 0.65rem;
   font-weight: 500;
@@ -54,18 +54,18 @@
   transition: background $dur-fast $ease-out, color $dur-fast $ease-out;
 
   &:hover {
-    background: $color-gold;
-    color: $color-bg-deep;
+    background: var(--color-gold);
+    color: var(--color-bg-deep);
   }
 }
 
 @mixin btn-gold-solid {
   @include btn-gold;
-  background: $color-gold;
-  color: $color-bg-deep;
+  background: var(--color-gold);
+  color: var(--color-bg-deep);
 
   &:hover {
-    background: $color-gold-light;
+    background: var(--color-gold-light);
   }
 }
 
@@ -85,14 +85,14 @@
 @mixin gold-divider {
   width: 60px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, $color-gold, transparent);
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
   margin: 0 auto;
 }
 
 // ─── Focus ring ───────────────────────────────────────────────────────────────
 @mixin focus-ring {
   &:focus-visible {
-    outline: 1px solid $color-gold;
+    outline: 1px solid var(--color-gold);
     outline-offset: 3px;
   }
 }
