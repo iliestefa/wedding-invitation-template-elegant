@@ -68,6 +68,7 @@ const RsvpForm = () => {
     rsvpCompanionsMode,
     rsvpCupos,
     rsvpQuestions,
+    weddingSlug,
   } = useTemplateData();
   const ref = useIntersectionObserver();
 
@@ -127,16 +128,30 @@ const RsvpForm = () => {
     if (!rsvpEndpoint) { setStatus('error'); return; }
     setStatus('sending');
     try {
+      // Formato del RSVP universal: el slug identifica al cliente y
+      // questionLabels define las columnas dinámicas de su hoja. El body
+      // va como text/plain porque application/json dispara un preflight
+      // CORS que Apps Script no responde.
       const res = await fetch(rsvpEndpoint, {
         method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({
-          fullName,
+          slug: weddingSlug,
+          template: 'elegant',
+          coupleNames,
+          questionLabels: questions.map((q) => q.label),
+          guestName: fullName,
           attendance,
+          attendanceDetail: attendanceLabel,
           companions,
+          // acompañantes NO incluye al invitado en esta plantilla → +1
+          totalGuests: isAttending ? Number(companions) + 1 : 0,
           cupo:  companionsMax ?? '',
-          orden: getOrdenParam(),
-          ...Object.fromEntries(answeredQuestions.map((q) => [q.label, q.value])),
+          answers: {
+            // columna extra solo para clientes que usan links por invitado
+            ...(getOrdenParam() ? { Orden: getOrdenParam() } : {}),
+            ...Object.fromEntries(answeredQuestions.map((q) => [q.label, q.value])),
+          },
         }),
       });
       if (!res.ok) throw new Error(`${res.status}`);

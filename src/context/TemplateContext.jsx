@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { applyPaletteToDocument, removePaletteFromDocument } from '../utils/palettes';
 import {
   COLOR_PALETTE,
+  WEDDING_SLUG,
   BRIDE_NAME, GROOM_NAME, COUPLE_NAMES,
   WEDDING_DATE_ISO, WEDDING_DATE_DISPLAY, WEDDING_YEAR,
   EVENTS_MODE,
@@ -60,6 +61,7 @@ const defaultData = {
   imageDressCodeWomen: IMAGE_DRESSCODE_WOMEN,
   imageDressCodeMen: IMAGE_DRESSCODE_MEN,
   colorPalette: COLOR_PALETTE,
+  weddingSlug: WEDDING_SLUG,
 };
 
 const TemplateContext = createContext(defaultData);

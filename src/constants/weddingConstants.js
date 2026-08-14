@@ -97,6 +97,11 @@ export const RSVP_GUESTS = [];
 // ─── Footer ───────────────────────────────────────────────────────────────────
 export const FOOTER_MESSAGE = "Con amor, los esperamos.";
 
+// ─── Identificador del cliente ────────────────────────────────────────────────
+// Lo usa el RSVP universal para crear/encontrar su hoja de respuestas.
+// Vacío → los envíos de RSVP se ignoran (ej. demo o preview del editor).
+export const WEDDING_SLUG = "";
+
 // ─── Paleta de colores ────────────────────────────────────────────────────────
 // null → paleta original de la plantilla. Para personalizarla:
 // { id: 'custom', bg: '#1c1917', accent: '#c9a96e', text: '#e8d5b0' }
