@@ -16,7 +16,9 @@ const getCupoParam = () => {
 
 const buildWhatsappUrl = (number, message) => {
   const digits = (number || '').replace(/\D/g, '');
-  if (!digits) return null;
+  // Sin número configurado: WhatsApp genérico — abre el selector de contacto
+  // con el mensaje ya escrito, y el invitado elige a quién enviárselo.
+  if (!digits) return `https://wa.me/?text=${encodeURIComponent(message)}`;
   return `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
 };
 
@@ -101,6 +103,18 @@ const RsvpForm = () => {
 
   const isAttending = attendance === 'yes';
 
+  // Modo WhatsApp: sin formulario, dos botones directos (Sí / No) que abren
+  // WhatsApp con un mensaje corto ya armado — no hay datos que recolectar acá.
+  const handleWhatsappChoice = (attending) => {
+    const message = attending
+      ? `¡Hola! Confirmo que SÍ asistiré a la boda de ${coupleNames}. 🎉`
+      : `Hola, les escribo para confirmar que lamentablemente NO podré asistir a la boda de ${coupleNames}.`;
+    const url = buildWhatsappUrl(rsvpWhatsapp, message);
+    if (!url) { setStatus('error'); return; }
+    window.open(url, '_blank', 'noopener');
+    setStatus('success');
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -109,21 +123,6 @@ const RsvpForm = () => {
     const answeredQuestions = questions
       .map((q) => ({ label: q.label, value: (answers[q.id] ?? '').trim() }))
       .filter((q) => q.value);
-
-    if (type === 'whatsapp') {
-      const lines = [
-        `Confirmación de asistencia — ${coupleNames}`,
-        `Nombre: ${fullName}`,
-        `Asistencia: ${attendanceLabel}`,
-        ...(isAttending ? [`Acompañantes: ${companions}`] : []),
-        ...answeredQuestions.map((q) => `${q.label}: ${q.value}`),
-      ];
-      const url = buildWhatsappUrl(rsvpWhatsapp, lines.join('\n'));
-      if (!url) { setStatus('error'); return; }
-      window.open(url, '_blank', 'noopener');
-      setStatus('success');
-      return;
-    }
 
     if (!rsvpEndpoint) { setStatus('error'); return; }
     setStatus('sending');
@@ -180,9 +179,26 @@ const RsvpForm = () => {
               <span className="rsvp__success-icon" aria-hidden="true">✓</span>
               <p className="rsvp__success-text">
                 {type === 'whatsapp'
-                  ? '¡Gracias! Termina de enviar el mensaje en WhatsApp para confirmar.'
-                  : '¡Gracias! Recibimos tu confirmación.'}
+                  ? '¡Gracias! Termina de enviar el mensaje en WhatsApp para que nos llegue.'
+                  : '¡Hemos recibido tu confirmación! Gracias por acompañarnos en este día tan especial.'}
               </p>
+            </div>
+          ) : type === 'whatsapp' ? (
+            <div className="rsvp__whatsapp-choice">
+              <button
+                type="button"
+                className="rsvp__whatsapp-btn rsvp__whatsapp-btn--yes"
+                onClick={() => handleWhatsappChoice(true)}
+              >
+                Sí, asistiré
+              </button>
+              <button
+                type="button"
+                className="rsvp__whatsapp-btn rsvp__whatsapp-btn--no"
+                onClick={() => handleWhatsappChoice(false)}
+              >
+                No podré asistir
+              </button>
             </div>
           ) : (
             <form className="rsvp__form" onSubmit={handleSubmit} noValidate>
@@ -251,9 +267,7 @@ const RsvpForm = () => {
               )}
 
               <button type="submit" className="rsvp__submit" disabled={status === 'sending'}>
-                {status === 'sending'
-                  ? 'Enviando…'
-                  : type === 'whatsapp' ? 'Confirmar por WhatsApp' : 'Confirmar asistencia'}
+                {status === 'sending' ? 'Enviando…' : 'Confirmar asistencia'}
               </button>
             </form>
           )}
