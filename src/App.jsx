@@ -4,7 +4,6 @@ import Hero from './components/Hero/Hero';
 import Countdown from './components/Countdown/Countdown';
 import Gallery from './components/Gallery/Gallery';
 import Events from './components/Events/Events';
-import Schedule from './components/Schedule/Schedule';
 import GiftRegistry from './components/GiftRegistry/GiftRegistry';
 import RsvpForm from './components/RsvpForm/RsvpForm';
 import Footer from './components/Footer/Footer';
@@ -18,7 +17,6 @@ const App = () => (
       <Hero />
       <Countdown />
       <Events />
-      <Schedule />
       <Gallery />
       <GiftRegistry />
       <RsvpForm />

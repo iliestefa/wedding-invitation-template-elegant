@@ -12,7 +12,6 @@ const SECTION_THEMES = {
   countdown: 'rosa',
   gallery: 'rosa',
   events: 'salvia',
-  schedule: 'celeste',
   gifts: 'menta',
   rsvp: 'durazno',
 };

@@ -7,7 +7,6 @@ const NAV_LINKS = [
   { href: '#countdown', label: 'Fecha' },
   { href: '#gallery',   label: 'Fotos' },
   { href: '#events',    label: 'Lugares' },
-  { href: '#schedule',  label: 'Programa' },
   { href: '#gifts',     label: 'Regalos' },
 ];
 

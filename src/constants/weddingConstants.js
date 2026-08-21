@@ -17,43 +17,11 @@ export const RECEPTION_MAPS_LINK = "https://www.google.com/maps/search/?api=1&qu
 export const RECEPTION_MAPS_EMBED_SRC =
   "https://maps.google.com/maps?q=Club+Biblos+Samborond%C3%B3n&z=15&output=embed&hl=es";
 
-// ─── Cronograma ───────────────────────────────────────────────────────────────
-export const SCHEDULE_ITEMS = [
-  {
-    id: "recepcion",
-    time: "16:30",
-    label: "Recepción",
-    detail: "Les esperamos en Club Biblos",
-  },
-  {
-    id: "cena",
-    time: "19:00",
-    label: "Cena de gala",
-    detail: "Salón principal.",
-  },
-  {
-    id: "baile",
-    time: "20:30",
-    label: "Salida de los Novios",
-    detail: "Gracias por Acompañarnos",
-  },
-];
-
 // ─── Regalos ──────────────────────────────────────────────────────────────────
 export const GIFT_REGISTRY_INTRO =
-  "La mayor bendición para nosotros será compartir este día con ustedes. Si desean acompañarnos también con un obsequio, ponemos a su disposición nuestras cuentas bancarias. Agradecemos de todo corazón sus oraciones, cariño y generosidad.";
+  "Tu presencia es nuestro mejor regalo. Si gustas hacernos un detalle pregunta por el matrimonio Rosero-Dahik en Diorvett.";
 
-export const BANK_ACCOUNTS = [
-  {
-    id: "diorvett",
-    ownerName: "Diorvett",
-    bankName: "x",
-    accountType: "x",
-    accountAlias: "Diorvett",
-    cbu: "x",
-    accountNumberLabel: "N° de Cuenta",
-  },
-];
+export const BANK_ACCOUNTS = [];
 
 // ─── RSVP ─────────────────────────────────────────────────────────────────────
 export const RSVP_DEADLINE = "10 de Octubre 2026";

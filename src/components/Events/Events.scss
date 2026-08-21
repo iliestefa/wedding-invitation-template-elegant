@@ -10,7 +10,7 @@
     left: 0;
     right: 0;
     height: 192px;
-    background-image: $floral-pattern, linear-gradient($pastel-celeste-bg, $pastel-celeste-bg);
+    background-image: $floral-pattern, linear-gradient($color-bg, $color-bg);
     -webkit-mask-image: linear-gradient(to top, #000, transparent);
     mask-image: linear-gradient(to top, #000, transparent);
     z-index: 1;
