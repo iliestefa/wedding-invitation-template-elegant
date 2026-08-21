@@ -18,6 +18,7 @@ const Events = () => {
         </header>
 
         <div className="events__venue">
+          <p className="events__panel-eyebrow">Ceremonia</p>
           <p className="events__panel-time">{receptionTime}</p>
           <h3 className="events__panel-venue">{receptionVenueName}</h3>
           <p className="events__panel-address">{receptionVenueAddress}</p>
