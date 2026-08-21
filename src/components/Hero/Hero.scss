@@ -20,8 +20,6 @@
     background-image: var(--hero-bg-desktop);
     background-size: cover;
     background-position: center 50%;
-    transform: scale(1.05);
-    animation: heroZoom 8s $ease-out forwards;
 
     // en móvil se usa el recorte vertical (panel 1 del collage)
     @include mobile {
@@ -207,12 +205,6 @@
     background: linear-gradient(to bottom, $color-gold-light, transparent);
     margin: 0 auto;
     animation: scrollPulse 2s ease-in-out infinite;
-  }
-}
-
-@keyframes heroZoom {
-  to {
-    transform: scale(1);
   }
 }
 
