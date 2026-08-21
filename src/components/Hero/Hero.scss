@@ -1,11 +1,15 @@
 .hero {
   position: relative;
   height: 100vh;
-  height: 100dvh; // corrige el salto por la barra de direcciones en móvil
+  // svh (small viewport height) en vez de dvh: dvh se recalcula en vivo
+  // mientras la barra de direcciones aparece/desaparece durante el scroll,
+  // lo que hace que .hero (y su fondo absolute) cambien de alto y "salten"
+  // o parezcan hacer zoom. svh toma el viewport más chico y queda fijo.
+  height: 100svh;
   min-height: 750px;
 
   @include mobile {
-    min-height: 100dvh;
+    min-height: 100svh;
   }
 
   display: flex;
