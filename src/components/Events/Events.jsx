@@ -1,51 +1,12 @@
-import PropTypes from 'prop-types';
 import { useTemplateData } from '../../context/TemplateContext';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import './Events.scss';
 
-const EventPanel = ({ eyebrow, time, venueName, venueAddress, mapsLink, mapsSrc }) => (
-  <div className="events__panel">
-    <p className="events__panel-eyebrow">{eyebrow}</p>
-    <p className="events__panel-time">{time}</p>
-    <h3 className="events__panel-venue">{venueName}</h3>
-    <p className="events__panel-address">{venueAddress}</p>
-    {mapsSrc && (
-      <div className="events__map-wrap">
-        <iframe
-          className="events__map"
-          src={mapsSrc}
-          title={`Mapa de ${venueName}`}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
-      </div>
-    )}
-    {mapsLink && (
-      <a className="events__map-link" href={mapsLink} target="_blank" rel="noopener noreferrer">
-        Ver en Google Maps ↗
-      </a>
-    )}
-  </div>
-);
-
-EventPanel.propTypes = {
-  eyebrow:      PropTypes.string.isRequired,
-  time:         PropTypes.string.isRequired,
-  venueName:    PropTypes.string.isRequired,
-  venueAddress: PropTypes.string.isRequired,
-  mapsLink:     PropTypes.string,
-  mapsSrc:      PropTypes.string,
-};
-EventPanel.defaultProps = { mapsLink: null, mapsSrc: null };
-
 const Events = () => {
   const {
-    ceremonyTime, ceremonyVenueName, ceremonyVenueAddress, ceremonyMapsLink, ceremonyMapsEmbedSrc,
     receptionTime, receptionVenueName, receptionVenueAddress, receptionMapsLink, receptionMapsEmbedSrc,
   } = useTemplateData();
   const ref = useIntersectionObserver();
-
-  const sameVenue = ceremonyVenueName === receptionVenueName;
 
   return (
     <section id="events" className="events">
@@ -56,62 +17,27 @@ const Events = () => {
           <div className="events__gold-line" aria-hidden="true" />
         </header>
 
-        {sameVenue ? (
-          <>
-            <div className="events__grid events__grid--times">
-              <div className="events__panel">
-                <p className="events__panel-time">{ceremonyTime}</p>
-                <p className="events__panel-eyebrow">Ceremonia</p>
-              </div>
-              <div className="events__divider" aria-hidden="true" />
-              <div className="events__panel">
-                <p className="events__panel-time">{receptionTime}</p>
-                <p className="events__panel-eyebrow">Recepción</p>
-              </div>
+        <div className="events__venue">
+          <p className="events__panel-time">{receptionTime}</p>
+          <h3 className="events__panel-venue">{receptionVenueName}</h3>
+          <p className="events__panel-address">{receptionVenueAddress}</p>
+          {receptionMapsEmbedSrc && (
+            <div className="events__map-wrap">
+              <iframe
+                className="events__map"
+                src={receptionMapsEmbedSrc}
+                title={`Mapa de ${receptionVenueName}`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
-
-            <div className="events__venue">
-              <h3 className="events__panel-venue">{ceremonyVenueName}</h3>
-              <p className="events__panel-address">{ceremonyVenueAddress}</p>
-              {ceremonyMapsEmbedSrc && (
-                <div className="events__map-wrap">
-                  <iframe
-                    className="events__map"
-                    src={ceremonyMapsEmbedSrc}
-                    title={`Mapa de ${ceremonyVenueName}`}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </div>
-              )}
-              {ceremonyMapsLink && (
-                <a className="events__map-link" href={ceremonyMapsLink} target="_blank" rel="noopener noreferrer">
-                  Ver en Google Maps ↗
-                </a>
-              )}
-            </div>
-          </>
-        ) : (
-          <div className="events__grid">
-            <EventPanel
-              eyebrow="Ceremonia"
-              time={ceremonyTime}
-              venueName={ceremonyVenueName}
-              venueAddress={ceremonyVenueAddress}
-              mapsLink={ceremonyMapsLink}
-              mapsSrc={ceremonyMapsEmbedSrc}
-            />
-            <div className="events__divider" aria-hidden="true" />
-            <EventPanel
-              eyebrow="Recepción"
-              time={receptionTime}
-              venueName={receptionVenueName}
-              venueAddress={receptionVenueAddress}
-              mapsLink={receptionMapsLink}
-              mapsSrc={receptionMapsEmbedSrc}
-            />
-          </div>
-        )}
+          )}
+          {receptionMapsLink && (
+            <a className="events__map-link" href={receptionMapsLink} target="_blank" rel="noopener noreferrer">
+              Ver en Google Maps ↗
+            </a>
+          )}
+        </div>
       </div>
     </section>
   );

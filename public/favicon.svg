@@ -11,5 +11,5 @@
   <!-- anillo interior (marca del cuño) -->
   <circle cx="32" cy="32" r="22" fill="none" stroke="#f9e7ec" stroke-opacity="0.45" stroke-width="1.4"/>
   <!-- iniciales -->
-  <text x="32" y="40" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="21" fill="#fdf3f6">K&amp;J</text>
+  <text x="32" y="40" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="21" fill="#fdf3f6">N&amp;F</text>
 </svg>

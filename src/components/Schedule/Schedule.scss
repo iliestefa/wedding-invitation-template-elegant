@@ -4,12 +4,15 @@
   background: $pastel-celeste-bg;
   padding: 7rem 0;
 
+  // difumina hacia el marfil de la galería (Compromiso, sección siguiente):
+  // única capa de transición en esta costura, para que se sienta un solo
+  // cambio suave en vez de dos degradados compitiendo
   &::after {
     content: '';
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: 128px;
-    background-image: $floral-pattern, linear-gradient($pastel-lila-bg, $pastel-lila-bg);
+    height: 192px;
+    background-image: $floral-pattern, linear-gradient($color-bg, $color-bg);
     -webkit-mask-image: linear-gradient(to top, #000, transparent);
     mask-image: linear-gradient(to top, #000, transparent);
     pointer-events: none;

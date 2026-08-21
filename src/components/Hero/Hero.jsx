@@ -26,18 +26,20 @@ const Hero = () => {
       <div className="hero__overlay" />
 
       <div className="hero__content">
-        <p className="hero__eyebrow">Los invitamos a celebrar</p>
+        <div className="hero__top">
+          <p className="hero__eyebrow">Los invitamos a celebrar</p>
 
-        <div className="hero__names">
-          <span className="hero__name hero__name--bride">{renderName(brideName)}</span>
-          <span className="hero__amp">&</span>
-          <span className="hero__name hero__name--groom">{renderName(groomName)}</span>
-        </div>
+          <div className="hero__names">
+            <span className="hero__name hero__name--bride">{renderName(brideName)}</span>
+            <span className="hero__amp">&</span>
+            <span className="hero__name hero__name--groom">{renderName(groomName)}</span>
+          </div>
 
-        <div className="hero__divider">
-          <span className="hero__divider-line" />
-          <span className="hero__date">{weddingDateDisplay}</span>
-          <span className="hero__divider-line" />
+          <div className="hero__divider">
+            <span className="hero__divider-line" />
+            <span className="hero__date">{weddingDateDisplay}</span>
+            <span className="hero__divider-line" />
+          </div>
         </div>
 
         <a href="#rsvp" className="hero__cta">Confirmar asistencia</a>

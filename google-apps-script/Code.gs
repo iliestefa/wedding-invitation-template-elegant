@@ -1,12 +1,13 @@
 /**
  * Recibe los RSVP del formulario y los agrega como filas en la hoja de cálculo.
- * Adaptado al diseño de la hoja de Kristel & Jose Luis:
+ * Adaptado al diseño de la hoja de Nahime & Fernando:
  *
- *   fila 7 → encabezados: Fecha | Nombre | Asistentes | Menu | Mensaje
+ *   fila 7 → encabezados: Fecha | Nombre | Respuesta | Mensaje
  *   fila 8 en adelante → confirmaciones (una por fila)
  *
- * "Asistentes" = total de personas (invitado + acompañantes); 0 si no asiste.
- * El contador "Invitados Confirmados" de arriba puede ser =SUMA(C8:C).
+ * "Respuesta" = "Sí" o "No" según si el invitado asistirá.
+ * El contador "Invitados Confirmados" de arriba puede ser
+ * =CONTAR.SI(C8:C;"Sí").
  *
  * Pasos para usarlo:
  *  1. En tu Google Sheet → menú Extensiones → Apps Script.
@@ -23,14 +24,6 @@
 // Nombre de la pestaña. Vacío ('') = usa la primera pestaña del archivo.
 const SHEET_NAME = '';
 
-// Etiquetas legibles para la columna Menu.
-const MEAL_LABELS = {
-  standard:   'Estándar',
-  vegetarian: 'Vegetariano',
-  vegan:      'Vegano',
-  celiac:     'Celíaco',
-};
-
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
@@ -41,22 +34,13 @@ function doPost(e) {
     }
 
     const sheet = getSheet_();
-
     const attending = data.attendance === 'yes';
-    // Acompañantes solo cuentan si asiste; se sanea el número y se limita
-    // al tope absoluto (invitación quíntuple = 4 acompañantes, 5 personas).
-    const companions = attending
-      ? Math.min(4, Math.max(0, parseInt(data.companions, 10) || 0))
-      : 0;
-    // Asistentes = el invitado (1) + sus acompañantes; 0 si no asiste.
-    const totalGuests = attending ? 1 + companions : 0;
 
-    // Columnas: Fecha | Nombre | Asistentes | Menu | Mensaje
+    // Columnas: Fecha | Nombre | Respuesta | Mensaje
     sheet.appendRow([
       new Date(),
       String(data.fullName).trim(),
-      totalGuests,
-      attending ? (MEAL_LABELS[data.meal] || data.meal || '') : '—',
+      attending ? 'Sí' : 'No',
       data.message || '',
     ]);
 

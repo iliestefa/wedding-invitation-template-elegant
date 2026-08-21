@@ -13,7 +13,6 @@ const SECTION_THEMES = {
   gallery: 'rosa',
   events: 'salvia',
   schedule: 'celeste',
-  dresscode: 'lila',
   gifts: 'menta',
   rsvp: 'durazno',
 };

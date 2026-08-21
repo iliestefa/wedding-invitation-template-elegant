@@ -1,7 +1,13 @@
 .hero {
   position: relative;
   height: 100vh;
+  height: 100dvh; // corrige el salto por la barra de direcciones en móvil
   min-height: 750px;
+
+  @include mobile {
+    min-height: 100dvh;
+  }
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,14 +19,14 @@
     inset: 0;
     background-image: var(--hero-bg-desktop);
     background-size: cover;
-    background-position: center 30%;
+    background-position: center 50%;
     transform: scale(1.05);
     animation: heroZoom 8s $ease-out forwards;
 
     // en móvil se usa el recorte vertical (panel 1 del collage)
     @include mobile {
       background-image: var(--hero-bg-mobile);
-      background-position: center 40%;
+      background-position: 83% center;
     }
   }
 
@@ -48,16 +54,33 @@
   }
 
   // ─── Content ─────────────────────────────────────────────────────────────
+  // desktop: todo agrupado y centrado en un solo bloque (gap uniforme).
+  // móvil: nombres/fecha centrados y el botón anclado abajo del todo
+  // (el margin-top: auto del botón, ver &__cta, solo aplica en mobile).
   &__content {
-    position: relative;
+    position: absolute;
+    inset: 0;
     z-index: 2;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
-    padding: 0 $gutter;
+    padding: 4.5rem $gutter 5.5rem;
     animation: fadeUp 1.2s $ease-out 0.3s both;
+
+    @include mobile {
+      gap: 1.25rem;
+      padding: 77% $gutter 4.5rem;
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
 
     @include mobile {
       gap: 1.25rem;
@@ -147,9 +170,13 @@
   // ─── CTA ─────────────────────────────────────────────────────────────────
   &__cta {
     @include btn-gold;
-    margin-top: 0.5rem;
     border-color: rgba(253, 252, 250, 0.6);
     color: $color-cream;
+
+    // solo en móvil se separa del bloque de nombres/fecha y se ancla abajo
+    @include mobile {
+      margin-top: auto;
+    }
 
     &:hover {
       background: $color-cream;

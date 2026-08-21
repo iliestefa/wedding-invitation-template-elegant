@@ -8,7 +8,6 @@ const NAV_LINKS = [
   { href: '#gallery',   label: 'Fotos' },
   { href: '#events',    label: 'Lugares' },
   { href: '#schedule',  label: 'Programa' },
-  { href: '#dresscode', label: 'Vestimenta' },
   { href: '#gifts',     label: 'Regalos' },
 ];
 
