@@ -2,6 +2,8 @@
   position: relative;
   background: $color-bg;
   padding: 7rem 0;
+  padding-bottom: 10rem;
+  padding-top: 2rem;
 
   // difumina hacia la menta de la siguiente sección (Regalos)
   &::after {
@@ -92,16 +94,13 @@
   }
 
   // scrolleable manualmente; el auto-scroll (JS) mueve scrollTop y se
-  // pausa mientras el puntero/dedo está encima de la columna
+  // pausa mientras el puntero/dedo está encima de la columna.
+  // overflow-y: hidden bloquea el scroll manual (rueda/arrastre) pero no
+  // afecta el auto-scroll: ese se mueve asignando track.scrollTop por JS,
+  // lo que funciona igual con overflow hidden.
   &__col {
     height: 100%;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    overflow-y: hidden;
   }
 
   &__col-track {

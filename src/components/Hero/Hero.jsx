@@ -41,13 +41,9 @@ const Hero = () => {
             <span className="hero__divider-line" />
           </div>
         </div>
-
-        <a href="#rsvp" className="hero__cta">Confirmar asistencia</a>
       </div>
 
-      <div className="hero__scroll" aria-hidden="true">
-        <span className="hero__scroll-line" />
-      </div>
+      <a href="#rsvp" className="hero__cta">Confirmar asistencia</a>
     </section>
   );
 };

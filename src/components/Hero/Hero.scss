@@ -54,9 +54,9 @@
   }
 
   // ─── Content ─────────────────────────────────────────────────────────────
-  // desktop: todo agrupado y centrado en un solo bloque (gap uniforme).
-  // móvil: nombres/fecha centrados y el botón anclado abajo del todo
-  // (el margin-top: auto del botón, ver &__cta, solo aplica en mobile).
+  // el bloque de nombres/fecha (&__top) se centra solo, ocupando todo el
+  // alto de .hero. el CTA (&__cta) vive fuera de este bloque, anclado
+  // como absolute al fondo de .hero — no participa del centrado.
   &__content {
     position: absolute;
     inset: 0;
@@ -66,14 +66,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
     padding: 4.5rem $gutter 5.5rem;
     animation: fadeUp 1.2s $ease-out 0.3s both;
 
-    @include mobile {
-      gap: 1.25rem;
-      padding: 77% $gutter 4.5rem;
-    }
+
   }
 
   &__top {
@@ -168,14 +164,25 @@
   }
 
   // ─── CTA ─────────────────────────────────────────────────────────────────
+  // fuera de &__content: anclado como absolute al fondo de .hero, no
+  // participa del centrado del bloque de nombres/fecha.
+  // centrado con left/right + margin-inline en vez de transform: translateX,
+  // porque la animación fadeUp anima "transform" y pisaría un translateX.
   &__cta {
     @include btn-gold;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 3.5rem;
+    width: fit-content;
+    margin-inline: auto;
+    z-index: 2;
     border-color: rgba(253, 252, 250, 0.6);
     color: $color-cream;
+    animation: fadeUp 1.2s $ease-out 0.5s both;
 
-    // solo en móvil se separa del bloque de nombres/fecha y se ancla abajo
     @include mobile {
-      margin-top: auto;
+      bottom: 2.5rem;
     }
 
     &:hover {
