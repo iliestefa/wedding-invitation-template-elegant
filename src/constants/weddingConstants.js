@@ -19,7 +19,7 @@ export const RECEPTION_MAPS_EMBED_SRC =
 
 // ─── Regalos ──────────────────────────────────────────────────────────────────
 export const GIFT_REGISTRY_INTRO =
-  "Tu presencia es nuestro mejor regalo. Si gustas hacernos un detalle pregunta por el matrimonio Rosero-Dahik en Diorvett.";
+  "Tu presencia es nuestro mejor regalo. Si gustas hacernos un obsequio pregunta por el matrimonio Rosero-Dahik en Diorvett.";
 
 export const BANK_ACCOUNTS = [];
 
