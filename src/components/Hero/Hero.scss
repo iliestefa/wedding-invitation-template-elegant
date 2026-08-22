@@ -28,7 +28,7 @@
     // en móvil se usa el recorte vertical (panel 1 del collage)
     @include mobile {
       background-image: var(--hero-bg-mobile);
-      background-position: 83% center;
+      background-position: 85% center;
     }
   }
 
@@ -36,23 +36,6 @@
   &__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(56, 38, 44, 0.4) 0%,
-      rgba(56, 38, 44, 0.2) 40%,
-      rgba(56, 38, 44, 0.6) 100%
-    );
-
-    // en móvil el contenido va centrado, así que el medio necesita
-    // suficiente contraste para el texto
-    @include mobile {
-      background: linear-gradient(
-        to bottom,
-        rgba(56, 38, 44, 0.45) 0%,
-        rgba(56, 38, 44, 0.3) 50%,
-        rgba(56, 38, 44, 0.6) 100%
-      );
-    }
   }
 
   // ─── Content ─────────────────────────────────────────────────────────────
@@ -87,6 +70,7 @@
     @include eyebrow;
     color: #f9e7ec; // mismo rosa casi blanco que el &
     letter-spacing: 0.4em;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.5);
   }
 
   // ─── Names ───────────────────────────────────────────────────────────────
@@ -104,12 +88,13 @@
 
   &__name {
     font-family: $font-display;
-    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-size: clamp(2.75rem, 7vw, 6rem);
     font-weight: 400;
     font-style: italic;
     color: $color-cream;
     letter-spacing: -0.02em;
     display: block;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.55);
   }
 
   &__name-j {
@@ -130,6 +115,7 @@
     margin: 0.4rem 0;
     letter-spacing: 0.1em;
     align-self: center;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.5);
   }
 
   // ─── Date divider ─────────────────────────────────────────────────────────
@@ -161,6 +147,7 @@
     letter-spacing: 0.4em;
     text-transform: uppercase;
     color: rgba(253, 252, 250, 0.85);
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.5);
   }
 
   // ─── CTA ─────────────────────────────────────────────────────────────────
@@ -184,6 +171,7 @@
     text-decoration: underline;
     text-underline-offset: 0.3em;
     color: $color-cream;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.5);
     animation: fadeUp 1.2s $ease-out 0.5s both;
 
     @include mobile {
