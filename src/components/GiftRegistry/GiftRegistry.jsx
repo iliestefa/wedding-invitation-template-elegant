@@ -45,15 +45,15 @@ AccountCard.propTypes = {
 AccountCard.defaultProps = { accountAlias: null, cbu: null, accountNumberLabel: 'N° de Cuenta' };
 
 const GiftRegistry = () => {
-  const { giftRegistryIntro, bankAccounts } = useTemplateData();
+  const { giftsEyebrow, giftsTitle, giftRegistryIntro, bankAccounts } = useTemplateData();
   const ref = useIntersectionObserver();
 
   return (
     <section id="gifts" className="gift">
       <div ref={ref} className="gift__inner">
         <div className="gift__text">
-          <p className="gift__eyebrow">Cuentas para Regalo</p>
-          <h2 className="gift__title">Un regalo de corazón</h2>
+          {giftsEyebrow && <p className="gift__eyebrow">{giftsEyebrow}</p>}
+          {giftsTitle && <h2 className="gift__title">{giftsTitle}</h2>}
           <p className="gift__intro">{giftRegistryIntro}</p>
         </div>
 

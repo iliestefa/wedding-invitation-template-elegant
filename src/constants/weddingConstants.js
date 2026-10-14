@@ -52,6 +52,8 @@ export const DRESS_CODE_PALETTE = [
 ];
 
 // ─── Regalos ──────────────────────────────────────────────────────────────────
+export const GIFTS_EYEBROW = "Cuentas para Regalo";
+export const GIFTS_TITLE = "Un regalo de corazón";
 export const GIFT_REGISTRY_INTRO = "Su presencia es nuestro mayor regalo. Si desean obsequiarnos algo, aquí encontrarán nuestras cuentas.";
 
 export const BANK_ACCOUNTS = [
