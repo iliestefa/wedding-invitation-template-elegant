@@ -60,6 +60,22 @@
     margin: 0;
   }
 
+  // ─── Image ────────────────────────────────────────────────────────────────
+  &__image-wrap {
+    position: relative;
+    z-index: 100;
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
   // ─── Cards ────────────────────────────────────────────────────────────────
   &__accounts {
     position: relative;

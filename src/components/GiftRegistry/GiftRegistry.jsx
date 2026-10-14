@@ -45,7 +45,7 @@ AccountCard.propTypes = {
 AccountCard.defaultProps = { accountAlias: null, cbu: null, accountNumberLabel: 'N° de Cuenta' };
 
 const GiftRegistry = () => {
-  const { giftsEyebrow, giftsTitle, giftRegistryIntro, bankAccounts } = useTemplateData();
+  const { giftsEyebrow, giftsTitle, giftRegistryIntro, bankAccounts, imageGifts } = useTemplateData();
   const ref = useIntersectionObserver();
 
   return (
@@ -62,6 +62,12 @@ const GiftRegistry = () => {
             {bankAccounts.map((account) => (
               <AccountCard key={account.id} {...account} />
             ))}
+          </div>
+        )}
+
+        {imageGifts && (
+          <div className="gift__image-wrap">
+            <img src={imageGifts} alt="" className="gift__image" loading="lazy" />
           </div>
         )}
       </div>

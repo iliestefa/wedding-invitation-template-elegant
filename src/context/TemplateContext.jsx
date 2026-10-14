@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { applyPaletteToDocument, removePaletteFromDocument } from '../utils/palettes';
 import {
-  COLOR_PALETTE,
+  COLOR_PALETTE, ENTRANCE_ANIMATION, GATEFOLD_COLOR, GATEFOLD_SEAL_COLOR,
   WEDDING_SLUG,
   BRIDE_NAME, GROOM_NAME, COUPLE_NAMES,
   WEDDING_DATE_ISO, WEDDING_DATE_DISPLAY, WEDDING_YEAR,
@@ -18,7 +18,7 @@ import {
   RSVP_TYPE, RSVP_WHATSAPP, RSVP_COMPANIONS_MODE, RSVP_CUPOS,
   RSVP_QUESTIONS, RSVP_GUESTS,
   FOOTER_MESSAGE,
-  IMAGE_HERO, IMAGE_CEREMONY, IMAGE_DRESSCODE_WOMEN, IMAGE_DRESSCODE_MEN,
+  IMAGE_HERO, IMAGE_CEREMONY, IMAGE_GIFTS, IMAGE_DRESSCODE_WOMEN, IMAGE_DRESSCODE_MEN,
 } from '../constants';
 
 const defaultData = {
@@ -60,9 +60,13 @@ const defaultData = {
   footerMessage: FOOTER_MESSAGE,
   imageHero: IMAGE_HERO,
   imageCeremony: IMAGE_CEREMONY,
+  imageGifts: IMAGE_GIFTS,
   imageDressCodeWomen: IMAGE_DRESSCODE_WOMEN,
   imageDressCodeMen: IMAGE_DRESSCODE_MEN,
   colorPalette: COLOR_PALETTE,
+  entranceAnimation: ENTRANCE_ANIMATION,
+  gatefoldColor: GATEFOLD_COLOR,
+  gatefoldSealColor: GATEFOLD_SEAL_COLOR,
   weddingSlug: WEDDING_SLUG,
 };
 

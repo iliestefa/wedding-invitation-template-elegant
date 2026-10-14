@@ -54,6 +54,7 @@ export const DRESS_CODE_PALETTE = [
 // ─── Regalos ──────────────────────────────────────────────────────────────────
 export const GIFTS_EYEBROW = "Cuentas para Regalo";
 export const GIFTS_TITLE = "Un regalo de corazón";
+export const IMAGE_GIFTS = "";
 export const GIFT_REGISTRY_INTRO = "Su presencia es nuestro mayor regalo. Si desean obsequiarnos algo, aquí encontrarán nuestras cuentas.";
 
 export const BANK_ACCOUNTS = [
@@ -115,3 +116,11 @@ export const IMAGE_HERO              = "https://i.postimg.cc/gJyns8nL/pexels-jas
 export const IMAGE_CEREMONY          = "https://images.unsplash.com/photo-1606216840721-aeb5c80ad67e?w=900&q=80&auto=format&fit=crop";
 export const IMAGE_DRESSCODE_WOMEN   = "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=1200&q=90&auto=format&fit=crop";
 export const IMAGE_DRESSCODE_MEN     = "https://i.postimg.cc/zXvGb9Sb/pexels-drewrae-883362.jpg";
+
+// ─── Animación de entrada (opcional) ──────────────────────────────────────────
+export const ENTRANCE_ANIMATION = false;
+// null → siguen la paleta (fondo / acento); un hex los fija
+export const GATEFOLD_COLOR = null;
+export const GATEFOLD_SEAL_COLOR = null;
+export const GATEFOLD_TAP_HINT = "Toca para abrir";
+export const GATEFOLD_OPEN_LABEL = "Abrir invitación";

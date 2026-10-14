@@ -8,6 +8,7 @@ import DressCode from './components/DressCode/DressCode';
 import GiftRegistry from './components/GiftRegistry/GiftRegistry';
 import RsvpForm from './components/RsvpForm/RsvpForm';
 import Footer from './components/Footer/Footer';
+import EntranceGatefold from './components/EntranceGatefold/EntranceGatefold';
 import './App.scss';
 
 // Secciones opcionales que la pareja puede ocultar desde el editor Wedya:
@@ -29,6 +30,7 @@ const AppSections = () => {
         <RsvpForm />
       </main>
       <Footer />
+      <EntranceGatefold />
     </div>
   );
 };

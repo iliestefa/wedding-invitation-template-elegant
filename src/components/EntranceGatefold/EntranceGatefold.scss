@@ -1,0 +1,222 @@
+// ══════════════════════════════════════
+// ESCENA DE ENTRADA — carpeta oscura que se abre por el centro
+// ══════════════════════════════════════
+
+.gatefold {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  overflow: hidden;
+  transition: opacity 0.5s ease 1.05s, visibility 0s linear 1.6s;
+
+  &--contained {
+    position: absolute;
+  }
+
+  // Al abrir: las hojas se deslizan hacia los lados (1.15s) y la invitación,
+  // que esperaba detrás, queda a la vista; luego la escena se desmonta.
+  &--open {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  // ── Hojas ──
+  // La izquierda queda por encima e invade unos px la derecha para que su
+  // sombra caiga sobre la otra solapa, como una carpeta real.
+  &__panel {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+
+    &--left {
+      left: 0;
+      width: calc(50% + 10px);
+      z-index: 2;
+    }
+
+    &--right {
+      right: 0;
+      z-index: 1;
+    }
+  }
+
+  // La sombra va en __face (sin recortar) y la textura en __paper (recortada)
+  &__face {
+    position: absolute;
+    inset: 0;
+    transition: transform 1.15s cubic-bezier(0.76, 0, 0.24, 1);
+    animation: fadeIn 0.6s ease both;
+  }
+
+  &__panel--left &__face {
+    filter: drop-shadow(10px 0 16px rgba(0, 0, 0, 0.55));
+  }
+
+  &__paper {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background-color: var(--gatefold-paper, var(--color-bg-surface));
+    background-image: $texture-floral;
+
+    // Relieve damasco del papel, muy tenue sobre el fondo oscuro. Una sola
+    // imagen "cruza" las dos hojas, como el mismo papel partido al centro.
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('../../assets/gatefold/sobre.jpg');
+      background-size: cover;
+      filter: grayscale(1);
+      mix-blend-mode: soft-light;
+      opacity: 0.35;
+    }
+  }
+
+  &__panel--left &__paper::before {
+    background-position: left center;
+  }
+
+  &__panel--right &__paper::before {
+    background-position: right center;
+  }
+
+  &__edge {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 28px;
+    pointer-events: none;
+  }
+
+  &__panel--left &__edge {
+    right: 0;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.25));
+  }
+
+  &__panel--right &__edge {
+    left: 0;
+    width: 40px;
+    background: linear-gradient(270deg, transparent, rgba(0, 0, 0, 0.3));
+  }
+
+  &--open &__panel--left &__face {
+    transform: translateX(-102%);
+  }
+
+  &--open &__panel--right &__face {
+    transform: translateX(102%);
+  }
+
+  // ── Sello: botón centrado sobre el pliegue ──
+  &__seal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 3;
+    width: clamp(180px, 50vw, 300px);
+    aspect-ratio: 1;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.82);
+    transition:
+      opacity 0.6s ease 0.35s,
+      transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s;
+    @include focus-ring;
+
+    &:hover .gatefold__wax {
+      transform: scale(1.03);
+    }
+
+    &:disabled {
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
+  &--entered &__seal {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &--open &__seal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: opacity 0.35s ease, transform 0.45s ease;
+  }
+
+  // El lacre ocupa el 62% del ancho; el resto lo usa el texto curvo.
+  // Color: una capa del acento recortada con la silueta del sello, y encima
+  // la foto en grises en modo overlay, que aporta el relieve y los brillos.
+  &__wax {
+    position: absolute;
+    inset: 19%;
+    isolation: isolate;
+    filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.55));
+    transition: transform $dur-base $ease-out;
+  }
+
+  &__wax-tint {
+    position: absolute;
+    inset: 0;
+    background: var(--gatefold-seal, var(--color-gold));
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+  }
+
+  &__wax-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(1) brightness(0.92) contrast(1.35);
+    mix-blend-mode: overlay;
+  }
+
+  &__ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    margin-left: 18px;
+  }
+
+  &__ring-text {
+    font-family: $font-body;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    fill: var(--gatefold-seal, var(--color-gold));
+    animation: gatefoldPulse 2.6s ease-in-out infinite;
+  }
+}
+
+@keyframes gatefoldPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.45; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gatefold__seal,
+  .gatefold__face {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .gatefold__ring-text {
+    animation: none;
+  }
+}
